@@ -127,3 +127,10 @@ WCAG / AA · GMP / GxP · Kirkpatrick L1–L4
 compliance training in Articulate (Storyline/Rise), bilingual EN/ES, covering
 ADDIE/SAM, job-task analysis, Kirkpatrick, zero-error assessment, SCORM/cmi5.
 (Delivered as an installable .skill file; employer-neutral — no company name.)
+
+
+---
+
+© 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
+
+_Transparency note: developed with the assistance of generative AI; reviewed, edited and approved under the editorial responsibility of Ana Eslava-Graterol, instructional designer registered as a self-employed professional in Spain (in the spirit of the EU AI Act, Art. 50 — Regulation (EU) 2024/1689)._

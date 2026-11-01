@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ADDIE Design Worksheet</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: single reading column; sticky brand header; phase cards with teaching
+   text, fillable fields, and decision forks as labelled radio options.
+   Palette/type = Ana's Ocean Ink system (dual-theme, WCAG AA). */
+:root{
+  --ink:#1C1E2E; --canvas:#F7F8FC; --surface:#FFFFFF; --line:#E6E8F2; --muted:#5B5F77;
+  --primary:#3B5BD6; --primary-deep:#22307C; --on-primary:#FFFFFF;
+  --accent:#E8A33D; --accent-text:#9A5B00; --rose:#8B3A52; --focus-ring:#3B5BD6;
+  --tint:#EEF2FE; --tint-gold:#FBF2E1;
+  --hero:linear-gradient(135deg,#3B5BD6,#E8A33D);
+  --font-display:'Fraunces',Georgia,serif; --font-body:'Inter',system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --ink:#EEF0F8; --canvas:#0F1120; --surface:#171A2B; --line:#2A2D44; --muted:#A6ADC8;
+  --primary:#9DB2FF; --primary-deep:#B9C8F6; --on-primary:#131A44;
+  --accent:#EEC272; --accent-text:#EEC272; --rose:#E0A6B8; --focus-ring:#9DB2FF;
+  --tint:#1A2039; --tint-gold:#2A2440;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --ink:#EEF0F8; --canvas:#0F1120; --surface:#171A2B; --line:#2A2D44; --muted:#A6ADC8;
+  --primary:#9DB2FF; --primary-deep:#B9C8F6; --on-primary:#131A44;
+  --accent:#EEC272; --accent-text:#EEC272; --rose:#E0A6B8; --focus-ring:#9DB2FF;
+  --tint:#1A2039; --tint-gold:#2A2440;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface)}
+h1,h2,h3{font-family:var(--font-display);color:var(--primary-deep);line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(24px,5vw,34px);font-weight:700;margin:0}
+h2{font-size:clamp(20px,3.6vw,26px);font-weight:700;margin:0}
+h3{font-size:18px;font-weight:600;margin:0 0 .2em;font-family:var(--font-body);color:var(--primary-deep)}
+p{margin:0 0 .7em}
+a{color:var(--primary)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--primary)}
+.muted{color:var(--muted)}
+
+/* Header */
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar h1{font-size:clamp(17px,3.2vw,21px);flex:1 1 auto;min-width:0}
+.bar .tools{display:flex;gap:8px;flex-wrap:wrap}
+
+.wrap{max-width:880px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:22px 64px}
+
+/* Hero */
+.hero{border-radius:16px;padding:22px;color:#fff;background:var(--hero);margin-bottom:8px}
+.hero h1{color:#fff}
+.hero p{color:#fff;opacity:.96;max-width:62ch}
+.hero .kicker{color:#fff;opacity:.9}
+
+/* Progress */
+.prog{display:flex;align-items:center;gap:10px;margin:18px 0 6px}
+.prog-track{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.prog-fill{height:100%;width:0;background:var(--primary);border-radius:99px;transition:width .3s}
+.prog-num{font-variant-numeric:tabular-nums;font-weight:700;color:var(--primary-deep);font-size:14px}
+
+/* Buttons */
+.btn{font:inherit;font-weight:600;min-height:40px;padding:8px 14px;border-radius:10px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.btn:hover{border-color:var(--primary)}
+.btn.primary{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.btn.small{min-height:34px;padding:5px 10px;font-size:14px}
+
+/* Phase card */
+.phase{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:16px 0;overflow:hidden}
+.phase>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 18px}
+.phase>summary::-webkit-details-marker{display:none}
+.phase[open]>summary{border-bottom:1px solid var(--line)}
+.badge{flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:700;font-size:20px;background:var(--tint);color:var(--primary-deep)}
+.phase summary .t{flex:1;min-width:0}
+.phase summary .t .step{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text)}
+.phase summary .t .ttl{font-family:var(--font-display);font-weight:700;font-size:19px;color:var(--primary-deep)}
+.chev{flex:none;color:var(--muted);transition:transform .2s}
+.phase[open] .chev{transform:rotate(180deg)}
+.body{padding:4px 18px 20px}
+
+/* Teaching callout */
+.teach{background:var(--tint);border-left:4px solid var(--primary);border-radius:0 10px 10px 0;padding:12px 14px;margin:14px 0}
+.teach .lead{font-weight:700;color:var(--primary-deep)}
+.teach.gold{background:var(--tint-gold);border-left-color:var(--accent)}
+.teach ul{margin:.3em 0 0;padding-left:1.1em}
+.teach li{margin:.15em 0}
+
+/* Objective guide */
+.guide{margin:14px 0;border:1px solid var(--line);border-radius:12px;background:var(--canvas)}
+.guide>summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:700;color:var(--primary-deep);display:flex;align-items:center;gap:8px}
+.guide>summary::-webkit-details-marker{display:none}
+.guide[open]>summary{border-bottom:1px solid var(--line)}
+.gbody{padding:6px 14px 16px}
+.gbody h4{font-family:var(--font-body);color:var(--primary-deep);margin:16px 0 4px;font-size:15px}
+.gbody p{font-size:14.5px}
+.gbody code{background:var(--tint);padding:1px 5px;border-radius:5px;font-size:13px}
+.ex{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;margin:3px 0}
+.objbuild{display:grid;gap:8px;margin:12px 0}
+.objbuild .r{display:grid;grid-template-columns:130px 1fr;gap:8px;align-items:start}
+.objbuild .r>label{font-weight:600;font-size:13.5px;color:var(--muted);padding-top:9px}
+.objbuild .r .hh{font-size:12px;color:var(--muted);font-weight:400;display:block}
+.objprev{background:var(--tint);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:11px 13px;margin-top:4px}
+.objprev .lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text);display:block;margin-bottom:3px}
+.objprev .txt{font-style:italic}
+.vbank p{margin:.25em 0}
+@media(max-width:460px){.objbuild .r{grid-template-columns:1fr}.objbuild .r>label{padding-top:0}}
+
+/* Fields */
+.field{margin:14px 0}
+.field>label{display:block;font-weight:600;margin-bottom:5px}
+.field .hint{font-size:13.5px;color:var(--muted);margin:-2px 0 7px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:8px 0 2px}
+.meta .field{margin:0}
+input[type=text],textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--canvas);
+  border:1px solid var(--line);border-radius:9px;padding:9px 11px}
+textarea{resize:vertical;min-height:70px;line-height:1.5}
+input[type=text]:focus,textarea:focus,select:focus{outline:3px solid var(--focus-ring);outline-offset:1px;border-color:var(--primary)}
+
+/* Decision fork */
+.fork{border:1px dashed var(--accent);border-radius:12px;padding:14px;margin:16px 0;background:transparent}
+.fork>.q{display:flex;gap:8px;align-items:baseline;margin-bottom:4px}
+.fork .deci{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text);
+  border:1px solid var(--accent);border-radius:99px;padding:1px 8px;white-space:nowrap}
+.fork .q strong{color:var(--primary-deep)}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:11px 13px;cursor:pointer;background:var(--canvas)}
+.opt:hover{border-color:var(--primary)}
+.opt input{margin-top:3px;flex:none;width:18px;height:18px;accent-color:var(--primary)}
+.opt .ol{font-weight:600;display:block}
+.opt .od{font-size:13.5px;color:var(--muted);display:block;margin-top:1px}
+.opt.sel{border-color:var(--primary);background:var(--tint)}
+.opt.rec .ol::after{content:"Recommended";font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent-text);border:1px solid var(--accent);border-radius:99px;padding:0 7px;margin-left:8px;vertical-align:middle}
+
+/* Table */
+.tbl-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--tint);color:var(--primary-deep);font-weight:600;font-size:13px}
+td input[type=text]{border:none;background:transparent;padding:5px 6px;border-radius:6px}
+td select{border:none;background:transparent;padding:5px 4px}
+td.ctr{text-align:center}
+.rowdel{border:none;background:transparent;color:var(--muted);cursor:pointer;font-size:17px;line-height:1;min-height:auto;padding:2px 6px}
+.rowdel:hover{color:var(--rose)}
+.dif-H{color:var(--accent-text);font-weight:700}
+.dif-L{color:var(--muted)}
+
+.note{font-size:13px;color:var(--muted);margin-top:4px}
+.save-flag{font-size:13px;color:var(--primary);opacity:0;transition:opacity .3s}
+.save-flag.on{opacity:1}
+hr.soft{border:none;border-top:1px solid var(--line);margin:18px 0}
+.foot{margin-top:30px;padding-top:16px;border-top:2px solid var(--line);display:grid;gap:9px}
+.foot .cc{font-weight:600;color:var(--primary-deep);margin:0;font-size:14px}
+.foot .disc{font-size:12.5px;color:var(--muted);margin:0;max-width:74ch}
+.foot .disc strong{color:var(--accent-text)}
+@media (max-width:460px){ .bar h1{flex-basis:100%} }
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="bar-in">
+    <h1>ADDIE Design Worksheet</h1>
+    <span class="save-flag" id="saveFlag">Saved ✓</span>
+    <div class="tools">
+      <button class="btn small" id="themeBtn" type="button" aria-label="Toggle theme">◐ Theme</button>
+      <button class="btn small" id="copyBtn" type="button">⧉ Copy as Markdown</button>
+      <button class="btn small" id="clearBtn" type="button">Clear</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="kicker">Instructional design · reusable template</div>
+    <h1>Design any high-technical course, step by step</h1>
+    <p>Fill one phase at a time. Each phase explains <em>what it is</em>, <em>why it matters</em>, and the <em>senior-designer move</em> — then you make the real decisions yourself. Your answers save in this browser automatically. When done, <strong>Copy as Markdown</strong> to paste a finished design brief anywhere.</p>
+  </section>
+
+  <details class="guide" style="margin-top:16px">
+    <summary>🎯 Role fit — how this maps to the job's duties</summary>
+    <div class="gbody">
+      <p class="muted">Target role: <strong>Senior Instructional Designer — regulated MedTech manufacturing</strong> (sewing, assembly, delivery, distribution). Each duty is something you practise directly in this worksheet, so finishing one = evidence you can do that part of the job.</p>
+      <div class="tbl-wrap"><table><thead><tr><th style="min-width:200px">Job responsibility</th><th style="min-width:180px">Where you practise it here</th></tr></thead><tbody>
+        <tr><td>Lead, design & develop complex technical & non-technical instruction across media</td><td>All five phases end-to-end; tool choice (Decision 3) & build spec (Development)</td></tr>
+        <tr><td>Partner & consult with stakeholders; gain agreement on outcomes & success metrics</td><td>Analysis driver + Evaluation metrics table (each metric needs baseline, owner, date)</td></tr>
+        <tr><td>Develop criteria to evaluate effectiveness; align to outcomes</td><td>Decision 5 (Kirkpatrick scope) + the Evaluation metrics & closing-the-loop</td></tr>
+        <tr><td>Conduct complex job, task & performance analysis to develop objectives</td><td>Analysis: Decision 1 + the JTA/DIF table → Design: the C·B·C objective builder</td></tr>
+        <tr><td>Engage learners & stakeholders to test and validate the design</td><td>Implementation: Decision 7 (pilot first, 5–8 learners), then refine</td></tr>
+        <tr><td>Coach & consult on the ID process, deliverables & expected outcomes</td><td>The teaching notes in every phase + the Markdown brief you can walk a stakeholder through</td></tr>
+        <tr><td>Use evaluation results to improve; share best practices & lessons learned</td><td>Evaluation: "Closing the loop" (diagnose L2↔L3, fix course vs. workplace)</td></tr>
+        <tr><td>Evaluate / oversee vendors or contractors; translate & administer programs</td><td>Bilingual EN/ES throughout; a storyboard precise enough to brief a vendor</td></tr>
+        <tr><td>Adhere to EHS; prevent injury & protect the environment</td><td>The compliance scenarios themselves + the Accessibility checklist in Development</td></tr>
+      </tbody></table></div>
+      <p class="note">Required by the role and built into this tool: EN/ES fluency · Articulate/Captivate · LMS & SCORM/cmi5 literacy · adult-learning theory (ADDIE/SAM, Bloom, Mager, Kirkpatrick).</p>
+    </div>
+  </details>
+
+  <details class="guide">
+    <summary>⚖️ Compliance standards this training must satisfy</summary>
+    <div class="gbody">
+      <p class="muted">In regulated MedTech manufacturing a completed course is a <strong>controlled quality record</strong>: an auditor expects to see who was trained, on which version of which procedure, that they <em>demonstrated</em> competency, and that records are retained and current. That's why this worksheet insists on objective↔source↔assessment traceability, version-locking, and a real mastery gate.</p>
+      <div class="tbl-wrap"><table><thead><tr><th style="min-width:150px">Standard</th><th style="min-width:200px">What it is / why it touches training</th></tr></thead><tbody>
+        <tr><td><strong>ISO 13485</strong></td><td>QMS for medical devices — requires determining competence, providing training, and <em>evaluating its effectiveness</em>, with records (clause ~6.2).</td></tr>
+        <tr><td><strong>FDA 21 CFR Part 820</strong> (QSR → QMSR, harmonising with ISO 13485)</td><td>US device Quality System Regulation — personnel training requirements (§820.25).</td></tr>
+        <tr><td><strong>EU MDR 2017/745</strong></td><td>EU medical device regulation — competency/training of personnel within the QMS.</td></tr>
+        <tr><td><strong>GxP / GMP / GDP</strong></td><td>Good Manufacturing / Distribution Practice — documented, version-controlled procedures and trained personnel (GDP covers cold-chain & distribution).</td></tr>
+        <tr><td><strong>GAMP 5</strong></td><td>Computerised-system validation mindset — relevant if the LMS or an xAPI/LRS pipeline is a validated system.</td></tr>
+        <tr><td><strong>WCAG 2.1 AA / Section 508</strong></td><td>Accessibility — an inaccessible mandatory course can itself be an audit finding, not just bad practice.</td></tr>
+        <tr><td><strong>EHS / OSHA-type rules</strong></td><td>Environmental Health & Safety — chemical handling, PPE, spill response, lockout/tagout, pollution prevention. The content you build here <em>is</em> this compliance.</td></tr>
+      </tbody></table></div>
+      <div class="teach gold" style="margin-top:12px"><span class="lead">⚠️ Verify before you cite.</span> Clause numbers and regulation versions change and harmonise. In any client-facing deliverable, confirm the exact clause against the <strong>official current text</strong> and mark anything unverified <code>[VERIFY]</code> — never invent a regulatory citation.</div>
+    </div>
+  </details>
+
+  <div class="field" style="margin-top:16px">
+    <label for="f_project">Project / source material</label>
+    <div class="hint">The technical material you're turning into training — SOP number, manual, device, regulation. One line.</div>
+    <input type="text" id="f_project" placeholder="e.g. SOP-114 Chemical Spill Response, Rev 3">
+  </div>
+
+  <div class="meta">
+    <div class="field"><label for="f_lang">Language(s) of content</label><div class="hint">WCAG 3.1.1 — declare it</div><input type="text" id="f_lang" placeholder="e.g. EN + ES"></div>
+    <div class="field"><label for="f_region">Region / locale</label><div class="hint">where it's deployed</div><input type="text" id="f_region" placeholder="e.g. EU · US · LATAM"></div>
+    <div class="field"><label for="f_by">Prepared by</label><div class="hint">designer</div><input type="text" id="f_by" placeholder="your name"></div>
+    <div class="field"><label for="f_date2">Date / version</label><div class="hint">keep it versioned</div><input type="text" id="f_date2" placeholder="2026-11-01 · v0.1"></div>
+  </div>
+  <p class="note">This template is <strong>transferable</strong> — reuse it for any high-technical material, in any language or region. Nothing here is tied to one SOP, one employer, or one country.</p>
+
+  <div class="prog">
+    <span class="prog-num" id="progNum">0%</span>
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+  </div>
+
+  <!-- ============ A — ANALYSIS ============ -->
+  <details class="phase" open>
+    <summary><span class="badge">A</span><span class="t"><span class="step">Phase 1</span><span class="ttl">Analysis</span></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <div class="teach">
+        <span class="lead">What & why.</span> Analysis decides whether training is even the answer, who the learner is, and which tasks matter. Skipping it is why most technical courses teach the wrong things. This is where a senior ID earns their title.
+        <ul>
+          <li><strong>Performance analysis:</strong> is the gap really about skill/knowledge (train it) or about broken process, missing tools, or no incentive (don't)?</li>
+          <li><strong>Job/Task analysis + DIF:</strong> break the job into steps; rate <strong>D</strong>ifficulty, <strong>I</strong>mportance, <strong>F</strong>requency; flag the safety/compliance-critical ones.</li>
+        </ul>
+      </div>
+
+      <div class="fork">
+        <div class="q"><span class="deci">Decision 1</span><span><strong>Is training the right fix?</strong> Ask: “could they do it if their life depended on it?” If yes, it isn't a training problem.</span></div>
+        <div class="opts" data-radio="d_fix">
+          <label class="opt"><input type="radio" name="d_fix" value="skill"><span><span class="ol">Skill / knowledge gap → build training</span><span class="od">They genuinely don't know how. Training is justified.</span></span></label>
+          <label class="opt"><input type="radio" name="d_fix" value="env"><span><span class="ol">Environment / process / tools gap</span><span class="od">Fix the process or tooling instead — recommend the non-training solution and say so.</span></span></label>
+          <label class="opt"><input type="radio" name="d_fix" value="motiv"><span><span class="ol">Motivation / incentive gap</span><span class="od">They can but won't. Training won't fix it; escalate to management/consequence design.</span></span></label>
+          <label class="opt"><input type="radio" name="d_fix" value="blend"><span><span class="ol">Blend: training + a job aid / process fix</span><span class="od">Most real cases. Train the skill, support it with a job aid and a process change.</span></span></label>
+        </div>
+      </div>
+
+      <div class="fork">
+        <div class="q"><span class="deci">Decision 2</span><span><strong>Design model.</strong> How formal and iterative is this project?</span></div>
+        <div class="opts" data-radio="d_model">
+          <label class="opt"><input type="radio" name="d_model" value="addie"><span><span class="ol">ADDIE (linear, auditable)</span><span class="od">Document-heavy, sign-off friendly. Default for regulated / validated work (MedTech, pharma, GxP).</span></span></label>
+          <label class="opt"><input type="radio" name="d_model" value="sam"><span><span class="ol">SAM (iterative, prototype-early)</span><span class="od">Fast cycles, stakeholder co-design. Default when speed and buy-in matter and content isn't locked.</span></span></label>
+          <label class="opt rec"><input type="radio" name="d_model" value="hybrid"><span><span class="ol">ADDIE shell + SAM inside</span><span class="od">Keep ADDIE's analysis rigour & audit trail, iterate the design in SAM loops. Best of both for regulated-but-fast.</span></span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f_driver">Business / compliance driver</label>
+        <div class="hint">Why now? Audit finding, incident, new SOP, new-hire wave, regulation.</div>
+        <textarea id="f_driver" placeholder="e.g. Two reportable spills last quarter; audit flagged inconsistent response."></textarea>
+      </div>
+      <div class="field">
+        <label for="f_audience">Audience</label>
+        <div class="hint">Role(s), experience level, languages, devices, numbers, accessibility needs.</div>
+        <textarea id="f_audience" placeholder="e.g. New & refresher lab technicians; experienced; EN/ES; desktop + tablet; annual recert."></textarea>
+      </div>
+      <div class="field">
+        <label for="f_constraints">Constraints</label>
+        <div class="hint">Seat-time target, deadline, target LMS, budget, SME availability.</div>
+        <textarea id="f_constraints" placeholder="e.g. ≤15 min; LMS = Cornerstone (confirm SCORM 2004 support); SME = QA lead, 2h."></textarea>
+      </div>
+
+      <h3 style="margin-top:18px">Job / Task Analysis + DIF</h3>
+      <p class="note">Add each task step. Rate D·I·F (High/Med/Low) and mark the safety- or compliance-critical ones — those become your zero-error gate in Design.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th style="min-width:150px">Task / step</th><th>D</th><th>I</th><th>F</th><th>Critical?</th><th style="min-width:120px">Common error</th><th style="min-width:130px">Treatment</th><th></th></tr></thead>
+          <tbody id="taskBody"></tbody>
+        </table>
+      </div>
+      <button class="btn small" id="addTask" type="button">+ Add task step</button>
+    </div>
+  </details>
+
+  <!-- ============ D — DESIGN ============ -->
+  <details class="phase">
+    <summary><span class="badge">D</span><span class="t"><span class="step">Phase 2</span><span class="ttl">Design</span></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <div class="teach">
+        <span class="lead">What & why.</span> Design turns tasks into measurable objectives, chooses the tool and interaction logic, and plans the assessment <em>before</em> any screen is built — so the course actually proves the objective.
+        <ul>
+          <li><strong>Objectives:</strong> write them Mager-style — Performance + Condition + Criterion. “Understand” is not an objective; “select the correct kit with zero errors” is.</li>
+          <li><strong>Design the measurement with the content</strong>, never after.</li>
+        </ul>
+      </div>
+
+      <details class="guide">
+        <summary>📐 How to write a learning objective for technical material</summary>
+        <div class="gbody">
+          <p>An objective states what the <strong>learner</strong> will be able to do after training — not what the course will "cover." It's the contract between content and assessment: it must be <strong>measurable</strong>, because what you can't observe you can't certify.</p>
+          <div class="ex">❌ <span class="muted">Not an objective: "Understand the spill SOP" — unobservable, no standard.</span></div>
+          <div class="ex">✅ <span>"Given a spill and the available kits, select the correct kit with zero errors."</span></div>
+
+          <h4>Two tools, used together</h4>
+          <p><strong>Bloom's taxonomy</strong> sets the <em>cognitive level</em> (how deep is the thinking?). <strong>Mager (ABCD)</strong> sets the <em>structure</em> so it's measurable (how do I write it observably?). Workflow: <strong>Bloom to choose the level → Mager to write it.</strong></p>
+
+          <h4>Mager format — the structure</h4>
+          <div class="tbl-wrap"><table><thead><tr><th>Part</th><th>Meaning</th><th style="min-width:150px">Example</th></tr></thead><tbody>
+            <tr><td><strong>Condition</strong></td><td>Situation, tools, constraints given</td><td>"Given a simulated spill and the available kits…"</td></tr>
+            <tr><td><strong>Behavior</strong></td><td>An <strong>observable</strong> action verb</td><td>"…performs all seven SOP steps in order…"</td></tr>
+            <tr><td><strong>Criterion</strong></td><td>The standard of success</td><td>"…with zero critical errors."</td></tr>
+          </tbody></table></div>
+          <p class="muted">Rule: the verb must be observable (do, select, assemble, calibrate, sequence), never internal (know, understand, be aware).</p>
+
+          <h4>Bloom's taxonomy — the level</h4>
+          <div class="tbl-wrap"><table><thead><tr><th>Level</th><th style="min-width:150px">Use when material requires…</th><th>Sample verbs</th><th style="min-width:130px">Technical use</th></tr></thead><tbody>
+            <tr><td>Remember</td><td>Recalling facts, codes, limits</td><td>list, label, identify, recall</td><td>Name PPE items, hazard symbols</td></tr>
+            <tr><td>Understand</td><td>Explaining meaning</td><td>describe, explain, classify</td><td>Explain why water-reactive reagents need a dry kit</td></tr>
+            <tr><td><strong>Apply</strong></td><td>Executing a procedure in context</td><td>perform, use, operate, execute</td><td>Run the SOP; don PPE; contain a spill</td></tr>
+            <tr><td><strong>Analyze</strong></td><td>Judging among options / diagnosing</td><td>determine, differentiate, select, troubleshoot</td><td>Choose the correct kit for a reagent class</td></tr>
+            <tr><td>Evaluate</td><td>Judging adequacy against criteria</td><td>assess, verify, justify, prioritize</td><td>Decide if an area is safe to re-enter</td></tr>
+            <tr><td>Create</td><td>Producing something new</td><td>design, formulate, develop</td><td>Write a new local spill procedure</td></tr>
+          </tbody></table></div>
+          <p>For adult, simulation-based compliance training, objectives usually sit at <strong>Apply</strong> (do the procedure) and <strong>Analyze/Evaluate</strong> (choose right among plausible wrong). Remember/Understand alone are too low to certify competence.</p>
+
+          <h4>Let the material drive the level (analysis first)</h4>
+          <p>Derive the level from your job/task analysis + DIF, don't guess it:</p>
+          <ul>
+            <li>Step is <em>recall</em> only → Remember/Understand → maybe a job aid, not a full objective.</li>
+            <li>Step is <em>do the procedure</em> → <strong>Apply</strong> → objective + performance assessment.</li>
+            <li>Step needs <em>judgment/diagnosis</em> → <strong>Analyze/Evaluate</strong> → objective + decision/branching item.</li>
+            <li>Match the criterion to risk: critical steps → <strong>zero-error (100%)</strong>; non-critical recall → a pass mark (e.g. 80%).</li>
+          </ul>
+          <p class="muted">Principle: the higher the stakes and judgment, the higher the Bloom level and the stricter the Mager criterion.</p>
+
+          <h4>Terminal vs. enabling</h4>
+          <p><strong>Terminal</strong> = the whole performance at the end (one per module). <strong>Enabling</strong> = the sub-skills that build to it (ideally one per critical task), each mapping 1:1 to an assessment item — your traceability backbone (objective ↔ source clause ↔ assessment item).</p>
+
+          <h4>Quick verb bank (observable)</h4>
+          <div class="vbank">
+            <p><strong>Apply:</strong> <code>perform</code> <code>operate</code> <code>assemble</code> <code>calibrate</code> <code>don</code> <code>contain</code> <code>execute</code> <code>demonstrate</code> <code>measure</code></p>
+            <p><strong>Analyze:</strong> <code>determine</code> <code>select</code> <code>differentiate</code> <code>diagnose</code> <code>troubleshoot</code> <code>inspect</code></p>
+            <p><strong>Evaluate:</strong> <code>verify</code> <code>assess</code> <code>justify</code> <code>prioritize</code> <code>confirm</code></p>
+            <p class="muted"><strong>Avoid:</strong> understand · know · learn · be aware of · appreciate · be familiar with</p>
+          </div>
+
+          <h4>Objective quality checklist</h4>
+          <div style="display:grid;gap:4px">
+            <label class="optcheck"><input type="checkbox" id="o_task"> Starts from a task analysis of the real material (not the table of contents)</label>
+            <label class="optcheck"><input type="checkbox" id="o_bloom"> Bloom level matches the real demand (Apply/Analyze for procedures & judgment)</label>
+            <label class="optcheck"><input type="checkbox" id="o_mager"> Written in Mager format: Condition + observable Behavior + Criterion</label>
+            <label class="optcheck"><input type="checkbox" id="o_verb"> Verb is observable (no "understand / know / be aware")</label>
+            <label class="optcheck"><input type="checkbox" id="o_crit"> Criterion matches risk (zero-error for critical; pass mark otherwise)</label>
+            <label class="optcheck"><input type="checkbox" id="o_item"> Has a named assessment item and data source that proves it</label>
+            <label class="optcheck"><input type="checkbox" id="o_adult"> Fits adult learners: relevant, problem-centered, immediately applicable</label>
+            <label class="optcheck"><input type="checkbox" id="o_trace"> Terminal + enabling objectives traceable to source and assessment</label>
+          </div>
+
+          <h4>Try it — build one (C · B · C)</h4>
+          <div class="objbuild">
+            <div class="r"><label for="f_cond">Condition<span class="hh">given…</span></label><input type="text" id="f_cond" placeholder="Given a simulated spill and the available kits,"></div>
+            <div class="r"><label for="f_beh">Behavior<span class="hh">observable verb</span></label><input type="text" id="f_beh" placeholder="the technician selects and applies the correct kit"></div>
+            <div class="r"><label for="f_crit2">Criterion<span class="hh">the standard</span></label><input type="text" id="f_crit2" placeholder="with zero critical errors."></div>
+          </div>
+          <div class="objprev"><span class="lab">Your objective</span><span class="txt" id="objPrev">Fill the three parts above…</span></div>
+          <p class="note">Happy with it? Copy it up into your Terminal or Enabling objective fields below.</p>
+        </div>
+      </details>
+
+      <div class="field">
+        <label for="f_terminal">Terminal objective</label>
+        <div class="hint">What the learner can do at the end. Performance + condition + criterion.</div>
+        <textarea id="f_terminal" placeholder="Given a simulated spill and the available kits, the technician performs all 7 SOP steps in order with zero critical errors."></textarea>
+      </div>
+      <div class="field">
+        <label for="f_enabling">Enabling objectives</label>
+        <div class="hint">One sub-skill per critical task from your Analysis table. One per line.</div>
+        <textarea id="f_enabling" placeholder="- Identify the hazard via SDS without contact&#10;- Select correct PPE before approaching&#10;- Choose the correct kit for the reagent class"></textarea>
+      </div>
+
+      <div class="fork">
+        <div class="q"><span class="deci">Decision 3</span><span><strong>Authoring tool.</strong> Decision & consequence → Storyline; narrative & reference → Rise.</span></div>
+        <div class="opts" data-radio="d_tool">
+          <label class="opt"><input type="radio" name="d_tool" value="storyline"><span><span class="ol">Articulate Storyline 360</span><span class="od">Full control: slides, layers, states, triggers, variables. The only Articulate tool that builds true zero-error branching and simulations.</span></span></label>
+          <label class="opt"><input type="radio" name="d_tool" value="rise"><span><span class="ol">Articulate Rise 360</span><span class="od">Fast, auto-responsive, block-based. Great for awareness/policy; limited logic (no variables/custom triggers).</span></span></label>
+          <label class="opt rec"><input type="radio" name="d_tool" value="both"><span><span class="ol">Rise + embedded Storyline block</span><span class="od">Author the scenario in Storyline, drop it into Rise. Best for a polished compliance course with a decision engine.</span></span></label>
+          <label class="opt"><input type="radio" name="d_tool" value="captivate"><span><span class="ol">Adobe Captivate</span><span class="od">Only if the client is a Captivate shop or you need heavy responsive software capture. Principles transfer.</span></span></label>
+        </div>
+      </div>
+
+      <div class="fork">
+        <div class="q"><span class="deci">Decision 4</span><span><strong>Zero-error / mastery logic.</strong> Apply a gate only to safety- or compliance-critical steps — over-gating frustrates adults and teaches nothing.</span></div>
+        <div class="opts" data-radio="d_zero">
+          <label class="opt rec"><input type="radio" name="d_zero" value="A"><span><span class="ol">Pattern A — hard fail + remediation loop</span><span class="od">Wrong critical choice → consequence layer → “Try again” on that decision. Rigorous but learner-friendly.</span></span></label>
+          <label class="opt"><input type="radio" name="d_zero" value="B"><span><span class="ol">Pattern B — scored, 100% to pass</span><span class="od">Complete the whole scenario; must score 100% (zero errors). Learner reviews every miss at the end.</span></span></label>
+          <label class="opt"><input type="radio" name="d_zero" value="C"><span><span class="ol">Pattern C — hard fail + full restart</span><span class="od">Any critical error ends the attempt; restart. Strictest; models real stakes but can frustrate.</span></span></label>
+          <label class="opt"><input type="radio" name="d_zero" value="none"><span><span class="ol">No gate — scored knowledge check</span><span class="od">For non-critical/awareness content. Standard pass mark (e.g. 80%), partial credit allowed.</span></span></label>
+        </div>
+      </div>
+
+      <div class="fork">
+        <div class="q"><span class="deci">Decision 5</span><span><strong>Kirkpatrick scope.</strong> The course can capture L1–L2 directly; L3–L4 need workplace data you design hooks for.</span></div>
+        <div class="opts" data-radio="d_kirk">
+          <label class="opt"><input type="radio" name="d_kirk" value="l2"><span><span class="ol">L2 only — Learning</span><span class="od">Just the knowledge/skill gate. Simplest, fastest.</span></span></label>
+          <label class="opt rec"><input type="radio" name="d_kirk" value="l12hooks"><span><span class="ol">L1 + L2 in-course, hooks for L3 + L4</span><span class="od">Reaction survey + mastery gate in the module; xAPI hooks + a measurement plan for behaviour & results. Most realistic.</span></span></label>
+          <label class="opt"><input type="radio" name="d_kirk" value="full"><span><span class="ol">Full L1–L4 design</span><span class="od">All four levels including workplace follow-up & results framework. Most comprehensive; more conceptual work.</span></span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f_assess">Assessment items (objective → item → pass rule)</label>
+        <div class="hint">One line per objective: how you'll measure it and the pass rule.</div>
+        <textarea id="f_assess" placeholder="- PPE selection → multi-response → pass/fail (zero-error)&#10;- Correct kit → decision + consequence → pass/fail"></textarea>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============ D — DEVELOPMENT ============ -->
+  <details class="phase">
+    <summary><span class="badge">D</span><span class="t"><span class="step">Phase 3</span><span class="ttl">Development</span></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <div class="teach">
+        <span class="lead">What & why.</span> Development is the build: storyboard → screens → interaction logic → package. In regulated work the build is a controlled record, so keep it named, versioned and traceable.
+      </div>
+
+      <div class="fork">
+        <div class="q"><span class="deci">Decision 6</span><span><strong>Packaging standard.</strong> Confirm what the target LMS actually supports first.</span></div>
+        <div class="opts" data-radio="d_pkg">
+          <label class="opt"><input type="radio" name="d_pkg" value="scorm12"><span><span class="ol">SCORM 1.2</span><span class="od">Only if an old LMS requires it. Completion + score + pass/fail; least data.</span></span></label>
+          <label class="opt rec"><input type="radio" name="d_pkg" value="scorm2004"><span><span class="ol">SCORM 2004 (4th ed.)</span><span class="od">Most corporate LMSs. Separate completion AND success states, sequencing, suspend data. Safe default.</span></span></label>
+          <label class="opt"><input type="radio" name="d_pkg" value="cmi5"><span><span class="ol">cmi5</span><span class="od">Modern LMS + LRS. SCORM-like structure plus full xAPI richness. Great for on-the-job tracking.</span></span></label>
+          <label class="opt"><input type="radio" name="d_pkg" value="xapi"><span><span class="ol">xAPI alone</span><span class="od">Tracking outside a course/LMS (mobile, sim, job aid) to an LRS. No built-in launch structure.</span></span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f_complete">Completion vs. success rule</label>
+        <div class="hint">What marks the record complete, and what marks it passed. Keep them distinct for compliance.</div>
+        <textarea id="f_complete" placeholder="Completed = reached end; Passed = all 6 critical steps ok AND errorCount = 0. Report first-attempt score."></textarea>
+      </div>
+      <div class="field">
+        <label for="f_vars">Variables / triggers / branching notes</label>
+        <div class="hint">For Storyline: the memory and logic the build needs.</div>
+        <textarea id="f_vars" placeholder="errorCount (Number,0); critStep1_ok…critStep6_ok (T/F). Wrong → Consequence layer, +1 errorCount, Next locked."></textarea>
+      </div>
+
+      <div class="teach gold">
+        <span class="lead">Accessibility — design it in, don't retrofit (WCAG 2.1 AA / Section 508).</span> Tick as you build:
+        <div style="display:grid;gap:4px;margin-top:8px">
+          <label class="optcheck"><input type="checkbox" id="a_cap"> Captions on all audio / voice-over</label>
+          <label class="optcheck"><input type="checkbox" id="a_alt"> Alt text on every meaningful image; decoratives marked decorative</label>
+          <label class="optcheck"><input type="checkbox" id="a_tab"> Logical keyboard tab order per slide; visible focus</label>
+          <label class="optcheck"><input type="checkbox" id="a_color"> Meaning never by colour alone (glyph + label too)</label>
+          <label class="optcheck"><input type="checkbox" id="a_contrast"> Text contrast ≥ 4.5:1 (Ocean Ink palette already AA)</label>
+          <label class="optcheck"><input type="checkbox" id="a_tap"> Tap targets ≥ 44px; no hover-only meaning on touch</label>
+          <label class="optcheck"><input type="checkbox" id="a_lang"> Content language declared (WCAG 3.1.1 Language of Page); language of EN/ES mixed parts marked (3.1.2 Language of Parts)</label>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============ I — IMPLEMENTATION ============ -->
+  <details class="phase">
+    <summary><span class="badge">I</span><span class="t"><span class="step">Phase 4</span><span class="ttl">Implementation</span></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <div class="teach">
+        <span class="lead">What & why.</span> Implementation is rollout: pilot, publish, assign, and lock versions. A pilot with a handful of real learners catches the problems a reviewer never will.
+      </div>
+      <div class="fork">
+        <div class="q"><span class="deci">Decision 7</span><span><strong>Rollout approach.</strong></span></div>
+        <div class="opts" data-radio="d_roll">
+          <label class="opt rec"><input type="radio" name="d_roll" value="pilot"><span><span class="ol">Pilot first (5–8 learners), then full release</span><span class="od">Capture L1 + first-attempt L2, fix weak steps, then publish. Recommended for anything high-stakes.</span></span></label>
+          <label class="opt"><input type="radio" name="d_roll" value="phased"><span><span class="ol">Phased by site / shift / team</span><span class="od">Good for large populations; lets you refine between waves.</span></span></label>
+          <label class="opt"><input type="radio" name="d_roll" value="big"><span><span class="ol">Full release at once</span><span class="od">Only when deadline-driven and the content is well-validated. Higher risk.</span></span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f_recert">Recertification & version-lock</label>
+        <div class="hint">How often must they retake it, and how do you tie course version to SOP version?</div>
+        <textarea id="f_recert" placeholder="Annual recert. Version-lock SOP vX → .story vX → package vX. Re-issue & re-assign when the SOP changes."></textarea>
+      </div>
+      <div class="field">
+        <label for="f_rollnotes">Rollout notes (LMS, comms, supervisor briefing)</label>
+        <textarea id="f_rollnotes" placeholder="Publish to LMS; assign to lab-tech group; brief supervisors on the observation checklist to enable L3; deploy bench job aid."></textarea>
+      </div>
+    </div>
+  </details>
+
+  <!-- ============ E — EVALUATION ============ -->
+  <details class="phase">
+    <summary><span class="badge">E</span><span class="t"><span class="step">Phase 5</span><span class="ttl">Evaluation</span></span><span class="chev">▾</span></summary>
+    <div class="body">
+      <div class="teach">
+        <span class="lead">What & why.</span> Evaluation proves value and feeds improvement. Pair every metric with a <strong>baseline, owner and measurement date</strong> — otherwise it's a wish, not a metric. Then close the loop: use results to fix the course or the workplace.
+      </div>
+      <h3>Success metrics (Kirkpatrick)</h3>
+      <p class="note">Fill the levels your scope covers. Add rows as needed.</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Level</th><th style="min-width:150px">Metric</th><th>Baseline</th><th>Target</th><th>Owner</th><th>Measure date</th><th></th></tr></thead>
+          <tbody id="metricBody"></tbody>
+        </table>
+      </div>
+      <button class="btn small" id="addMetric" type="button">+ Add metric</button>
+
+      <div class="field" style="margin-top:18px">
+        <label for="f_loop">Closing the loop</label>
+        <div class="hint">How will results change the design or the workplace? This is a core senior-ID habit.</div>
+        <textarea id="f_loop" placeholder="Low first-attempt accuracy on a step → teaching weak → fix the course. High L2 but poor L3 audits → transfer problem → job aids, drills, coaching. Share lessons with SOP owners quarterly."></textarea>
+      </div>
+    </div>
+  </details>
+
+  <p class="note" style="margin-top:22px">Everything you type saves automatically in this browser only. Use <strong>Copy as Markdown</strong> to take a finished brief with you. Built in Ana Eslava-Graterol's Ocean Ink design system.</p>
+
+  <footer class="foot">
+    <p class="cc">© 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.</p>
+    <p class="disc"><strong>Transparency note.</strong> This material was developed with the assistance of generative AI. Reviewed, edited and approved under the editorial responsibility of Ana Eslava-Graterol, instructional designer registered as a self-employed professional in Spain, who assumes full editorial responsibility (in the spirit of the EU AI Act, Art. 50 — Regulation (EU) 2024/1689).</p>
+    <p class="disc" lang="es"><strong>Nota de transparencia.</strong> Elaborado con asistencia de IA generativa. Revisado, editado y aprobado bajo la responsabilidad editorial de Ana Eslava-Graterol, diseñadora instruccional y profesional autónoma registrada en España (Reglamento (UE) 2024/1689 — Ley de IA, art. 50).</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var KEY="addie-worksheet-v1";
+  var saveFlag=document.getElementById("saveFlag");
+  var flagTimer=null;
+
+  /* ---------- theme ---------- */
+  var themeBtn=document.getElementById("themeBtn");
+  function savedTheme(){try{return localStorage.getItem(KEY+"-theme")}catch(e){return null}}
+  function applyTheme(t){ if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t);} else {document.documentElement.removeAttribute("data-theme");} }
+  applyTheme(savedTheme());
+  themeBtn.addEventListener("click",function(){
+    var cur=document.documentElement.getAttribute("data-theme");
+    var next= cur==="dark"?"light": cur==="light"?null:"dark"; // cycle dark→light→system
+    applyTheme(next);
+    try{ next?localStorage.setItem(KEY+"-theme",next):localStorage.removeItem(KEY+"-theme"); }catch(e){}
+  });
+
+  /* ---------- dynamic tables ---------- */
+  var DIF=["","H","M","L"];
+  function difSel(val){var s='<select class="difsel">';for(var i=0;i<DIF.length;i++){s+='<option'+(DIF[i]===val?' selected':'')+'>'+DIF[i]+'</option>';}return s+'</select>';}
+  function taskRow(d){ d=d||{}; var tr=document.createElement("tr");
+    tr.innerHTML='<td><input type="text" data-k="step" placeholder="e.g. Don correct PPE"></td>'+
+      '<td class="ctr">'+difSel(d.D)+'</td><td class="ctr">'+difSel(d.I)+'</td><td class="ctr">'+difSel(d.F)+'</td>'+
+      '<td class="ctr"><select data-k="crit"><option value="">—</option><option>✅ Critical</option><option>⚠️ Important</option><option>No</option></select></td>'+
+      '<td><input type="text" data-k="err" placeholder="common mistake"></td>'+
+      '<td><input type="text" data-k="treat" placeholder="course / job aid / drill"></td>'+
+      '<td class="ctr"><button class="rowdel" type="button" aria-label="Delete row">×</button></td>';
+    var ins=tr.querySelectorAll("input,select"), keys=["step","D","I","F","crit","err","treat"];
+    tr.querySelectorAll('.difsel')[0].value=d.D||""; tr.querySelectorAll('.difsel')[1].value=d.I||""; tr.querySelectorAll('.difsel')[2].value=d.F||"";
+    if(d.step)tr.querySelector('[data-k=step]').value=d.step;
+    if(d.crit)tr.querySelector('[data-k=crit]').value=d.crit;
+    if(d.err)tr.querySelector('[data-k=err]').value=d.err;
+    if(d.treat)tr.querySelector('[data-k=treat]').value=d.treat;
+    tr.querySelector(".rowdel").addEventListener("click",function(){tr.remove();save();});
+    tr.addEventListener("input",save); tr.addEventListener("change",save);
+    return tr;
+  }
+  function metricRow(d){ d=d||{}; var tr=document.createElement("tr");
+    tr.innerHTML='<td><select data-k="lvl"><option value="">—</option><option>L1 Reaction</option><option>L2 Learning</option><option>L3 Behaviour</option><option>L4 Results</option></select></td>'+
+      '<td><input type="text" data-k="metric" placeholder="e.g. zero-error mastery rate"></td>'+
+      '<td><input type="text" data-k="base" placeholder="baseline"></td>'+
+      '<td><input type="text" data-k="target" placeholder="target"></td>'+
+      '<td><input type="text" data-k="owner" placeholder="owner"></td>'+
+      '<td><input type="text" data-k="date" placeholder="when"></td>'+
+      '<td class="ctr"><button class="rowdel" type="button" aria-label="Delete row">×</button></td>';
+    if(d.lvl)tr.querySelector('[data-k=lvl]').value=d.lvl;
+    ["metric","base","target","owner","date"].forEach(function(k){if(d[k])tr.querySelector('[data-k='+k+']').value=d[k];});
+    tr.querySelector(".rowdel").addEventListener("click",function(){tr.remove();save();});
+    tr.addEventListener("input",save); tr.addEventListener("change",save);
+    return tr;
+  }
+  var taskBody=document.getElementById("taskBody"), metricBody=document.getElementById("metricBody");
+  document.getElementById("addTask").addEventListener("click",function(){taskBody.appendChild(taskRow());save();});
+  document.getElementById("addMetric").addEventListener("click",function(){metricBody.appendChild(metricRow());save();});
+
+  function readRows(body,keys){var out=[];Array.prototype.forEach.call(body.children,function(tr){
+    var o={},any=false; tr.querySelectorAll("[data-k]").forEach(function(el){var k=el.getAttribute("data-k");o[k]=el.value;if(el.value)any=true;});
+    // DIF selects don't have data-k; grab by order
+    var difs=tr.querySelectorAll(".difsel"); if(difs.length===3){o.D=difs[0].value;o.I=difs[1].value;o.F=difs[2].value;if(o.D||o.I||o.F)any=true;}
+    if(any)out.push(o);
+  });return out;}
+
+  /* ---------- static fields ---------- */
+  function staticEls(){return document.querySelectorAll('.wrap input[type=text],.wrap textarea,.wrap input[type=checkbox]');}
+  function radios(){return document.querySelectorAll('.opts input[type=radio]');}
+
+  /* ---------- save / load ---------- */
+  function collect(){
+    var st={fields:{},radios:{},checks:{},tasks:readRows(taskBody),metrics:readRows(metricBody)};
+    staticEls().forEach(function(el){ if(!el.id)return; if(el.type==="checkbox")st.checks[el.id]=el.checked; else st.fields[el.id]=el.value; });
+    document.querySelectorAll('.opts').forEach(function(g){ var name=g.getAttribute("data-radio"); var sel=g.querySelector("input:checked"); if(sel)st.radios[name]=sel.value; });
+    return st;
+  }
+  function save(){
+    try{ localStorage.setItem(KEY,JSON.stringify(collect())); }catch(e){}
+    markSelected(); progress();
+    saveFlag.classList.add("on"); clearTimeout(flagTimer); flagTimer=setTimeout(function(){saveFlag.classList.remove("on");},900);
+  }
+  function load(){
+    var st; try{ st=JSON.parse(localStorage.getItem(KEY)||"null"); }catch(e){ st=null; }
+    if(st){
+      Object.keys(st.fields||{}).forEach(function(id){var el=document.getElementById(id);if(el)el.value=st.fields[id];});
+      Object.keys(st.checks||{}).forEach(function(id){var el=document.getElementById(id);if(el)el.checked=st.checks[id];});
+      Object.keys(st.radios||{}).forEach(function(name){var el=document.querySelector('.opts input[name="'+name+'"][value="'+st.radios[name]+'"]');if(el)el.checked=true;});
+      (st.tasks||[]).forEach(function(d){taskBody.appendChild(taskRow(d));});
+      (st.metrics||[]).forEach(function(d){metricBody.appendChild(metricRow(d));});
+    }
+    if(!taskBody.children.length){ for(var i=0;i<3;i++)taskBody.appendChild(taskRow()); }
+    if(!metricBody.children.length){ ["L1 Reaction","L2 Learning","L3 Behaviour","L4 Results"].forEach(function(l){metricBody.appendChild(metricRow({lvl:l}));}); }
+    markSelected(); progress();
+  }
+
+  function markSelected(){
+    document.querySelectorAll('.opt').forEach(function(o){var r=o.querySelector('input');o.classList.toggle('sel',!!(r&&r.checked));});
+  }
+  function progress(){
+    // count meaningful inputs filled
+    var total=0,done=0;
+    document.querySelectorAll('.wrap textarea,.wrap input[type=text]').forEach(function(el){total++;if(el.value.trim())done++;});
+    document.querySelectorAll('.opts').forEach(function(g){total++;if(g.querySelector('input:checked'))done++;});
+    // dynamic tables: count as filled if any row has content
+    total+=2; if(readRows(taskBody).length)done++; if(readRows(metricBody).length)done++;
+    var pct=total?Math.round(done/total*100):0;
+    document.getElementById("progFill").style.width=pct+"%";
+    document.getElementById("progNum").textContent=pct+"%";
+  }
+
+  /* ---------- export markdown ---------- */
+  function mdLabel(name,val){ // map radio value → readable label
+    var g=document.querySelector('.opts[data-radio="'+name+'"] input[value="'+val+'"]');
+    if(g){var ol=g.closest('.opt').querySelector('.ol');return ol?ol.textContent.trim():val;} return val||"—";
+  }
+  function v(id){var el=document.getElementById(id);return el&&el.value.trim()?el.value.trim():"—";}
+  function buildMD(){
+    var st=collect(), L=[];
+    L.push("# ADDIE Design Brief — "+v("f_project"));
+    L.push("");
+    L.push("**Language(s):** "+v("f_lang")+" · **Region / locale:** "+v("f_region")+" · **Prepared by:** "+v("f_by")+" · **Date / version:** "+v("f_date2"));
+    L.push("");
+    L.push("## A — Analysis");
+    L.push("- **Training the right fix?** "+mdLabel("d_fix",st.radios.d_fix));
+    L.push("- **Design model:** "+mdLabel("d_model",st.radios.d_model));
+    L.push("- **Driver:** "+v("f_driver"));
+    L.push("- **Audience:** "+v("f_audience"));
+    L.push("- **Constraints:** "+v("f_constraints"));
+    if(st.tasks.length){ L.push("");L.push("**Job/Task Analysis + DIF**");L.push("");L.push("| Task | D | I | F | Critical? | Common error | Treatment |");L.push("|---|---|---|---|---|---|---|");
+      st.tasks.forEach(function(t){L.push("| "+(t.step||"")+" | "+(t.D||"")+" | "+(t.I||"")+" | "+(t.F||"")+" | "+(t.crit||"")+" | "+(t.err||"")+" | "+(t.treat||"")+" |");}); }
+    L.push("");
+    L.push("## D — Design");
+    L.push("- **Terminal objective:** "+v("f_terminal"));
+    L.push("- **Enabling objectives:**"); L.push(v("f_enabling"));
+    L.push("- **Authoring tool:** "+mdLabel("d_tool",st.radios.d_tool));
+    L.push("- **Zero-error logic:** "+mdLabel("d_zero",st.radios.d_zero));
+    L.push("- **Kirkpatrick scope:** "+mdLabel("d_kirk",st.radios.d_kirk));
+    L.push("- **Assessment items:**"); L.push(v("f_assess"));
+    L.push("");
+    L.push("## D — Development");
+    L.push("- **Packaging:** "+mdLabel("d_pkg",st.radios.d_pkg));
+    L.push("- **Completion vs success:** "+v("f_complete"));
+    L.push("- **Variables/triggers:** "+v("f_vars"));
+    var acc=[]; [["a_cap","Captions"],["a_alt","Alt text"],["a_tab","Tab order+focus"],["a_color","No colour-only"],["a_contrast","AA contrast"],["a_tap","44px targets"],["a_lang","Language declared (3.1.1/3.1.2)"]].forEach(function(p){if(st.checks[p[0]])acc.push(p[1]);});
+    L.push("- **Accessibility done:** "+(acc.length?acc.join(", "):"—"));
+    L.push("");
+    L.push("## I — Implementation");
+    L.push("- **Rollout:** "+mdLabel("d_roll",st.radios.d_roll));
+    L.push("- **Recert & version-lock:** "+v("f_recert"));
+    L.push("- **Rollout notes:** "+v("f_rollnotes"));
+    L.push("");
+    L.push("## E — Evaluation");
+    if(st.metrics.length){ L.push("| Level | Metric | Baseline | Target | Owner | Date |");L.push("|---|---|---|---|---|---|");
+      st.metrics.forEach(function(m){L.push("| "+(m.lvl||"")+" | "+(m.metric||"")+" | "+(m.base||"")+" | "+(m.target||"")+" | "+(m.owner||"")+" | "+(m.date||"")+" |");}); }
+    L.push("- **Closing the loop:** "+v("f_loop"));
+    L.push("");
+    L.push("---");
+    L.push("© 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.");
+    L.push("");
+    L.push("_Transparency note: developed with the assistance of generative AI; reviewed, edited and approved under the editorial responsibility of Ana Eslava-Graterol, instructional designer registered as a self-employed professional in Spain (in the spirit of the EU AI Act, Art. 50 — Regulation (EU) 2024/1689)._");
+    return L.join("\n");
+  }
+  var copyBtn=document.getElementById("copyBtn");
+  copyBtn.addEventListener("click",function(){
+    var md=buildMD();
+    function ok(){var t=copyBtn.textContent;copyBtn.textContent="✓ Copied";setTimeout(function(){copyBtn.textContent=t;},1400);}
+    function fallback(){ var ta=document.createElement("textarea");ta.value=md;ta.style.position="fixed";ta.style.top="-9999px";document.body.appendChild(ta);ta.select();
+      try{document.execCommand("copy");ok();}catch(e){ta.style.top="10px";ta.style.height="200px";ta.style.left="10px";ta.style.width="90%";ta.style.position="fixed";ta.style.zIndex=9999;}finally{setTimeout(function(){if(ta.parentNode)ta.remove();},100);} }
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(md).then(ok).catch(fallback);}else{fallback();}
+  });
+
+  /* ---------- clear ---------- */
+  var clearBtn=document.getElementById("clearBtn"), clearArmed=false, clearTimer=null;
+  clearBtn.addEventListener("click",function(){
+    if(!clearArmed){clearArmed=true;clearBtn.textContent="Click again to clear";clearTimer=setTimeout(function(){clearArmed=false;clearBtn.textContent="Clear";},3000);return;}
+    clearTimeout(clearTimer);clearArmed=false;clearBtn.textContent="Clear";
+    try{localStorage.removeItem(KEY);}catch(e){}
+    staticEls().forEach(function(el){if(el.type==="checkbox")el.checked=false;else el.value="";});
+    radios().forEach(function(r){r.checked=false;});
+    taskBody.innerHTML="";metricBody.innerHTML="";
+    for(var i=0;i<3;i++)taskBody.appendChild(taskRow());
+    ["L1 Reaction","L2 Learning","L3 Behaviour","L4 Results"].forEach(function(l){metricBody.appendChild(metricRow({lvl:l}));});
+    markSelected();progress();
+  });
+
+  /* ---------- wire autosave ---------- */
+  document.querySelector(".wrap").addEventListener("input",save);
+  document.querySelector(".wrap").addEventListener("change",save);
+
+  load();
+})();
+</script>
+<script>
+(function(){
+  var prev=document.getElementById("objPrev");
+  function upd(){
+    var c=(document.getElementById("f_cond")||{}).value||"";
+    var b=(document.getElementById("f_beh")||{}).value||"";
+    var k=(document.getElementById("f_crit2")||{}).value||"";
+    c=c.trim();b=b.trim();k=k.trim();
+    prev.textContent=(c||b||k)?[c,b,k].filter(Boolean).join(" "):"Fill the three parts above…";
+  }
+  ["f_cond","f_beh","f_crit2"].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener("input",upd);});
+  setTimeout(upd,80);
+})();
+</script>
+
+</body>
+</html>
