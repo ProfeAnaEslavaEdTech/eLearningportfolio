@@ -165,6 +165,15 @@ produce the Spanish course. Offer the choice on a launch page or via the LMS.
 > each person actually received the content. Leave it on "None" only for optional reference
 > lessons (e.g. an always-open glossary).
 
+> **Standing rule (accessibility / WCAG 2.1 AA).** Fill the accessibility field on **every**
+> block, every scene, every time:
+> - **Images & labeled graphics →** alt text (mark purely decorative images as decorative).
+> - **Scenario scenes →** the "Scene description (accessibility)" field on each scene and response.
+> - **Video & audio →** captions (.vtt) and/or a visible transcript — never audio-only for key content.
+> - **Never convey meaning by colour alone** — pair with a glyph/label (Ocean Ink states do this).
+> - **Set the course/lesson language** so screen readers announce it correctly.
+> In regulated training an inaccessible mandatory course can be an audit finding, not just bad practice.
+
 ### Publish
 Publish › LMS › **SCORM 2004** (or **cmi5** with an LRS). Completion = *Quiz passed*
 (or all lessons viewed + quiz passed). Test in SCORM Cloud. Version-lock SOP vX → course vX →
