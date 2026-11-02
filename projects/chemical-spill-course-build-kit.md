@@ -717,6 +717,43 @@ captions/transcript ON.
 
 ---
 
+## PART 12 · Interactive Video outline (checkpoints that gate on a correct answer)
+
+**Reusable template.** An Interactive Video = a *Start* (lesson preview) + N chapters, each
+ending in a **checkpoint** (a question that pauses the video). Set checkpoints to **require the
+correct answer to continue** (retry on wrong) so learners can't advance until they get it right.
+Use as many chapters as the content needs — this template shows **5 as an example; add more** with
+"＋ Add checkpoint/chapter."
+
+| # | Chapter (what it teaches) | Checkpoint question (one per chapter) |
+|---|---|---|
+| Start | Lesson preview — what the video covers + "answer each check to continue" | — |
+| 1 | [Topic segment 1] | [Concept-check Q1 — correct answer required] |
+| 2 | [Topic segment 2] | [Q2] |
+| 3 | [Topic segment 3] | [Q3] |
+| 4 | [Topic segment 4] | [Q4] |
+| 5 | [Topic segment 5] | [Q5] |
+| … | add more chapters as needed | add more checkpoints |
+
+Accessibility: transcript ON, captions (.vtt), checkpoints readable by screen readers, no
+colour-only cues. If AI-generated: on-screen "AI-generated video. EU AI Act, Art. 50."
+
+### Applied — "The 7 Steps" video (7 chapters + 7 checkpoints)
+Start: *In this video you'll learn the 7 steps of chemical spill response. After each step,
+answer a quick check to continue.* Narration per chapter = Part 11. Checkpoints (✓ = correct):
+
+1. **Assess** — *Before touching anything, what must you do?* ✓ Check the SDS/label · smell it · wipe it · ignore it.
+2. **Alert & evacuate** — *The chemical is hazardous. What next?* ✓ Alert others and evacuate · clean quietly · keep working.
+3. **PPE** — *Before approaching, you must…* ✓ Put on gloves, goggles, apron · approach bare-handed · only a mask.
+4. **Contain** — *How do you stop it spreading?* ✓ Ring with absorbent, away from drains · wipe toward the drain · pour water.
+5. **Correct kit** — *The reagent is water-reactive. Which kit?* ✓ Dry/neutralizing kit · water-based kit · add water.
+6. **Dispose** — *Where does the waste go?* ✓ Labelled hazardous-waste container · general bin · sink.
+7. **Document** — *The area is safe. Final step?* ✓ Complete the incident log and notify supervisor · skip paperwork · tell a colleague verbally.
+
+Each checkpoint: correct → continue; wrong → feedback + retry (can't advance until correct).
+
+---
+
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
 
 _Transparency note: developed with the assistance of generative AI; reviewed, edited and
