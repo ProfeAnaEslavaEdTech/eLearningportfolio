@@ -673,6 +673,33 @@ risk and a compliance deviation.*
 
 ---
 
+## PART 11 · Audio narration scripts (per step & scene) — UDL / accessibility
+
+**WCAG note:** captions/transcripts on included audio are required; narration itself is optional
+UDL (multiple means of representation). Scripts are English (master). If generated with AI audio,
+add on screen: "AI-generated voice. EU AI Act, Art. 50." Keep captions ON for each.
+
+### The 7 SOP steps (for the Process block / step screens)
+1. **Assess —** "First, assess. Consult the SDS or the label — never identify a chemical by sight, smell or touch."
+2. **Alert & evacuate —** "Alert the people nearby and clear the area. People come first."
+3. **PPE —** "Put on your PPE — gloves, goggles, apron — before you approach the spill."
+4. **Contain —** "Contain it. Ring the spill with absorbent, working from the outside in, away from drains."
+5. **Correct kit —** "Use the correct spill kit for the chemical. Water-reactive means a dry kit, never water."
+6. **Dispose —** "Dispose of the waste in the labelled hazardous-waste container — never the general bin."
+7. **Document —** "Finally, document. Complete the incident log and notify your supervisor."
+
+### Coordinator scenario (per scene)
+- **1.1 Intro —** "[serious] If anyone finds a chemical spill, our SOP — and our FDA quality requirements — expect a precise, documented response. Skipping a step isn't just a safety risk; it's a compliance deviation. Let's walk through it."
+- **1.2 Decision 1 —** "A colleague just knocked over a reagent bottle, and it's spreading. What do you do first? Choose carefully."
+- **1.3 Decision 2 —** "Good — the spill is contained and cleaned. But we're not done. Under our FDA quality requirements, what has to happen next?"
+- **1.4 End —** "Well done. Assess, alert, protect, contain, use the right kit, dispose, and document. That sequence protects your team and our compliance — every time."
+
+### Incident (first person) + labeled graphic
+Incident audio = Part 4 / the first-person script (with spill SFX). Labeled graphic "spot the
+errors" needs no narration (each marker's text is read by screen readers); add alt text only.
+
+---
+
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
 
 _Transparency note: developed with the assistance of generative AI; reviewed, edited and
