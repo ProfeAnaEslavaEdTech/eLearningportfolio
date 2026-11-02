@@ -698,6 +698,23 @@ add on screen: "AI-generated voice. EU AI Act, Art. 50." Keep captions ON for ea
 Incident audio = Part 4 / the first-person script (with spill SFX). Labeled graphic "spot the
 errors" needs no narration (each marker's text is read by screen readers); add alt text only.
 
+### Recommended AI-voice settings (ElevenLabs Multilingual v2)
+Use **Multilingual v2** — same voice stays consistent across EN and ES (generate both versions
+with the same voice + settings).
+
+**Profile A — instructional narration** (coordinator, 7 steps, glossary): calm, authoritative.
+- Stability **55–65** · Similarity **~80** · Speed **normal / slightly slower** for critical steps
+  · Style exaggeration **0** · Speaker boost **ON**.
+
+**Profile B — first-person incident** ([nervous]): allow emotion.
+- Stability **30–40** · Similarity **~75** · Speed normal (let `[pause]` breathe) · Style
+  exaggeration **15–25** · Speaker boost **ON**.
+
+Notes: Stability and Style exaggeration trade off (more style = less stable) — prioritise
+stability for safety content. Use punctuation for pacing. Check pronunciation of SDS/PPE/reagent
+(EN) and FDS/EPI/reactivo (ES); spell phonetically if needed. Export MP3 → Upload to Rise →
+captions/transcript ON.
+
 ---
 
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
