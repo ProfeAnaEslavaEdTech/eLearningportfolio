@@ -5,7 +5,7 @@
 - **Domain:** Health & Safety compliance — SOP for a Chemical Lab (not language learning)
 - **Evaluation model:** Kirkpatrick, with a "zero-error" (100%-mastery) gate
 - **Purpose:** portfolio showpiece
-- **Languages:** EN / ES (bilingual)
+- **Languages:** EN / ES — learner-selectable (one language on screen at a time), not dual-language on screen
 - **Status:** illustrative scenario — swap in real SOP when ready
 
 ---
@@ -139,6 +139,7 @@ WCAG / AA · GMP / GxP · Kirkpatrick L1–L4
 - Evaluation system: Storyline scenario zero-error gate (100% on the 6 critical steps) + final L2 quiz (100% pass on critical, retries with consequence feedback) + one L1 reaction item; bilingual
 - Source: illustrative Chemical Spill Response scenario (swap in real SOP later)
 - Glossary: optional reference, always accessible, non-gated, excluded from completion tracking
+- Language: learner-selectable / responsive — EN or ES chosen at launch, one language per screen (Storyline: "Choose language" start slide → `lang` variable → monolingual EN/ES scene; Rise: two separate course versions)
 
 ---
 

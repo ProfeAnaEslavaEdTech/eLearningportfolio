@@ -36,6 +36,25 @@ in Rise with that scenario embedded — demonstrating you choose the tool to fit
 
 ---
 
+## Language strategy — selectable, not dual-on-screen
+
+**"Bilingual" here means language-*responsive*: the learner picks English or Spanish at launch
+and sees ONE language on screen at a time.** Never put EN and ES together on the same screen.
+The EN/ES pairs in Parts 3–5 are **source text** — you implement each as its own language
+version, not side by side.
+
+- **Storyline:** a "Choose your language / Elige tu idioma" start slide sets a text variable
+  `lang` (`en`/`es`) and jumps to a **monolingual EN scene** or **ES scene**. Add a small
+  "change language" button if needed. (Alternative for small courses: one slide set where each
+  text object has EN/ES states driven by `lang` — more work to maintain; prefer parallel scenes.)
+- **Rise / Articulate 360 AI:** Rise can't live-switch content language per learner, so produce
+  **two separate course versions** (one EN, one ES) and let the LMS or a launch page offer the
+  choice. Generate each with the AI prompts **run once per language** (English, then Spanish).
+- **WCAG:** each version declares its own page language (3.1.1). Because no screen mixes
+  languages, you don't need 3.1.2 language-of-parts tagging.
+
+---
+
 ## PART 1 · Storyline 360 build guide
 
 ### 0 · Project setup
@@ -46,6 +65,7 @@ in Rise with that scenario embedded — demonstrating you choose the tool to fit
 ### 1 · Structure (Story View → New Scene)
 | Scene | Slides | Purpose |
 |---|---|---|
+| 0 · Language | 0.1 Choose your language / Elige tu idioma | Sets `lang`; jumps to EN or ES scene |
 | 1 · Intro | 1.1 Welcome/avatar · 1.2 Objectives · 1.3 How it works | Hook + relevance |
 | 2 · Incident | 2.0 Reenactment (audio drama) | Emotional hook (L1) |
 | 3 · Scenario | 3.1 → 3.7 (one per SOP step) | Zero-error decision engine |
@@ -55,9 +75,14 @@ in Rise with that scenario embedded — demonstrating you choose the tool to fit
 ### 2 · Variables (Triggers panel › Manage project variables)
 | Name | Type | Default | Purpose |
 |---|---|---|---|
+| `lang` | Text | en | learner's chosen language (`en`/`es`) — set on slide 0.1 |
 | `errorCount` | Number | 0 | total critical errors |
 | `critStep1_ok` … `critStep6_ok` | True/False | False | each critical step cleared |
 | `firstTryFail` | True/False | False | missed any step on first try (L2 signal) |
+
+> **Language select (slide 0.1):** two buttons — *English* / *Español*. English button →
+> set `lang = en` → jump to the EN intro; Español → set `lang = es` → jump to the ES intro.
+> Build the EN and ES paths as parallel monolingual scenes (one language on screen at a time).
 
 ### 3 · The zero-error decision slide (template — reuse for all 7)
 **Base layer:** scenario image + prompt + answer buttons. Set the **Next button initial
@@ -106,6 +131,10 @@ SOP vX → `.story` vX → package vX, recorded together. Re-issue when the SOP 
 **Principle:** Rise can't do true zero-error branching (no variables/triggers). Build the
 narrative, glossary and knowledge checks in Rise → **embed the zero-error engine as a
 Storyline block.** Decision & consequence = Storyline; everything else = Rise.
+
+**Language:** build **two separate Rise courses** — one English, one Spanish (Rise can't
+live-switch content language per learner). Offer the choice on a launch page or via the LMS;
+each learner sees a single-language course.
 
 ### Lessons
 | # | Lesson | Blocks |
@@ -448,8 +477,11 @@ gate*, which the AI flow can't enforce.
 >
 > Tone: clear, professional, plain-language adult workplace learning — not marketing. Write to
 > WCAG 2.1 AA (alt text, captions, no colour-only meaning). Emphasise that a wrong critical
-> choice shows its real-world consequence, then lets the learner try again. Provide the
-> learner-facing text in English with Spanish equivalents.
+> choice shows its real-world consequence, then lets the learner try again.
+>
+> LANGUAGE: Generate this as a SINGLE-LANGUAGE **English** course. I will create the Spanish
+> version separately (same prompt in Spanish). Do NOT put two languages on the same screen —
+> the learner selects one language and sees only that language.
 
 ### Prompt B — "Scenario" type (the branching decision engine)
 > Build a branching decision scenario for lab technicians responding to a chemical spill. The
@@ -464,14 +496,16 @@ gate*, which the AI flow can't enforce.
 > For every wrong choice, show a realistic consequence (a colleague exposed, a chemical burn, a
 > violent reaction, a reportable release) and route the learner back to retry that decision —
 > the scenario is passed only when all critical steps are correct with zero errors. Keep
-> feedback supportive, never punitive. Provide English with Spanish equivalents.
+> feedback supportive, never punitive. LANGUAGE: generate a SINGLE-LANGUAGE English scenario;
+> I will create the Spanish version separately. Never show two languages on the same screen.
 
 ### Prompt C — "Interactive Video" type (the reenactment / avatar intro)
 > Create a short interactive-video intro for the spill-response course. Open with a 45–60s
 > AI-presenter welcome, then a dramatized "based on a real incident" scene (anonymized) that
 > shows a technician skipping the SOP and getting hurt. Add 1–2 reflective pause-points ("What
 > should she have done first?"). Display an on-screen disclosure for the first 4 seconds: "AI-
-> generated avatar / voices. Dramatization — names and details changed." English with Spanish.
+> generated avatar / voices. Dramatization — names and details changed." LANGUAGE: single-
+> language English; create the Spanish version separately — one language on screen at a time.
 
 ### What the AI flow can and can't do
 - ✅ Fast full-course shell, lessons, knowledge checks, a branching **Scenario**, auto-captions,
@@ -511,7 +545,8 @@ Storyline; the AI quiz just sets a high pass mark.
 > wrong answer, then restates the correct action. Mix MC, multiple-response (PPE), matching.
 > Plain professional adult tone.
 >
-> **Bilingual:** each question, option and feedback in English with a Spanish equivalent.
+> **Language:** generate the quiz in English only; create the Spanish quiz separately. One
+> language per version — never both on the same screen.
 > **Accessibility:** no colour-only cues; screen-reader-friendly; alt text for any image.
 
 - The AI quiz is percentage-based → "100 % to pass" = the zero-error rule at course level.
