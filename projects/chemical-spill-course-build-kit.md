@@ -484,6 +484,42 @@ gate*, which the AI flow can't enforce.
 
 ---
 
+## PART 8 · Final quiz — directions (paste into Articulate 360 AI "Quiz instructions")
+
+**Kirkpatrick note:** a quiz measures **Level 2 (Learning)**. You cannot *measure* L3
+(behaviour) or L4 (results) inside a quiz — so this builds a strong L2 **zero-error** quiz,
+adds one **L1 reaction** item, and frames questions at the **L3 "what would you do on the
+job"** level so results point toward transfer. The true 100 %-on-critical gate stays in
+Storyline; the AI quiz just sets a high pass mark.
+
+> Create a final assessment for the Chemical Spill Response SOP course.
+>
+> **Purpose (Kirkpatrick):** measures Learning (L2) — can the technician apply the SOP.
+> Write at the application level (what they would DO on the job), not recall, so results point
+> toward behaviour (L3). Include ONE unscored reaction item at the end (L1): "How confident
+> are you that you could respond to a real spill correctly?"
+>
+> **Content — one scenario question per critical step (7):** 1 Assess → consult the SDS
+> (distractors: smell/touch, wipe); 2 Alert & evacuate (distractors: clean quietly, keep
+> working); 3 Don PPE first (distractor: bare-handed); 4 Contain away from drains (distractor:
+> wipe to drain); 5 water-reactive → dry/neutralizing kit (distractor: water-based/water);
+> 6 hazardous-waste container (distractor: general bin/sink); 7 Document & report. Use
+> realistic distractors from common real mistakes.
+>
+> **Difficulty & zero-error:** steps 1–6 are critical — zero-error (100 % mastery); passing
+> score = 100 %. For each critical question, feedback shows the real-world consequence of the
+> wrong answer, then restates the correct action. Mix MC, multiple-response (PPE), matching.
+> Plain professional adult tone.
+>
+> **Bilingual:** each question, option and feedback in English with a Spanish equivalent.
+> **Accessibility:** no colour-only cues; screen-reader-friendly; alt text for any image.
+
+- The AI quiz is percentage-based → "100 % to pass" = the zero-error rule at course level.
+- For an auditable per-step gate (`errorCount = 0`), keep it in the Storyline scenario.
+- If possible: passing score = 100 %, allow retries with feedback (learn from the consequence).
+
+---
+
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
 
 _Transparency note: developed with the assistance of generative AI; reviewed, edited and
