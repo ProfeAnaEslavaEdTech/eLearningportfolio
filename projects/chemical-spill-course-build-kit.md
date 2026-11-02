@@ -159,6 +159,12 @@ produce the Spanish course. Offer the choice on a launch page or via the LMS.
 | 9 | Reaction survey (L1) | Ungraded Knowledge Check / form |
 | 10 | Job aid & close | Button/File (download) + Statement |
 
+> **Standing rule (compliance gating):** end **every content lesson** with a **Continue block
+> set to "Complete All Blocks Above."** This forces learners to view the full lesson (video,
+> audio, interactions) before advancing — the evidence a regulated training record needs that
+> each person actually received the content. Leave it on "None" only for optional reference
+> lessons (e.g. an always-open glossary).
+
 ### Publish
 Publish › LMS › **SCORM 2004** (or **cmi5** with an LRS). Completion = *Quiz passed*
 (or all lessons viewed + quiz passed). Test in SCORM Cloud. Version-lock SOP vX → course vX →
