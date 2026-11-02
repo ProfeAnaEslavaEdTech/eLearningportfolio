@@ -364,13 +364,18 @@ standard.
 ### Rise — Labeled Graphic (＋ › Interactive › Labeled Graphic)
 Upload the image, drop a marker on each spot, add Title + Description:
 
-| # | Place marker on | Title | Description |
+| # | Place marker on (this photo) | Title | Description |
 |---|---|---|---|
-| 1 | the spilled/unlabeled bottle | **Unidentified chemical** | Did she check the label and SDS first? Never act on an unknown spill. (Step 1 – Assess.) |
-| 2 | the spreading liquid | **Spill not contained** | The liquid is spreading toward the edge — no absorbent ring. (Step 4 – Contain, away from drains.) |
-| 3 | her hand near the spill | **Hand in the spill zone** | Keep hands out until the area is contained and the right kit is ready. PPE protects you; it isn't a cleanup tool. |
-| 4 | the bench (missing kit) | **No spill kit in use** | No spill kit here — paper or hands won't work. (Step 5 – use the correct kit.) |
-| 5 | wall / corner | **No alarm raised** | Has anyone been alerted? (Step 2 – Alert and evacuate before cleanup.) |
+| 1 | the tipped bottle with the white label (centre-left) | **Chemical not verified** | The bottle is labelled — but was the label and SDS checked before handling? Verify the chemical first. (Step 1 – Assess.) |
+| 2 | the spreading puddle on the bench (centre) | **Spill not contained** | The liquid is spreading toward the edge — no absorbent ring. (Step 4 – Contain, away from drains.) |
+| 3 | her blue gloved hand on the bench by the liquid (centre-right) | **Hand in the spill zone** | Keep hands out until the area is contained and the right kit is ready. Gloves protect you; they aren't a cleanup tool. |
+| 4 | the open bench area (no kit anywhere) | **No spill kit in use** | There's no spill kit here — hands or paper won't work. (Step 5 – use the correct kit.) |
+| 5 | the technician (reacting, not acting) | **No alarm raised** | She's startled but hasn't alerted anyone. (Step 2 – Alert and evacuate before cleanup.) |
+
+**Decoys — these are CORRECT; do NOT mark them as errors** (and use them as the wrong-to-click
+decoys in the Storyline scored version): her **safety goggles** and her **nitrile gloves**.
+Teaching point: she did *some* things right (PPE on) but still mishandled the spill — PPE alone
+is not spill response.
 
 ### Storyline — scored "spot the errors" (counts toward zero-error)
 1. Insert the image on a slide.
