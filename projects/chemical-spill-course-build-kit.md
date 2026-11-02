@@ -290,6 +290,71 @@ una lesión química laboral.*
 
 ---
 
+## PART 4b · "Chemical Spill Incident: Lessons Learned" — intro + debrief accordion
+
+The text-based opener (distinct from the dramatized reenactment): an incident narrative + a
+4-section expandable debrief. Build EN and ES as separate single-language versions.
+
+**On-screen disclosure (0–4 s):** EN *Dramatization based on a real incident. Names and
+details changed.* · ES *Dramatización basada en un incidente real. Se han cambiado nombres y
+detalles.*
+
+### Incident narrative
+EN:
+> **Chemical Spill Incident: Lessons Learned.** A technician accidentally knocked over a bottle
+> of corrosive acid. Without checking the label or putting on gloves, they grabbed paper towels
+> to clean it up. The acid soaked through, causing a chemical burn. As the spill spread, fumes
+> triggered the fire alarm. Skipping standard operating procedure (SOP) steps led to injury,
+> panic, and an expensive cleanup.
+ES:
+> **Incidente de derrame químico: lecciones aprendidas.** Un técnico volcó accidentalmente un
+> frasco de ácido corrosivo. Sin revisar la etiqueta ni ponerse guantes, tomó papel para
+> limpiarlo. El ácido traspasó el papel y le causó una quemadura química. Al extenderse el
+> derrame, los vapores activaron la alarma de incendios. Saltarse los pasos del procedimiento
+> (PNT) provocó una lesión, pánico y una limpieza costosa.
+
+**Incident Debrief: What Went Wrong? / Análisis del incidente: ¿qué salió mal?**
+*Expand each section. / Expande cada sección.* Each section: what happened → consequence →
+what the SOP requires.
+
+### Section 1 — Not Checking the Label / No revisar la etiqueta
+EN: The technician acted on an unknown chemical. **Consequence:** they misjudged the hazard and
+chose the wrong response. **SOP (Step 1 – Assess):** always consult the label and the SDS first;
+never identify a chemical by sight, smell or touch.
+ES: El técnico actuó sobre un producto desconocido. **Consecuencia:** calculó mal el peligro y
+eligió la respuesta equivocada. **PNT (Paso 1 – Evaluar):** consulta siempre la etiqueta y la
+FDS primero; nunca identifiques un producto por la vista, el olor o el tacto.
+
+### Section 2 — No PPE Worn / Sin EPI
+EN: They cleaned the spill without gloves or goggles. **Consequence:** a chemical burn to the
+skin. **SOP (Step 3 – PPE):** put on chemical-resistant gloves, goggles and an apron *before*
+approaching the spill.
+ES: Limpió el derrame sin guantes ni gafas. **Consecuencia:** una quemadura química en la piel.
+**PNT (Paso 3 – EPI):** ponte guantes resistentes a químicos, gafas y bata *antes* de acercarte
+al derrame.
+
+### Section 3 — Improper Cleanup / Limpieza inadecuada
+EN: Using paper towels spread the acid and raised exposure. **Consequence:** wider
+contamination and more risk. **SOP (Steps 4–5 – Contain & correct kit):** ring the spill with
+absorbent, away from drains, and use the correct spill kit for the chemical — never paper towels.
+ES: Usar papel extendió el ácido y aumentó la exposición. **Consecuencia:** más contaminación y
+riesgo. **PNT (Pasos 4–5 – Contener y kit correcto):** rodea el derrame con absorbente, lejos de
+los desagües, y usa el kit adecuado para el producto — nunca papel.
+
+### Section 4 — No Alarm or Report / Sin alarma ni reporte
+EN: They did not alert others or report the spill. **Consequence:** delayed emergency response
+and greater danger. **SOP (Steps 2 & 7 – Alert/evacuate & Document):** alert people and evacuate
+immediately, then complete the incident log and notify your supervisor.
+ES: No avisó a nadie ni reportó el derrame. **Consecuencia:** respuesta de emergencia tardía y
+mayor peligro. **PNT (Pasos 2 y 7 – Avisar/evacuar y Documentar):** avisa y evacúa de inmediato,
+luego completa el registro del incidente y avisa a tu supervisor.
+
+> **Bridge to practice:** "Four skipped steps caused this. Now you'll take the controls — and
+> get all seven right, with zero errors." / "Cuatro pasos omitidos causaron esto. Ahora tomas
+> tú el control — y acertarás los siete, con cero errores."
+
+---
+
 ## PART 5 · The 7 scenario slides (paste-ready, EN/ES)
 
 For each slide: **On-screen** (learner-facing prompt + options), **VO**, **Correct**
@@ -601,6 +666,105 @@ Storyline; the AI quiz just sets a high pass mark.
 - The AI quiz is percentage-based → "100 % to pass" = the zero-error rule at course level.
 - For an auditable per-step gate (`errorCount = 0`), keep it in the Storyline scenario.
 - If possible: passing score = 100 %, allow retries with feedback (learn from the consequence).
+
+---
+
+## PART 9 · Remaining course content (makes both courses content-complete)
+
+Source text (EN/ES). Build each as its own single-language version. Every piece reinforces the
+portfolio goal: the learner *follows the SOP*, and the design *proves it*.
+
+### 9.1 Language launch page (in front of the two versions)
+EN: **Choose your language** — [English] [Español]
+ES: **Elige tu idioma** — [English] [Español]
+
+### 9.2 Debrief lesson (after the reenactment, before practice)
+Bridges the story to the procedure by mapping each mistake to the SOP step that would have
+prevented it — this is the "why the SOP exists" moment.
+
+EN:
+> **What went wrong — and what the SOP says.** The injury wasn't bad luck; it was five skipped
+> steps.
+> • She never checked the SDS → Step 1: Assess before you act.
+> • She didn't alert or evacuate → Step 2: People first.
+> • She reached in bare-handed → Step 3: PPE before approach.
+> • She wiped toward the spread → Step 4: Contain, away from drains.
+> • Water on a water-reactive reagent → Step 5: The right kit for the chemical.
+> The SOP is the difference between a near-miss and three weeks of recovery. Now you'll walk
+> every step.
+
+ES:
+> **Qué salió mal — y qué dice el procedimiento.** La lesión no fue mala suerte; fueron cinco
+> pasos omitidos.
+> • Nunca consultó la FDS → Paso 1: Evalúa antes de actuar.
+> • No avisó ni evacuó → Paso 2: Primero las personas.
+> • Se acercó con las manos desnudas → Paso 3: EPI antes de acercarte.
+> • Arrastró el derrame → Paso 4: Contén, lejos de los desagües.
+> • Agua sobre un reactivo reactivo al agua → Paso 5: El kit correcto para el producto.
+> El procedimiento es la diferencia entre un casi-accidente y tres semanas de recuperación.
+> Ahora recorrerás cada paso.
+
+### 9.3 Results / feedback messages
+PASS — EN:
+> **Certified: zero critical errors.** You followed the SOP exactly — the way it protects you
+> and everyone in the lab. Your first-attempt result has been recorded. Keep the job aid at
+> your bench.
+PASS — ES:
+> **Certificado: cero errores críticos.** Seguiste el procedimiento al pie de la letra — como
+> debe ser para protegerte a ti y a todo el laboratorio. Se ha registrado tu resultado del
+> primer intento. Mantén la guía rápida en tu puesto.
+
+NOT YET — EN:
+> **Not yet — and that's how we keep it safe here.** A critical step was missed. Review the
+> consequence, then repeat the scenario until every critical step is correct with zero errors.
+> On the job there are no retries — that's why we practise until it's automatic.
+NOT YET — ES:
+> **Todavía no — y así mantenemos la seguridad aquí.** Se omitió un paso crítico. Revisa la
+> consecuencia y repite el escenario hasta acertar cada paso crítico con cero errores. En el
+> trabajo real no hay segundos intentos — por eso practicamos hasta que sea automático.
+
+### 9.4 Job aid — bench quick-reference (one page, downloadable, non-gated)
+EN — **Chemical Spill Response — 7 steps**
+> 1. ASSESS — consult the SDS; never touch or smell. 2. ALERT & EVACUATE — people first.
+> 3. PPE — gloves, goggles, apron before you approach. 4. CONTAIN — ring with absorbent, away
+> from drains. 5. CORRECT KIT — match the kit to the chemical (water-reactive = dry kit).
+> 6. DISPOSE — labelled hazardous-waste container only. 7. DOCUMENT — incident log + supervisor.
+> *If unsure what it is, STOP and check the SDS.*
+ES — **Respuesta a derrames químicos — 7 pasos**
+> 1. EVALÚA — consulta la FDS; nunca toques ni huelas. 2. AVISA Y EVACÚA — primero las personas.
+> 3. EPI — guantes, gafas, bata antes de acercarte. 4. CONTÉN — rodea con absorbente, lejos de
+> los desagües. 5. KIT CORRECTO — ajusta el kit al producto (reactivo al agua = kit seco).
+> 6. DESECHA — solo contenedor etiquetado de residuos peligrosos. 7. DOCUMENTA — registro +
+> supervisor. *Si no sabes qué es, DETENTE y consulta la FDS.*
+
+### 9.5 Summary / close
+EN:
+> **You followed the SOP — now make it a habit.** Seven steps, in order, every time. The one
+> that saves you: when in doubt, check the SDS and never identify a spill by sight, smell or
+> touch. Download your job aid and keep it visible.
+ES:
+> **Seguiste el procedimiento — ahora conviértelo en hábito.** Siete pasos, en orden, siempre.
+> El que te salva: ante la duda, consulta la FDS y nunca identifiques un derrame por la vista,
+> el olor o el tacto. Descarga tu guía rápida y mantenla a la vista.
+
+---
+
+## Portfolio framing — how this proves candidate suitability
+This course is evidence for the Senior Instructional Designer role. Direct mapping:
+
+| Job responsibility | Evidence in this build |
+|---|---|
+| Conduct job/task/performance analysis → objectives | DIF task analysis → Mager/Bloom objectives (Design) |
+| Design complex technical instruction across media | Storyline sim + Rise course + AI avatar + reenactment |
+| Develop criteria to evaluate effectiveness | Zero-error gate + Kirkpatrick L1–L4 + metrics |
+| Partner/consult; agree outcomes & success metrics | Training strategy + agreed success metrics |
+| Use evaluation to improve; share lessons | Closing-the-loop (L2↔L3 diagnosis) |
+| Oversee vendors / translate programs | Bilingual EN/ES, language-selectable; storyboard precise enough to brief a vendor |
+| EHS adherence | The SOP content itself + accessibility (WCAG AA) |
+
+**The thesis for the hiring manager:** *"I don't just make courses — I design training that
+provably changes on-the-job behaviour, measured against a zero-error compliance standard, in
+two languages, to WCAG AA."*
 
 ---
 
