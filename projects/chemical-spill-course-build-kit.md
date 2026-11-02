@@ -752,6 +752,27 @@ answer a quick check to continue.* Narration per chapter = Part 11. Checkpoints 
 
 Each checkpoint: correct → continue; wrong → feedback + retry (can't advance until correct).
 
+### Synthesia prompt (paste into the import chat) — builds the 7-step video from the PPTX
+> Create a professional, calm lab-safety training video titled "Chemical Spill Response — The 7
+> Steps," for adult laboratory technicians in a regulated MedTech/pharma facility. Language:
+> English. 16:9.
+>
+> Build it from this PowerPoint: use EACH slide as its own scene, and use EACH slide's SPEAKER
+> NOTES as the exact voiceover for that scene — do not rewrite them. Keep all 9 scenes, in order:
+> (1) Intro; (2) Assess — SDS/label first, never by sight/smell/touch; (3) Alert & evacuate —
+> people first; (4) PPE — gloves, goggles, apron before approaching; (5) Contain — absorbent,
+> outside in, away from drains; (6) Correct kit — water-reactive = dry kit, never water; (7)
+> Dispose — hazardous-waste container only; (8) Document — incident log + notify supervisor; (9)
+> Close — follow the SOP, every time.
+>
+> Style: professional, plain-language safety tone. Keep the 7 steps as SEPARATE scenes so a
+> knowledge-check can follow each later. Clear professional English voice, calm pace. Avatar
+> small in a bottom corner so it doesn't cover the slide illustrations — or voiceover only. Turn
+> on captions. Pronounce "SDS" as "ess-dee-ess" and "PPE" as "pee-pee-ee."
+
+The source deck is `Spill-7-Steps.pptx` (9 slides, Ocean Ink, script in each slide's speaker
+notes). Export 1080p MP4 + .vtt, then import to Rise Interactive Video and add the 7 checkpoints.
+
 ---
 
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
