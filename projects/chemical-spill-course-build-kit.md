@@ -353,6 +353,41 @@ document."
 
 ---
 
+## PART 5b · "Spot the errors" labeled graphic (Rise, ungraded) + Storyline scored version
+
+Use a photo of a mishandled spill (technician, spilled bottle, spreading liquid). Learners
+identify what's wrong. Rise = exploratory (no score). Storyline = scored, feeds the zero-error
+standard.
+
+**Caption / alt:** "Spot the errors: what did this technician skip?" (alt text in English.)
+
+### Rise — Labeled Graphic (＋ › Interactive › Labeled Graphic)
+Upload the image, drop a marker on each spot, add Title + Description:
+
+| # | Place marker on | Title | Description |
+|---|---|---|---|
+| 1 | the spilled/unlabeled bottle | **Unidentified chemical** | Did she check the label and SDS first? Never act on an unknown spill. (Step 1 – Assess.) |
+| 2 | the spreading liquid | **Spill not contained** | The liquid is spreading toward the edge — no absorbent ring. (Step 4 – Contain, away from drains.) |
+| 3 | her hand near the spill | **Hand in the spill zone** | Keep hands out until the area is contained and the right kit is ready. PPE protects you; it isn't a cleanup tool. |
+| 4 | the bench (missing kit) | **No spill kit in use** | No spill kit here — paper or hands won't work. (Step 5 – use the correct kit.) |
+| 5 | wall / corner | **No alarm raised** | Has anyone been alerted? (Step 2 – Alert and evacuate before cleanup.) |
+
+### Storyline — scored "spot the errors" (counts toward zero-error)
+1. Insert the image on a slide.
+2. **Convert to Freeform → Pick Many.**
+3. Place a selectable marker/shape over each **error zone** (the 5 above) = **correct** answers;
+   add 1–2 markers over **safe/correct** areas (e.g. her goggles, her gloves) = **incorrect**
+   (decoys, so it's a real judgement).
+4. Scoring for the zero-error standard: **all error zones selected AND no safe zone selected**
+   → correct. Any miss → a **Consequence** layer naming what that error causes, then retry.
+5. Optional variable `errorsFound` (Number) if you want to show progress ("3 of 5 found").
+6. Feed the result into the course Results slide like the other critical steps.
+
+> Pedagogy: Rise version first (explore, low stakes) → Storyline version later (prove it, scored).
+> Same image, same five errors — recognition before performance.
+
+---
+
 ## PART 6 · Avatar generation prompts
 
 ### A · Synthesia (standalone video, then embed)
