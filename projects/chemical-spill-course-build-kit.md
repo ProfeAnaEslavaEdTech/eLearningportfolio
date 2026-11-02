@@ -48,6 +48,33 @@ language (never both on screen).
 
 ---
 
+## Build order (Rise-first — do it in this sequence)
+
+> **Direction that works: Storyline → embedded in Rise, never Rise → Storyline.** A Rise course
+> cannot be downloaded or converted into an editable `.story` file (Rise exports only SCORM /
+> web / PDF). So build everything in Rise for speed, and build **only** the zero-error engine in
+> Storyline and drop it into Rise as a **Storyline block**.
+
+1. **Rise:** create the course → **Apply brand** (Ocean Ink).
+2. **Lesson 1 — Welcome:** AI avatar intro (Part 3 / 3b).
+3. **Lesson 2 — The Incident:** first-person audio + spill SFX (Part 4 / 4b); add transcript + content note.
+4. **Lesson 3 — Debrief:** what went wrong → SOP (Part 4b / 9.2).
+5. **Lesson 4 — Key terms:** glossary (Accordion).
+6. **Lesson 5 — Spot the errors:** Labeled graphic (Part 5b), 5 markers + PPE decoys.
+7. **Lesson 6 — Coordinator scenario (FDA):** Scenario classic (Part 10) — practice, zero-error (correct = Next, every wrong = Try Again).
+8. **Lesson 7 — The 7 steps:** Process block + ordering **Matching** knowledge check (Part 5b note).
+9. **Storyline — zero-error engine:** build slides 3.1–3.7 (Part 1 + Part 5) → publish → insert in Rise **Lesson 8 (Practice)** as a **Storyline block** (the auditable `errorCount = 0` gate).
+10. **Lesson 9 — Quiz:** graded, **passing score 100 %** (Part 8 directions) = measured L2 zero-error.
+11. **Lesson 10 — Reaction survey:** 3 items, ungraded (L1).
+12. **Lesson 11 — Job aid + Summary:** downloadable quick-reference + close (Part 9.4 / 9.5).
+13. **Publish Rise → SCORM 2004** → test pass/fail/resume in **SCORM Cloud**.
+14. **Localize:** duplicate the finished English course → translate the copy to Spanish.
+
+Kirkpatrick: L1 = avatar + incident + scenario realism · L2 = Storyline gate + 100 % quiz ·
+L3 = xAPI/observation · L4 = incident & time-to-competency metrics.
+
+---
+
 ## PART 1 · Storyline 360 build guide
 
 ### 0 · Project setup
@@ -571,6 +598,63 @@ This course is evidence for the Senior Instructional Designer role.
 **The thesis for the hiring manager:** *"I don't just make courses — I design training that
 provably changes on-the-job behaviour, measured against a zero-error compliance standard, built
 as an English master and localized to Spanish, to WCAG AA."*
+
+---
+
+## PART 10 · Coordinator "comply with SOP" scenario (Rise Scenario classic, FDA-aware)
+
+A coordinator coaches the team on the compliant response. Zero-error by design: **correct
+response → Next in Scene; every wrong response → Try Again** (the learner can't advance with an
+error). Practice (not scored) — the measured zero-error lives in the quiz (100 %) + Storyline gate.
+
+> **Scope note (accuracy):** the physical spill response is OSHA/EHS (HazCom 29 CFR 1910.1200 +
+> SDS; HAZWOPER 1910.120). **FDA 21 CFR Part 820 / QMSR** governs the quality system — trained
+> personnel & records (§820.25), document control, deviation/CAPA. Treat clause numbers as
+> **[VERIFY]** against current text.
+
+### 1.1 Scenario Title
+Title: **Spill Response: What the Team Must Do**
+Situation: *A reagent has just spilled. Your coordinator walks the team through the compliant
+response — the SOP that protects people and meets FDA quality requirements. You are the team
+member who finds the spill.*
+Character emotion: Neutral · Alt: *A lab safety coordinator in a chemistry lab, ready to explain
+the spill-response procedure.*
+Audio (optional AI): *[serious] If anyone finds a chemical spill, our SOP — and our FDA quality
+requirements — expect a precise, documented response. Skipping a step isn't just a safety risk;
+it's a compliance deviation. Let's walk through it.*
+
+### 1.2 Decision 1 — *A colleague knocks over a reagent bottle. What do you do FIRST?*
+Responses (the bold heading = the choice text):
+- ✓ **Check the SDS/label, alert the area, then follow the spill SOP.** — Happy · Next in Scene —
+  *Correct. Assess and alert before any cleanup; this keeps an uncontrolled spill from becoming a
+  quality deviation.*
+- **Grab paper towels and start cleaning immediately.** — Disappointed · Try Again — *Acting on an
+  unknown chemical without PPE or the right kit causes injury and can contaminate product. Assess
+  first. Try again.*
+- **Finish your current task, then deal with it.** — Disappointed · Try Again — *A delay lets the
+  spill spread and expose others. The SOP requires immediate action. Try again.*
+
+### 1.3 Decision 2 — *The spill is contained and cleaned. Under FDA quality requirements, what next?*
+- ✓ **Log the incident, open a deviation/CAPA if product or process may be affected, and update the
+  training record.** — Happy · Next in Scene — *Correct. FDA expects documented handling and
+  trained personnel.*
+- **Nothing — it's handled.** — Disappointed · Try Again — *No record = a documentation gap under
+  21 CFR 820. [VERIFY] Try again.*
+- **Tell a colleague on the way out.** — Disappointed · Try Again — *Verbal isn't a record. Quality
+  compliance needs written documentation. Try again.*
+
+### 1.4 Scenario End
+*Well done. The compliant response, every time: Assess → Alert & evacuate → PPE → Contain →
+Correct kit → Dispose → Document (+ deviation/CAPA + training record). Following the SOP protects
+your team (OSHA) and the product and records (FDA).*
+
+### 1.5 Note to remember
+*People first, assess before you act, and document everything. Skipping a step is both a safety
+risk and a compliance deviation.*
+
+> **Zero-error setting:** on every decision, exactly one response = Next; all others = Try Again.
+> Keep consequence-style feedback (what the mistake would cause). This trains to zero errors; the
+> **Quiz at 100 %** and the **Storyline block (`errorCount = 0`)** record it (Kirkpatrick L2).
 
 ---
 
