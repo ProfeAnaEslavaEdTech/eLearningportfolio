@@ -187,6 +187,55 @@ intentarlo de nuevo. Comencemos."
 
 ---
 
+## PART 3b · Avatar packages — EN & ES (Articulate Interactive Video: ① script → ② voiceover → ③ video options)
+
+**Persona (both):** a lab safety officer in full PPE (white lab coat, safety goggles, nitrile
+gloves) in a working chemistry lab — fume hood, labelled reagent shelves, spill-kit station
+behind. Calm, credible. The disclosure is spoken (first line) **and** on screen (first 4 s).
+
+### English course
+**① Script / content:**
+> This course is presented by an AI-generated avatar. Content authored and verified by Ana
+> Eslava-Graterol, under the EU AI Act, Article 50.
+>
+> Welcome. I'm your AI safety guide, and I'm dressed the way you should be before you ever go
+> near a spill — lab coat, goggles, gloves. In the next few minutes you'll respond to a
+> chemical spill the way it really happens in this lab: fast decisions, real consequences.
+> You'll follow the seven steps of the spill procedure, and to pass you'll need the critical
+> steps right — with zero errors. Make a wrong call and you'll see exactly what it would
+> cause, then try again. Stay sharp, protect yourself and the people around you. Let's begin.
+
+**② Create voiceover:** English, clear professional voice; keep punctuation for pauses;
+pronunciations SDS = "ess-dee-ess", PPE, reagent, water-reactive.
+**③ Set video options:** presenter in lab coat/PPE if available (else neutral) + chemistry-lab
+background; 16:9; captions ON (EN); on-screen text 0–4 s: "AI-generated avatar · Content
+verified by Ana Eslava-Graterol · EU AI Act Art. 50."
+
+### Spanish course
+**① Script / content:**
+> Este curso es presentado por un avatar generado por inteligencia artificial. Contenido
+> creado y verificado por Ana Eslava-Graterol, conforme a la Ley de IA de la Unión Europea,
+> artículo 50.
+>
+> Bienvenido. Soy tu guía de seguridad con inteligencia artificial, y voy vestido como
+> deberías estar tú antes de acercarte a un derrame: bata, gafas y guantes. En los próximos
+> minutos responderás a un derrame químico tal como ocurre de verdad en este laboratorio:
+> decisiones rápidas, consecuencias reales. Seguirás los siete pasos del procedimiento y, para
+> aprobar, deberás acertar los pasos críticos — con cero errores. Si te equivocas, verás
+> exactamente qué provocaría, y podrás intentarlo de nuevo. Mantente alerta, protégete y
+> protege a quienes te rodean. Comencemos.
+
+**② Create voiceover:** Spanish (es-ES or neutral es-419), clear professional; keep punctuation;
+pronunciations FDS, EPI, reactivo, reactivo al agua.
+**③ Set video options:** same presenter + lab scene as the EN version; 16:9; captions ON (ES);
+on-screen text 0–4 s: "Avatar generado por IA · Contenido verificado por Ana Eslava-Graterol ·
+Ley de IA de la UE, art. 50."
+
+> Keep both videos visually identical; only the voice, captions and on-screen text change by
+> language. Directions to Articulate stay in English; only the spoken script differs.
+
+---
+
 ## PART 4 · "Based on a real incident" reenactment
 
 ### Guardrails (do first)
