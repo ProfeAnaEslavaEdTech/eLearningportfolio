@@ -66,6 +66,25 @@ accuracy recorded separately as the true L2 signal.
 | L3 Behaviour | SOP adherence in ≥95% of bench audits within 90 days | xAPI + supervisor checklist |
 | L4 Results | Reportable spill incidents ↓, faster time-to-competency | Ops metric (owner + baseline + quarterly) |
 
+**Evaluation system — the assessment (how we certify):**
+
+Two layers, by design:
+
+1. **Scenario gate (Storyline, auditable):** the 7-step branching scenario is the real
+   competency check. Steps 1–6 are safety/compliance-critical → **zero-error (100% mastery)**:
+   a wrong critical choice shows its real-world consequence, then returns the learner to retry.
+   The module marks **passed** only when `critStep1_ok…critStep6_ok` are all True **AND**
+   `errorCount = 0`. **First-attempt accuracy** is recorded separately as the honest L2 signal.
+2. **Final quiz (L2 Learning):** one scenario-based, application-level question per critical
+   step (realistic distractors from common real mistakes), **passing score = 100%** on the
+   critical items, consequence-style feedback, retries allowed (learn, not punish). Plus one
+   unscored **L1 reaction** item ("How confident are you that you could respond to a real
+   spill?"). Bilingual EN/ES; no colour-only cues.
+
+**Mapping:** L1 = reaction item + 3-item survey · L2 = scenario gate + final quiz (zero-error)
+· L3 = xAPI/supervisor observation on the same 6 steps · L4 = incident/time-to-competency
+metric. The quiz measures L2 only; L3–L4 use workplace data (hooks designed, not quiz items).
+
 ### D — DEVELOPMENT (Storyline build spec)
 
 - **Scene map:** Welcome/Why → Pre-check → Scenario (slides 1–7, branching) → Results → Reaction survey → Job-aid download
@@ -117,6 +136,7 @@ WCAG / AA · GMP / GxP · Kirkpatrick L1–L4
 ## Design decisions locked
 - Zero-error logic: hard fail + remediation loop (Pattern A)
 - Kirkpatrick: L1 + L2 in-module; xAPI hooks + plan for L3–L4
+- Evaluation system: Storyline scenario zero-error gate (100% on the 6 critical steps) + final L2 quiz (100% pass on critical, retries with consequence feedback) + one L1 reaction item; bilingual
 - Source: illustrative Chemical Spill Response scenario (swap in real SOP later)
 - Glossary: optional reference, always accessible, non-gated, excluded from completion tracking
 
