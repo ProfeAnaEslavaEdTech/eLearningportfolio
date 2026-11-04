@@ -939,6 +939,26 @@ time, language — correlate with the supervisor observation checklist for real 
 > Keep IRIs/verbs consistent across EN and ES versions (same object ids; only `language` and the
 > display strings change) so both report into one dataset.
 
+### Publishing for Cornerstone (CSOD) — the target pharmacy LMS
+Cornerstone reads **SCORM** natively, so publish for it, not plain xAPI.
+
+| Setting | Value | Why |
+|---|---|---|
+| **LMS format** | **SCORM 2004 – 4th Edition** | Cornerstone reads it natively (completion, score, pass/fail) |
+| **LMS package type** | **Standard package** | Download `.zip`, upload a **new version** to change → version control & audit trail (GxP needs a controlled record). *Connected* edits live from Rise with no version trail → not compliant. |
+| **Reset progress after updates** | **Off** now; **On** when the SOP changes | Turning it On on re-issue forces everyone to **re-certify** — part of change control. |
+| **Reporting** | **Passed/Incomplete** | Marks passed when all checkpoints/quiz are completed correctly. |
+| **Exit link / return to LMS** | On | Lets learners return to Cornerstone cleanly. |
+
+Do the same for **both** objects (the Rise course and the Interactive Video): publish each as
+**SCORM 2004 – 4th Edition / Standard package**, upload both to Cornerstone, and group them as a
+**curriculum / learning path**. Test pass/fail/resume in a Cornerstone sandbox (or SCORM Cloud)
+before release, and record the package version against the SOP version (`SOP vX → package vX`).
+
+- **Plain xAPI** → only for a standalone LRS (LRS.io), as a separate portfolio demo — not the
+  Cornerstone delivery.
+- **cmi5** → use only if that Cornerstone instance has cmi5 enabled (xAPI richness + LMS-launchable).
+
 ---
 
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
