@@ -775,6 +775,69 @@ notes). Export 1080p MP4 + .vtt, then import to Rise Interactive Video and add t
 
 ---
 
+## PART 13 · Kirkpatrick Level 3 & 4 package (making it real)
+
+**Honest framing:** the course itself measures **L1 (reaction)** and **L2 (learning)**. L3 and L4
+are measured **on the job, after** the course. This package is what turns a course into a
+behaviour-and-results program — the senior-ID differentiator. Keep it employer-neutral.
+
+### A · Level 3 — Behaviour (on the job)
+
+**1. Supervisor Observation Checklist** (score real performance in a drill/audit at 30 / 60 / 90 days)
+A technician responding to a (planned) spill scenario is observed on the 7 SOP steps. Score each
+Yes / No; any critical step "No" = not yet competent → re-coach.
+
+| # | Observable behaviour | Critical? | Yes/No |
+|---|---|---|---|
+| 1 | Consulted the SDS/label before acting (did not touch/smell) | ✅ | ☐ |
+| 2 | Alerted others and cleared the area before cleanup | ✅ | ☐ |
+| 3 | Donned correct PPE before approaching | ✅ | ☐ |
+| 4 | Contained the spill with absorbent, away from drains | ✅ | ☐ |
+| 5 | Selected the correct kit for the chemical | ✅ | ☐ |
+| 6 | Disposed of waste in the hazardous-waste container | ✅ | ☐ |
+| 7 | Completed the incident log and notified supervisor | ⚠️ | ☐ |
+
+Observer: __________ · Date: ______ · Result: all critical = Yes → competent / else → re-coach by: ______
+
+**2. xAPI → LRS (the data hook).** Publish the course (or a follow-up performance activity) as
+**xAPI/cmi5** pointing to the LRS (e.g. LRS.io). Statements: `performed` / `passed` per critical
+step, with context (SOP id + version, site, recert cycle). This lets you correlate course data
+with the observation scores = evidence of behaviour change.
+
+**3. Learner commitment + spaced follow-up.** At course end, the learner commits ("I'll keep the
+job aid at my bench; I'll complete the quarterly drill"). Schedule a **30-day micro-check**
+(short scenario) + a **manager-led drill**. Behaviour that isn't reinforced decays.
+
+**L3 success metric:** ≥ 95% of technicians observed following all critical SOP steps in a bench
+audit within 90 days.
+
+### B · Level 4 — Results (business impact)
+
+Define the operational metric(s) the training should move, with baseline → target → owner → cadence:
+
+| Metric | Baseline | Target | Data source | Owner | Review |
+|---|---|---|---|---|---|
+| Reportable spill incidents | `[VERIFY]` | ↓ 30% in 2 quarters | EHS incident system | EHS lead | Quarterly |
+| Spill-related deviations / CAPAs | `[VERIFY]` | ↓ | QMS | QA | Quarterly |
+| Time-to-competency (new hires) | `[VERIFY]` | ↓ | Training records (LMS) | L&D | Quarterly |
+| Audit findings on spill response | `[VERIFY]` | 0 repeat findings | Internal audit | QA | Per audit |
+
+Tie it back to the terminal objective: *fewer incidents and faster competency because technicians
+follow the SOP with zero critical errors.*
+
+### C · Closing the loop (L3↔L4 → design)
+- Low first-attempt L2 on a step → fix the course/practice for that step.
+- Good L2 but poor L3 audits → transfer/environment issue → job aids, drills, manager coaching
+  (not more slides).
+- Rising incidents despite good L3 → process/equipment problem, not training → escalate.
+- Share lessons with SOP owners each quarter.
+
+> **Portfolio value:** most courses stop at L2. Shipping this L3/L4 package — observation
+> checklist, xAPI hooks, and a results measurement plan — is direct evidence you design for
+> **behaviour change and business impact**, exactly what a senior ID role asks for.
+
+---
+
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
 
 _Transparency note: developed with the assistance of generative AI; reviewed, edited and
