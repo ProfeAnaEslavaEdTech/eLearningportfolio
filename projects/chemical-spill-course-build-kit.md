@@ -838,6 +838,109 @@ follow the SOP with zero critical errors.*
 
 ---
 
+## PART 14 · xAPI specification — exporting the checkpoints to an LRS
+
+**Goal:** every checkpoint/decision emits an xAPI statement to the LRS (e.g. LRS.io) so you can
+see, per learner, *which step they got right/wrong* and *first-attempt accuracy* — the data that
+feeds Kirkpatrick L3. Publish from Rise/Storyline as **xAPI (Tin Can)** or **cmi5**, not SCORM.
+
+### Identifiers (keep consistent — don't mint ad hoc)
+Base activity IRI: `https://profeanaeslava.com/xapi/spill-sop` (use your own domain/registry).
+- Course: `…/spill-sop`
+- Step activity: `…/spill-sop/step/1` … `/step/7`
+- Assessment: `…/spill-sop/quiz`
+
+### Verbs
+- `http://adlnet.gov/expapi/verbs/answered` — a checkpoint answered
+- `http://adlnet.gov/expapi/verbs/passed` / `failed` — the zero-error gate / quiz result
+- `http://adlnet.gov/expapi/verbs/completed` — course completed
+- `http://adlnet.gov/expapi/verbs/experienced` — video/step viewed (optional)
+
+### Per-step statement (one per checkpoint)
+```json
+{
+  "actor": { "name": "<learner>", "mbox": "mailto:<learner-email>" },
+  "verb": { "id": "http://adlnet.gov/expapi/verbs/answered",
+            "display": { "en-US": "answered" } },
+  "object": {
+    "id": "https://profeanaeslava.com/xapi/spill-sop/step/1",
+    "definition": {
+      "name": { "en-US": "SOP Step 1 - Assess the spill" },
+      "description": { "en-US": "Consult the SDS/label before acting" },
+      "type": "http://adlnet.gov/expapi/activities/cmi.interaction",
+      "interactionType": "choice",
+      "correctResponsesPattern": ["consult-sds"]
+    }
+  },
+  "result": {
+    "success": true,
+    "response": "consult-sds",
+    "extensions": {
+      "https://profeanaeslava.com/xapi/ext/first-attempt": true,
+      "https://profeanaeslava.com/xapi/ext/critical-step": true
+    }
+  },
+  "context": {
+    "extensions": {
+      "https://profeanaeslava.com/xapi/ext/sop-id": "SOP-114",
+      "https://profeanaeslava.com/xapi/ext/sop-version": "Rev 3",
+      "https://profeanaeslava.com/xapi/ext/site": "<site>",
+      "https://profeanaeslava.com/xapi/ext/recert-cycle": "annual",
+      "https://profeanaeslava.com/xapi/ext/language": "en"
+    }
+  }
+}
+```
+
+### Final gate statement (zero-error pass/fail)
+```json
+{
+  "actor": { "name": "<learner>", "mbox": "mailto:<learner-email>" },
+  "verb": { "id": "http://adlnet.gov/expapi/verbs/passed", "display": { "en-US": "passed" } },
+  "object": { "id": "https://profeanaeslava.com/xapi/spill-sop/quiz",
+    "definition": { "name": { "en-US": "Chemical Spill Response - zero-error gate" },
+      "type": "http://adlnet.gov/expapi/activities/assessment" } },
+  "result": {
+    "success": true,
+    "score": { "scaled": 1.0, "raw": 100, "min": 0, "max": 100 },
+    "completion": true,
+    "extensions": {
+      "https://profeanaeslava.com/xapi/ext/error-count": 0,
+      "https://profeanaeslava.com/xapi/ext/first-attempt-accuracy": 0.86
+    }
+  }
+}
+```
+
+### The 7 step objects & correct responses
+| Step | object id …/step/N | correctResponsesPattern | critical |
+|---|---|---|---|
+| 1 Assess | /step/1 | `consult-sds` | yes |
+| 2 Alert & evacuate | /step/2 | `alert-evacuate` | yes |
+| 3 PPE | /step/3 | `don-ppe` | yes |
+| 4 Contain | /step/4 | `contain-absorbent` | yes |
+| 5 Correct kit | /step/5 | `dry-kit` | yes |
+| 6 Dispose | /step/6 | `hazardous-waste` | yes |
+| 7 Document | /step/7 | `log-and-notify` | important |
+
+### How to emit them
+- **Storyline (richest):** on each decision, add a trigger **"Send xAPI statement"** (or
+  `Tincan.SendStatement` via a JavaScript trigger / an xAPI template) with the object + result
+  above; publish **xAPI**, set the **LRS endpoint + key/secret** (LRS.io) at publish or in the LMS.
+- **Rise:** publish **xAPI/cmi5**; Knowledge Check / quiz interactions auto-emit `answered` and the
+  result emits `passed/failed`. Less granular than Storyline but needs no scripting.
+- **LRS.io:** create the activity/credential, copy **endpoint + key + secret**, and point the
+  package (or the LMS forwarding to the LRS) at them. Verify statements arrive in the LRS viewer.
+
+### What you'll see in the LRS (the L3 payoff)
+Per learner and cohort: which **critical step** fails most, **first-attempt accuracy**, pass rate,
+time, language — correlate with the supervisor observation checklist for real behaviour evidence.
+
+> Keep IRIs/verbs consistent across EN and ES versions (same object ids; only `language` and the
+> display strings change) so both report into one dataset.
+
+---
+
 © 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
 
 _Transparency note: developed with the assistance of generative AI; reviewed, edited and
