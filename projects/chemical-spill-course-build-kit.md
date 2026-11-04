@@ -9,7 +9,14 @@ a based-on-a-real-incident dramatization, and the full scenario scripts.
 - **Evaluation:** Kirkpatrick L1–L4; zero-error (100 %) mastery gate on critical steps
 - **Language:** **English master.** The Spanish version is a *translated copy* (build EN,
   duplicate, translate) — learner-selectable, one language on screen at a time.
-- **Status:** illustrative, employer-neutral scenario — swap in a real SOP when ready
+- **Status:** BUILT & PUBLISHED. Expert peer-review survey (Typeform):
+  https://57ve28l4yhj.typeform.com/to/ORf365Zd
+- **Published packages** (`assets/published/`): cmi5 and xAPI are self-contained (~30 MB).
+  ⚠️ The SCORM 2004 export came out as a **Connected package** (24 KB, video not embedded) —
+  for Cornerstone/GxP delivery use **cmi5** (if supported) or **re-publish SCORM 2004 as a
+  **Standard** (self-contained) package.
+- Deliverables in `assets/`: `Spill-Job-Aid.pdf`, `Spill-Observation-Checklist.pdf`,
+  `Spill-7-Steps.mp4`/`.vtt`, source decks. ADDIE worksheet + this kit document the design.
 
 > **Portfolio angle — one module, two tools.** This kit builds the *same* course content in
 > **both** Storyline 360 and Rise 360, so a reviewer sees the same learning designed two ways
