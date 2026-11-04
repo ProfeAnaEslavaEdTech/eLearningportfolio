@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Spill Response SOP — Compliance Training Case Study</title>
+<meta name="description" content="A regulated-industry compliance microlearning course (Chemical Spill Response SOP) by Ana Eslava-Graterol — ADDIE, zero-error mastery, Kirkpatrick L1–L4, WCAG 2.1 AA, bilingual EN/ES. Downloadable as SCORM 2004 4th Ed., cmi5 and xAPI for any LMS/LRS, including Cornerstone.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --teal:#3B5BD6; --teal-deep:#2A43A8; --teal-soft:#E8ECFB;
+    --terra:#7C6CE8; --gold:#E8A33D; --goldtx:#9A5B00;
+    --cream:#F6F7FB; --cream-2:#ECEEF5; --ink:#23262F; --ink-soft:#565B6B;
+    --ink-faint:#888D9E; --line:#E1E4EE; --paper:#FFFFFF;
+    --ok:#1E7F4F; --ok-soft:#E4F4EC;
+    --r-lg:22px; --r-md:14px; --r-pill:999px;
+    --shadow:0 2px 10px rgba(34,48,124,.06),0 10px 34px rgba(34,48,124,.08);
+  }
+  :root[data-theme="dark"]{
+    --teal:#7C93F2; --teal-deep:#4A63C8; --teal-soft:#1C2440;
+    --terra:#A99BF5; --gold:#E8A33D; --goldtx:#F0C070;
+    --cream:#14161C; --cream-2:#1B1E27; --ink:#E9EAF0; --ink-soft:#A9ADBE;
+    --ink-faint:#797E90; --line:#2C3040; --paper:#1D2028;
+    --ok:#5FD39B; --ok-soft:#14261C;
+    --shadow:0 2px 10px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --teal:#7C93F2; --teal-deep:#4A63C8; --teal-soft:#1C2440;
+      --terra:#A99BF5; --gold:#E8A33D; --goldtx:#F0C070;
+      --cream:#14161C; --cream-2:#1B1E27; --ink:#E9EAF0; --ink-soft:#A9ADBE;
+      --ink-faint:#797E90; --line:#2C3040; --paper:#1D2028;
+      --ok:#5FD39B; --ok-soft:#14261C;
+      --shadow:0 2px 10px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);
+    line-height:1.7;-webkit-font-smoothing:antialiased}
+  .serif{font-family:'Fraunces',Georgia,serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  a{color:var(--teal)}
+
+  /* top bar */
+  .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 86%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar-inner{max-width:1000px;margin:0 auto;padding:12px 20px;display:flex;
+    align-items:center;justify-content:space-between;gap:12px}
+  .back{font-size:13.5px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+  .back:hover{color:var(--terra)}
+  .theme-btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);
+    border-radius:var(--r-pill);padding:6px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+
+  /* hero */
+  .hero{background:linear-gradient(135deg,var(--teal-deep),var(--teal));color:#fff;
+    padding:54px 0 48px;position:relative;overflow:hidden}
+  .hero .wrap{position:relative;z-index:1}
+  .eyebrow{display:inline-block;background:rgba(255,255,255,.16);color:#fff;
+    font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 14px;border-radius:var(--r-pill);margin-bottom:16px}
+  .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.12;font-weight:600;margin-bottom:14px}
+  .hero p{font-size:clamp(15px,2.2vw,18px);max-width:70ch;color:#EAF0FF}
+  .hero-cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-block;font-weight:600;font-size:15px;text-decoration:none;
+    padding:13px 24px;border-radius:12px;transition:transform .12s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:var(--gold);color:#1C1E2E;box-shadow:0 3px 10px rgba(154,91,0,.25)}
+  .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4)}
+
+  section{padding:46px 0}
+  .kicker{color:var(--terra);font-weight:700;font-size:12.5px;letter-spacing:.08em;
+    text-transform:uppercase;margin-bottom:8px}
+  h2.s{font-size:clamp(22px,3.5vw,30px);font-weight:600;margin-bottom:8px;color:var(--ink)}
+  .lead{color:var(--ink-soft);max-width:72ch;margin-bottom:26px}
+  h3.sub{font-size:19px;font-weight:600;margin:30px 0 14px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:18px 18px 16px;box-shadow:var(--shadow)}
+  .card .ic{font-size:22px;margin-bottom:8px}
+  .card h4{font-size:15.5px;font-weight:600;margin-bottom:5px}
+  .card p{font-size:13.5px;color:var(--ink-soft)}
+  .tag{display:inline-block;background:var(--teal-soft);color:var(--teal);font-size:11px;
+    font-weight:700;padding:3px 10px;border-radius:var(--r-pill);margin-bottom:8px}
+
+  .factbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:8px}
+  .fact{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px}
+  .fact b{display:block;font-size:12px;color:var(--ink-faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+  .fact span{font-size:15px;font-weight:600}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:14px}
+  .step .n{width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;
+    font-family:'Fraunces',serif;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+  .step h4{font-size:14.5px;font-weight:600;margin-bottom:3px}
+  .step p{font-size:12.5px;color:var(--ink-soft)}
+
+  /* downloads table */
+  .dl{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--teal-deep);color:#fff;font-size:12px;font-weight:600;letter-spacing:.03em}
+  tr:last-child td{border-bottom:none}
+  td .fmt{font-weight:600}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:var(--r-pill)}
+  .pill.self{background:var(--ok-soft);color:var(--ok)}
+  .pill.launch{background:#FBEFD9;color:var(--goldtx)}
+  :root[data-theme="dark"] .pill.launch{background:#2A2210;color:var(--goldtx)}
+  .dlbtn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+    font-weight:600;font-size:12.5px;padding:7px 14px;border-radius:10px;white-space:nowrap}
+  .dlbtn:hover{background:var(--teal-deep)}
+
+  .note{background:var(--teal-soft);border-left:4px solid var(--teal);border-radius:0 10px 10px 0;
+    padding:14px 16px;font-size:13.5px;margin-top:16px;color:var(--ink)}
+  .note b{color:var(--teal-deep)}
+  :root[data-theme="dark"] .note b{color:var(--teal)}
+
+  /* cmi5 compare */
+  .compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .cc{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:18px;box-shadow:var(--shadow)}
+  .cc h4{font-size:16px;font-weight:600;margin-bottom:4px}
+  .cc .yr{font-size:12px;color:var(--ink-faint);margin-bottom:10px}
+  .cc ul{list-style:none;font-size:13px;color:var(--ink-soft)}
+  .cc li{padding-left:18px;position:relative;margin-bottom:6px}
+  .cc li::before{content:"›";position:absolute;left:0;color:var(--terra);font-weight:700}
+
+  ol.flow{counter-reset:f;list-style:none;margin-top:8px}
+  ol.flow li{counter-increment:f;position:relative;padding:10px 0 10px 44px;border-bottom:1px solid var(--line);font-size:14px}
+  ol.flow li:last-child{border-bottom:none}
+  ol.flow li::before{content:counter(f);position:absolute;left:0;top:10px;width:28px;height:28px;
+    background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:13px}
+  ol.flow b{color:var(--ink)}
+
+  footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--ink-faint);font-size:12px}
+  footer b{color:var(--ink-soft)}
+  footer .wrap > p{margin-bottom:8px;max-width:80ch}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="./index.html" class="back">← Back to portfolio</a>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">🌙 Theme</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Regulated-industry compliance training · Case study</span>
+    <h1 class="serif">Chemical Spill Response SOP</h1>
+    <p>A zero-error compliance microlearning course that turns a 7-step laboratory safety procedure into
+    an accessible, measurable, LMS-ready training — built the way regulated pharma, MedTech and manufacturing
+    teams need it: SCORM 2004, cmi5 and xAPI, ready for Cornerstone and any LRS.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="https://share.eu.articulate.com/NVIlf9iYMckE0bdmTsPkz" target="_blank" rel="noopener">▶ Launch the course (opens in a new tab)</a>
+      <a class="btn btn-ghost" href="#downloads">↓ Download LMS packages</a>
+    </div>
+  </div>
+</header>
+
+<!-- OVERVIEW -->
+<section>
+  <div class="wrap">
+    <p class="kicker">Overview</p>
+    <h2 class="s serif">Designed for people whose mistakes have consequences.</h2>
+    <p class="lead">In a regulated laboratory, a spill handled the wrong way is a safety incident and a
+    compliance deviation at once. This course trains technicians to follow the Standard Operating Procedure
+    exactly — every step, every time — and gives supervisors the evidence that they do.</p>
+
+    <div class="factbar">
+      <div class="fact"><b>Format</b><span>Interactive video + microlearning (Articulate Rise)</span></div>
+      <div class="fact"><b>Audience</b><span>Laboratory technicians (adult learners)</span></div>
+      <div class="fact"><b>Target LMS</b><span>Cornerstone · any SCORM/cmi5/xAPI LMS or LRS</span></div>
+      <div class="fact"><b>Languages</b><span>English master · Spanish (learner-selectable)</span></div>
+      <div class="fact"><b>Duration</b><span>~8–10 min + scenario practice</span></div>
+      <div class="fact"><b>Standards</b><span>WCAG 2.1 AA · EU AI Act Art. 50</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN APPROACH -->
+<section style="background:var(--cream-2)">
+  <div class="wrap">
+    <p class="kicker">Instructional design</p>
+    <h2 class="s serif">The method behind it.</h2>
+    <p class="lead">Engineered with ADDIE, assessed to a zero-error mastery standard, and evaluated across all
+    four Kirkpatrick levels — not just a "did they click through it" completion.</p>
+
+    <div class="grid">
+      <div class="card"><div class="ic">🎯</div><span class="tag">ADDIE</span><h4>Outcomes first</h4>
+        <p>Mager-style objectives (condition + behaviour + criterion) written before any screen was built, tied to real on-the-job performance.</p></div>
+      <div class="card"><div class="ic">🛑</div><span class="tag">Assessment</span><h4>Zero-error mastery gate</h4>
+        <p>Critical SOP steps require 100%. A wrong choice doesn't advance — it returns the learner to the decision until it's right.</p></div>
+      <div class="card"><div class="ic">📊</div><span class="tag">Evaluation</span><h4>Kirkpatrick L1–L4</h4>
+        <p>L1 reaction survey · L2 in-course checkpoints · L3 supervisor observation at 30/60/90 days · L4 incident-rate results.</p></div>
+      <div class="card"><div class="ic">♿</div><span class="tag">Access</span><h4>WCAG 2.1 AA</h4>
+        <p>Captions, audio scripts, keyboard-navigable interactions, AA contrast, and "opens in new tab" cues throughout.</p></div>
+      <div class="card"><div class="ic">🌐</div><span class="tag">Bilingual</span><h4>EN master → ES</h4>
+        <p>Authored in English, then translated to a learner-selectable Spanish version — one language per screen, never mixed.</p></div>
+      <div class="card"><div class="ic">🤝</div><span class="tag">Transparency</span><h4>EU AI Act Art. 50</h4>
+        <p>AI-assisted production is disclosed; every pedagogical and compliance decision stays human-directed and accountable.</p></div>
+    </div>
+
+    <h3 class="sub serif">The 7 steps the course trains</h3>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>Assess</h4><p>Consult the SDS/label first — never by sight, smell or touch.</p></div>
+      <div class="step"><div class="n">2</div><h4>Alert &amp; evacuate</h4><p>Warn people nearby and clear the area. People first.</p></div>
+      <div class="step"><div class="n">3</div><h4>PPE</h4><p>Gloves, goggles and apron before approaching.</p></div>
+      <div class="step"><div class="n">4</div><h4>Contain</h4><p>Ring with absorbent, outside-in, away from drains.</p></div>
+      <div class="step"><div class="n">5</div><h4>Correct kit</h4><p>Match the kit to the chemical — dry kit for water-reactive.</p></div>
+      <div class="step"><div class="n">6</div><h4>Dispose</h4><p>Labelled hazardous-waste container only.</p></div>
+      <div class="step"><div class="n">7</div><h4>Document</h4><p>Complete the incident log and notify the supervisor.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section id="downloads">
+  <div class="wrap">
+    <p class="kicker">LMS-ready packages</p>
+    <h2 class="s serif">Download &amp; deploy.</h2>
+    <p class="lead">The same course, published in three e-learning standards so it drops into any system — from a
+    classic SCORM LMS to a modern LRS. Each file below is the real published output.</p>
+
+    <div class="dl">
+      <table>
+        <thead>
+          <tr><th>Standard</th><th>Best for</th><th>Package</th><th>Type / size</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="fmt">SCORM 2004 4th Ed.</span><br><span style="font-size:12px;color:var(--ink-faint)">★ recommended for Cornerstone</span></td>
+            <td>Cornerstone &amp; any SCORM LMS — the full course (video included) in one file. Validated / GxP-ready.</td>
+            <td>chemical-spill-response-sop-SCORM2004-4th.zip</td>
+            <td><span class="pill self">Self-contained</span><br><span style="font-size:12px;color:var(--ink-faint)">~41 MB</span></td>
+            <td><a class="dlbtn" href="./assets/published/chemical-spill-response-sop-SCORM2004-4th.zip" download>Download</a></td>
+          </tr>
+          <tr>
+            <td><span class="fmt">cmi5</span><br><span style="font-size:12px;color:var(--ink-faint)">xAPI profile</span></td>
+            <td>Modern LMS/LRS that speak cmi5 — rich tracking + reliable completion.</td>
+            <td>spill-sop-cmi5.zip</td>
+            <td><span class="pill self">Self-contained</span><br><span style="font-size:12px;color:var(--ink-faint)">~30 MB</span></td>
+            <td><a class="dlbtn" href="./assets/published/spill-sop-cmi5.zip" download>Download</a></td>
+          </tr>
+          <tr>
+            <td><span class="fmt">xAPI</span><br><span style="font-size:12px;color:var(--ink-faint)">Tin Can</span></td>
+            <td>Learning Record Stores (e.g. LRS.io) — granular statement-level data.</td>
+            <td>spill-sop-xAPI.zip</td>
+            <td><span class="pill self">Self-contained</span><br><span style="font-size:12px;color:var(--ink-faint)">~30 MB</span></td>
+            <td><a class="dlbtn" href="./assets/published/spill-sop-xAPI.zip" download>Download</a></td>
+          </tr>
+          <tr>
+            <td><span class="fmt">SCORM 2004 4th Ed.</span><br><span style="font-size:12px;color:var(--ink-faint)">launcher variant</span></td>
+            <td>Lightweight connected package — streams from Articulate hosting.</td>
+            <td>spill-sop-SCORM2004.zip</td>
+            <td><span class="pill launch">Launcher</span><br><span style="font-size:12px;color:var(--ink-faint)">~24 KB</span></td>
+            <td><a class="dlbtn" href="./assets/published/spill-sop-SCORM2004.zip" download>Download</a></td>
+          </tr>
+          <tr>
+            <td><span class="fmt">SCORM 2004 4th Ed.</span><br><span style="font-size:12px;color:var(--ink-faint)">variant</span></td>
+            <td>Alternate build — "Lab Spill Response" title.</td>
+            <td>lab-spill-response-SCORM2004.zip</td>
+            <td><span class="pill launch">Launcher</span><br><span style="font-size:12px;color:var(--ink-faint)">~24 KB</span></td>
+            <td><a class="dlbtn" href="./assets/published/lab-spill-response-SCORM2004.zip" download>Download</a></td>
+          </tr>
+          <tr>
+            <td><span class="fmt">SCORM 2004 4th Ed.</span><br><span style="font-size:12px;color:var(--ink-faint)">variant</span></td>
+            <td>Alternate build — "The 7 Steps" title.</td>
+            <td>the-7-steps-SCORM2004.zip</td>
+            <td><span class="pill launch">Launcher</span><br><span style="font-size:12px;color:var(--ink-faint)">~24 KB</span></td>
+            <td><a class="dlbtn" href="./assets/published/the-7-steps-SCORM2004.zip" download>Download</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <b>Self-contained vs. launcher — why it matters for GxP.</b> The <b>SCORM 2004 4th Ed.</b> (recommended),
+      <b>cmi5</b> and <b>xAPI</b> packages hold the entire course — video and all — inside the zip, so they run
+      from the LMS/LRS with a complete, auditable copy. That is the right choice for a validated,
+      21&nbsp;CFR Part&nbsp;11 / GxP environment. The two small <b>SCORM 2004 launcher</b> variants below are
+      <i>connected</i> packages that stream the content from Articulate's hosting — lighter to distribute, but
+      not self-contained, so use them only where streaming from the vendor is acceptable.
+    </div>
+  </div>
+</section>
+
+<!-- CMI5 EXPLAINER -->
+<section style="background:var(--cream-2)">
+  <div class="wrap">
+    <p class="kicker">Explainer</p>
+    <h2 class="s serif">What is cmi5 — and how would you use it?</h2>
+    <p class="lead"><b>cmi5</b> is a modern e-learning standard: an xAPI "profile" that defines how an LMS
+    launches a course and how that course reports back. Think of it as <b>the reliable completion and
+    launch rules of SCORM, carried on the rich data pipe of xAPI.</b> It was released by ADL in 2016 to
+    replace SCORM for new content.</p>
+
+    <div class="compare">
+      <div class="cc">
+        <h4>SCORM 2004</h4>
+        <div class="yr">2004 · the classic</div>
+        <ul>
+          <li>Runs only inside a web browser, inside the LMS window</li>
+          <li>Tracks score, status, completion — but little about <i>how</i> learners performed</li>
+          <li>Universally supported (incl. Cornerstone)</li>
+          <li>No native support for mobile, VR, or offline</li>
+        </ul>
+      </div>
+      <div class="cc">
+        <h4>xAPI (Tin Can)</h4>
+        <div class="yr">2013 · the data layer</div>
+        <ul>
+          <li>Records any experience as "actor–verb–object" statements</li>
+          <li>Sends data to a Learning Record Store (LRS), not just an LMS</li>
+          <li>Tracks simulations, video, on-the-job tasks, offline, mobile</li>
+          <li>Powerful — but on its own it doesn't define <i>launch</i> or <i>completion</i></li>
+        </ul>
+      </div>
+      <div class="cc">
+        <h4>cmi5</h4>
+        <div class="yr">2016 · best of both</div>
+        <ul>
+          <li>xAPI's rich tracking <b>+</b> SCORM's launch &amp; completion rules</li>
+          <li>The LMS launches it and knows, reliably, when it's "passed/completed"</li>
+          <li>Granular xAPI statements still flow to the LRS for analytics</li>
+          <li>Mobile- and distributed-content friendly</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub serif">How this course uses cmi5 in practice</h3>
+    <ol class="flow">
+      <li><b>Import:</b> upload <code>spill-sop-cmi5.zip</code> to the LMS (Cornerstone, or any cmi5-capable LMS) and attach its Learning Record Store.</li>
+      <li><b>Launch:</b> the LMS launches the course with a secure cmi5 session — it knows exactly who the learner is and when the attempt starts.</li>
+      <li><b>Track:</b> as the learner moves through the 7 steps and the decision scenario, the course sends xAPI statements — e.g. <i>"learner answered Step&nbsp;5 correctly"</i> — to the LRS.</li>
+      <li><b>Gate:</b> the zero-error logic means <i>passed</i> is only reported when every critical step is correct — a trustworthy compliance record, not just "viewed".</li>
+      <li><b>Report:</b> L2 data (checkpoints) joins L3 supervisor-observation and L4 incident metrics to prove the training actually changed behaviour on the bench.</li>
+    </ol>
+
+    <div class="note">
+      <b>Which should you deploy?</b> On Cornerstone today, <b>SCORM 2004 4th Ed.</b> is the safest universal
+      choice. If your Cornerstone instance (or your LRS) has <b>cmi5</b> enabled, use the cmi5 package for far
+      richer, step-level compliance evidence. Use the <b>xAPI</b> package when you want the data to live in a
+      dedicated LRS for cross-course analytics.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Chemical Spill Response SOP</b> — compliance training case study by Ana Eslava-Graterol · profeanaeslava.</p>
+    <p><b>Transparency note (EU AI Act, Art. 50):</b> developed with the assistance of generative AI; reviewed,
+    edited and approved under the editorial responsibility of Ana Eslava-Graterol, instructional designer
+    registered as a self-employed professional in Spain.</p>
+    <p>© 2026 Ana Eslava-Graterol. All rights reserved. · <a href="./index.html">← Back to portfolio</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeBtn');
+    function apply(t){ if(t==='dark'){root.setAttribute('data-theme','dark');btn.textContent='☀️ Theme';}
+      else{root.setAttribute('data-theme','light');btn.textContent='🌙 Theme';} }
+    var saved; try{saved=localStorage.getItem('oi-theme');}catch(e){}
+    if(saved){apply(saved);}
+    else{var dark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;apply(dark?'dark':'light');}
+    btn.addEventListener('click',function(){
+      var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+      apply(next); try{localStorage.setItem('oi-theme',next);}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>

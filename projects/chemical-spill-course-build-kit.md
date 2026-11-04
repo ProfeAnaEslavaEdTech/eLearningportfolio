@@ -1,0 +1,976 @@
+# Chemical Spill Response — Course Build Kit (English master)
+
+A complete, paste-ready production kit for building the *Chemical Spill Response SOP*
+course in **Articulate Storyline 360** and **Rise 360**, with an AI-avatar intro,
+a based-on-a-real-incident dramatization, and the full scenario scripts.
+
+- **Tool:** Storyline 360 (zero-error engine) + Rise 360 (narrative shell)
+- **Export:** SCORM 2004 (+ xAPI / cmi5 where supported)
+- **Evaluation:** Kirkpatrick L1–L4; zero-error (100 %) mastery gate on critical steps
+- **Language:** **English master.** The Spanish version is a *translated copy* (build EN,
+  duplicate, translate) — learner-selectable, one language on screen at a time.
+- **Status:** BUILT & PUBLISHED. Expert peer-review survey (Typeform):
+  https://57ve28l4yhj.typeform.com/to/ORf365Zd
+- **Published packages** (`assets/published/`): cmi5 and xAPI are self-contained (~30 MB).
+  ⚠️ The SCORM 2004 export came out as a **Connected package** (24 KB, video not embedded) —
+  for Cornerstone/GxP delivery use **cmi5** (if supported) or **re-publish SCORM 2004 as a
+  **Standard** (self-contained) package.
+- Deliverables in `assets/`: `Spill-Job-Aid.pdf`, `Spill-Observation-Checklist.pdf`,
+  `Spill-7-Steps.mp4`/`.vtt`, source decks. ADDIE worksheet + this kit document the design.
+
+> **Portfolio angle — one module, two tools.** This kit builds the *same* course content in
+> **both** Storyline 360 and Rise 360, so a reviewer sees the same learning designed two ways
+> and judges when to reach for each tool. The goal is not merely a finished course but
+> **evidence that the designer can produce SOP-compliance training that makes people follow
+> the SOP** — the core of a senior instructional-design role.
+
+## Same content, two tools — at a glance
+
+| Element | In **Storyline 360** | In **Rise 360** |
+|---|---|---|
+| AI-avatar intro | Video on an intro slide + CC | Video block + text disclosure |
+| The Incident (reenactment) | Audio on timeline + CC + Continue trigger | Audio/Video block + transcript |
+| Debrief | Slides with layers / click-to-reveal | Statement + Process + Accordion |
+| Key terms glossary | Lightbox slide / slide master button | Accordion or Flashcard-grid block |
+| **The 7-step zero-error scenario** | **Native: slides, layers, variables, triggers** | **Embedded as a Storyline block** |
+| Knowledge checks | Freeform / quiz slides | Knowledge Check blocks |
+| Assessment & pass rule | Results slide + variable conditions | Quiz lesson (pass %) + the Storyline gate |
+| Reaction survey (L1) | Survey quiz slides | Ungraded Knowledge Check |
+| Responsiveness | Modern player (manual tuning) | Automatic, by design |
+| Best at | Decisions, consequences, simulation, full control | Narrative flow, speed, responsive reading |
+
+**Rule of thumb:** decision & consequence → Storyline; narrative & reference → Rise.
+
+## Language strategy — English master, then translated copies
+
+Build everything in **English first** (this kit). To localize: **copy the finished course and
+translate the copy into Spanish** — learner picks one language at launch and sees only that
+language (never both on screen).
+
+- **Storyline:** a "Choose your language" start slide sets a text variable `lang` (`en`/`es`)
+  and jumps to a monolingual EN or ES scene. Build EN first; duplicate the scenes and translate.
+- **Rise / Articulate 360 AI:** build the English course, then **duplicate it and translate**
+  to produce the Spanish course. Offer the choice on a launch page or via the LMS.
+- **WCAG:** each version declares its own page language (3.1.1). No screen mixes languages.
+
+---
+
+## Build order (Rise-first — do it in this sequence)
+
+> **Direction that works: Storyline → embedded in Rise, never Rise → Storyline.** A Rise course
+> cannot be downloaded or converted into an editable `.story` file (Rise exports only SCORM /
+> web / PDF). So build everything in Rise for speed, and build **only** the zero-error engine in
+> Storyline and drop it into Rise as a **Storyline block**.
+
+1. **Rise:** create the course → **Apply brand** (Ocean Ink).
+2. **Lesson 1 — Welcome:** AI avatar intro (Part 3 / 3b).
+3. **Lesson 2 — The Incident:** first-person audio + spill SFX (Part 4 / 4b); add transcript + content note.
+4. **Lesson 3 — Debrief:** what went wrong → SOP (Part 4b / 9.2).
+5. **Lesson 4 — Key terms:** glossary (Accordion).
+6. **Lesson 5 — Spot the errors:** Labeled graphic (Part 5b), 5 markers + PPE decoys.
+7. **Lesson 6 — Coordinator scenario (FDA):** Scenario classic (Part 10) — practice, zero-error (correct = Next, every wrong = Try Again).
+8. **Lesson 7 — The 7 steps:** Process block + ordering **Matching** knowledge check (Part 5b note).
+9. **Storyline — zero-error engine:** build slides 3.1–3.7 (Part 1 + Part 5) → publish → insert in Rise **Lesson 8 (Practice)** as a **Storyline block** (the auditable `errorCount = 0` gate).
+10. **Lesson 9 — Quiz:** graded, **passing score 100 %** (Part 8 directions) = measured L2 zero-error.
+11. **Lesson 10 — Reaction survey:** 3 items, ungraded (L1).
+12. **Lesson 11 — Job aid + Summary:** downloadable quick-reference + close (Part 9.4 / 9.5).
+13. **Publish Rise → SCORM 2004** → test pass/fail/resume in **SCORM Cloud**.
+14. **Localize:** duplicate the finished English course → translate the copy to Spanish.
+
+Kirkpatrick: L1 = avatar + incident + scenario realism · L2 = Storyline gate + 100 % quiz ·
+L3 = xAPI/observation · L4 = incident & time-to-competency metrics.
+
+---
+
+## PART 1 · Storyline 360 build guide
+
+### 0 · Project setup
+1. New Project → **Design › Story Size › 1920×1080**.
+2. Save as `Spill-Response_v0.1.story` (version the filename — controlled record).
+3. Set theme fonts/colors to the Ocean Ink palette (Fraunces/Inter, indigo + gold).
+
+### 1 · Structure (Story View → New Scene)
+| Scene | Slides | Purpose |
+|---|---|---|
+| 0 · Language | 0.1 Choose your language | Sets `lang`; jumps to EN scene (ES added when localized) |
+| 1 · Intro | 1.1 Welcome/avatar · 1.2 Objectives · 1.3 How it works | Hook + relevance |
+| 2 · Incident | 2.0 Reenactment (audio drama) | Emotional hook (L1) |
+| 3 · Scenario | 3.1 → 3.7 (one per SOP step) | Zero-error decision engine |
+| 4 · Results | 4.1 Results slide | Pass/fail + score to LMS |
+| 5 · Wrap | 5.1 Reaction survey · 5.2 Job aid | L1 + support |
+
+### 2 · Variables (Triggers panel › Manage project variables)
+| Name | Type | Default | Purpose |
+|---|---|---|---|
+| `lang` | Text | en | learner's chosen language — set on slide 0.1 |
+| `errorCount` | Number | 0 | total critical errors |
+| `critStep1_ok` … `critStep6_ok` | True/False | False | each critical step cleared |
+| `firstTryFail` | True/False | False | missed any step on first try (L2 signal) |
+
+### 3 · The zero-error decision slide (template — reuse for all 7)
+**Base layer:** scenario image + prompt + answer buttons. Set the **Next button initial
+state = Disabled**.
+**Two layers:** `Correct` (✓ + why + Continue) and `Consequence` (plain-language outcome,
+in gold not red, + Try again).
+
+Triggers on the **correct** button: Show layer `Correct`; Adjust `critStepN_ok = True`.
+Triggers on **each wrong** button: Show layer `Consequence`; Adjust `errorCount` + Add 1;
+Adjust `firstTryFail = True`.
+Layer triggers: `Consequence` › **Try again** → Hide layer (Next stays disabled);
+`Correct` › **Continue** → change Next state to Normal (or Jump to next slide).
+
+Reuse by copy/paste of slide 3.1; change image, prompt, options and the `critStepN_ok`
+variable. Vary interactions (hotspot, multiple-response, drag-and-drop). Step 7 is scored,
+not a hard-fail.
+
+### 4 · Results slide (4.1)
+Insert › Quizzing › **Results Slide**. Mark **passed** only if `critStep1_ok`…`critStep6_ok`
+are all True **AND** `errorCount = 0`. Report **first-attempt** performance.
+
+### 5 · Accessibility
+Alt text on every image; logical **tab order** per slide; **closed captions** on all audio;
+no colour-only meaning; set slide language. Target WCAG 2.1 AA / Section 508.
+
+### 6 · Publish
+Publish › LMS › **SCORM 2004 (4th ed.)** › track by Results slide › report completion **and**
+success › Resume on. Test pass/fail/resume in **SCORM Cloud** before release.
+
+### 7 · Version-lock
+SOP vX → `.story` vX → package vX, recorded together.
+
+> **The one thing people get wrong:** the Next button must start **Disabled** on every
+> critical decision; only the correct path enables it. Otherwise the zero-error gate leaks.
+
+---
+
+## PART 2 · Rise 360 build guide
+
+**Principle:** Rise can't do true zero-error branching (no variables/triggers). Build the
+narrative, glossary and knowledge checks in Rise → **embed the zero-error engine as a
+Storyline block.** Decision & consequence = Storyline; everything else = Rise.
+
+**Language:** build the **English** course; to localize, **duplicate it and translate** to
+produce the Spanish course. Offer the choice on a launch page or via the LMS.
+
+### Lessons
+| # | Lesson | Blocks |
+|---|---|---|
+| 1 | Welcome (AI avatar) | Video + Text (disclosure) |
+| 2 | The Incident (reenactment) | Audio/Video + transcript + content note |
+| 3 | Debrief: what went wrong | Statement + Process + Image&text |
+| 4 | Before you start — Key terms | Accordion / Flashcard grid (glossary) |
+| 5 | The 7 SOP steps | Process + Labeled graphic |
+| 6 | Practice: Spill scenario | **Storyline block** (zero-error engine) |
+| 7 | Check your knowledge | Knowledge Check blocks (ungraded) |
+| 8 | Assessment | **Quiz** lesson (graded, pass %) |
+| 9 | Reaction survey (L1) | Ungraded Knowledge Check / form |
+| 10 | Job aid & close | Button/File (download) + Statement |
+
+> **Standing rule (compliance gating):** end **every content lesson** with a **Continue block
+> set to "Complete All Blocks Above."** This forces learners to view the full lesson (video,
+> audio, interactions) before advancing — the evidence a regulated training record needs that
+> each person actually received the content. Leave it on "None" only for optional reference
+> lessons (e.g. an always-open glossary).
+
+> **Standing rule (accessibility / WCAG 2.1 AA).** Fill the accessibility field on **every**
+> block, every scene, every time:
+> - **Images & labeled graphics →** alt text (mark purely decorative images as decorative).
+> - **Scenario scenes →** the "Scene description (accessibility)" field on each scene and response.
+> - **Video & audio →** captions (.vtt) and/or a visible transcript — never audio-only for key content.
+> - **Never convey meaning by colour alone** — pair with a glyph/label (Ocean Ink states do this).
+> - **Set the course/lesson language** so screen readers announce it correctly.
+> In regulated training an inaccessible mandatory course can be an audit finding, not just bad practice.
+
+### Publish
+Publish › LMS › **SCORM 2004** (or **cmi5** with an LRS). Completion = *Quiz passed*
+(or all lessons viewed + quiz passed). Test in SCORM Cloud. Version-lock SOP vX → course vX →
+embedded `.story` vX → package vX.
+
+---
+
+## PART 3 · AI avatar — course intro script
+
+**Disclosure:** generic AI presenter → recommended; **clone of a real person → legally
+required + consent** (EU AI Act Art. 50(4)+50(5)). Disclosure is built into the opening.
+
+**[On-screen caption 0–4 s + spoken]**
+> This course is presented by an AI-generated avatar. Content authored and verified by Ana
+> Eslava-Graterol (EU AI Act, Art. 50).
+
+**[Avatar speaks]**
+> "Hi, and welcome. I'm an AI-generated presenter, and I'll guide you through this short course
+> on responding to a chemical spill in the lab. When a spill happens, the first few seconds
+> decide everything. Here you'll practise the real procedure in a simulation, where a mistake
+> costs nothing but teaches everything. You'll work through the seven steps of the spill SOP
+> and, to pass, get the critical steps right — with zero errors. Miss one, and you'll see what
+> would happen, then try again. Let's begin."
+
+---
+
+## PART 3b · Avatar package (Articulate Interactive Video: ① script → ② voiceover → ③ options)
+
+**Persona:** a lab safety officer in full PPE (white lab coat, safety goggles, nitrile gloves)
+in a working chemistry lab — fume hood, labelled reagent shelves, spill-kit station behind.
+Calm, credible. Disclosure spoken (first line) **and** on screen (first 4 s).
+
+**① Script / content:**
+> This course is presented by an AI-generated avatar. Content authored and verified by Ana
+> Eslava-Graterol, under the EU AI Act, Article 50.
+>
+> Welcome. I'm your AI safety guide, and I'm dressed the way you should be before you ever go
+> near a spill — lab coat, goggles, gloves. In the next few minutes you'll respond to a
+> chemical spill the way it really happens in this lab: fast decisions, real consequences.
+> You'll follow the seven steps of the spill procedure, and to pass you'll need the critical
+> steps right — with zero errors. Make a wrong call and you'll see exactly what it would
+> cause, then try again. Stay sharp, protect yourself and the people around you. Let's begin.
+
+**② Create voiceover:** English, clear professional voice; keep punctuation for pauses;
+pronunciations SDS = "ess-dee-ess", PPE, reagent, water-reactive.
+**③ Set video options:** presenter in lab coat/PPE if available (else neutral) + chemistry-lab
+background; 16:9; captions ON; on-screen text 0–4 s: "AI-generated avatar · Content verified
+by Ana Eslava-Graterol · EU AI Act Art. 50."
+
+> To localize: duplicate the video, switch the voice to Spanish, translate the script and
+> on-screen text — keep the avatar and background identical.
+
+---
+
+## PART 4 · "Based on a real incident" reenactment
+
+### Guardrails (do first)
+1. **Anonymize** — change names, dates, location; label on screen "Dramatization based on a
+   real incident. Names and details changed."
+2. **No real victim's voice/footage without written consent.**
+3. **Never clone a real person's voice** without consent (deepfake under Art. 50).
+4. **Trauma-informed** — content note at start; purposeful, not gratuitous; allow replay/skip.
+5. **Disclose synthetic voices** (Art. 50).
+
+**[On-screen 0–4 s + spoken]**
+> Dramatization based on a real laboratory incident. Names and details have been changed.
+> Voices are AI-generated.
+**Content note:** This lesson depicts a workplace chemical injury.
+
+### Script — 3 voices: NARRATOR, MARA (technician), LUIS (colleague)
+> NARRATOR: It was 4:50 on a Friday. One task left before the weekend.
+> MARA: *(moving fast)* Almost done… just need to move this bottle—
+> *(SFX: glass clinks, smash, splash)*
+> MARA: *(gasp)* No, no, no—
+> LUIS: What was that? …Mara, what spilled?
+> MARA: I— I don't know, I'll just wipe it—
+> NARRATOR: And that was the first mistake. She didn't check the label. She reached for a
+> paper towel — bare-handed.
+> *(SFX: sharp hiss; Mara cries out)*
+> MARA: *(pain)* My hand— it's burning—
+> LUIS: Don't touch it! Get to the eyewash — I'm calling it in!
+> NARRATOR: Mara spent three weeks in recovery. The spill was a water-reactive reagent. Every
+> step that could have protected her was in the SOP she skipped. Today, you'll walk those
+> steps — before it's ever real.
+
+---
+
+## PART 4b · "Chemical Spill Incident: Lessons Learned" — intro + debrief accordion
+
+A text-based opener (distinct from the dramatized reenactment): an incident narrative + a
+4-section expandable debrief.
+
+**On-screen disclosure (0–4 s):** Dramatization based on a real incident. Names and details
+changed.
+
+### Incident narrative
+> **Chemical Spill Incident: Lessons Learned.** A technician accidentally knocked over a bottle
+> of corrosive acid. Without checking the label or putting on gloves, they grabbed paper towels
+> to clean it up. The acid soaked through, causing a chemical burn. As the spill spread, fumes
+> triggered the fire alarm. Skipping standard operating procedure (SOP) steps led to injury,
+> panic, and an expensive cleanup.
+
+**Incident Debrief: What Went Wrong?** *Expand each section.* Each: what happened → consequence
+→ what the SOP requires.
+
+- **Not Checking the Label.** Acted on an unknown chemical. **Consequence:** misjudged the
+  hazard and chose the wrong response. **SOP (Step 1 – Assess):** consult the label and the SDS
+  first; never identify a chemical by sight, smell or touch.
+- **No PPE Worn.** Cleaned the spill without gloves or goggles. **Consequence:** a chemical burn
+  to the skin. **SOP (Step 3 – PPE):** gloves, goggles and apron *before* approaching.
+- **Improper Cleanup.** Paper towels spread the acid and raised exposure. **Consequence:** wider
+  contamination and more risk. **SOP (Steps 4–5 – Contain & correct kit):** ring the spill with
+  absorbent away from drains and use the correct spill kit — never paper towels.
+- **No Alarm or Report.** Did not alert others or report. **Consequence:** delayed emergency
+  response and greater danger. **SOP (Steps 2 & 7 – Alert/evacuate & Document):** alert and
+  evacuate immediately, then complete the incident log and notify your supervisor.
+
+> **Bridge to practice:** "Four skipped steps caused this. Now you'll take the controls — and
+> get all seven right, with zero errors."
+
+---
+
+## PART 5 · The 7 scenario slides (paste-ready)
+
+Each slide: **On-screen** (prompt + options), **VO**, **Correct** feedback, **Consequence**
+feedback, **Dev notes**. ✓ = correct. Feedback colours: Correct = rose/✓; Consequence = gold/!
+(never red).
+
+### Slide 3.1 — Step 1 · Assess the spill
+**On-screen:** *A liquid has spilled near the bench. What is your FIRST action?*
+- A) Smell it to identify what it is.
+- ✓ B) Consult the SDS to identify the chemical and its hazards.
+- C) Start wiping it up right away.
+- D) Ignore it — it's probably water.
+
+**VO:** "Something's spilled. Before you touch anything — how do you find out what it is?"
+**Correct:** "Right. The SDS tells you what it is and how to handle it. Never identify a
+chemical by sight, smell or touch."
+**Consequence:** "You leaned in to smell it — the vapour was toxic. Never identify a spill by
+smell. Try again."
+**Dev notes:** `critStep1_ok`. Multiple choice (or hotspot on the SDS binder).
+
+### Slide 3.2 — Step 2 · Alert & evacuate
+**On-screen:** *The SDS shows a hazardous, volatile reagent. What now?*
+- ✓ A) Alert the people nearby and clear the area.
+- B) Quietly clean it before anyone notices.
+- C) Keep working on your task.
+- D) Open a window and carry on.
+
+**VO:** "It's hazardous and gives off vapour. What protects the people around you?"
+**Correct:** "Yes — people first. Alert and evacuate before you do anything else."
+**Consequence:** "You stayed quiet. The vapour spread and a colleague was exposed. Alert and
+evacuate first. Try again."
+**Dev notes:** `critStep2_ok`. Branching decision.
+
+### Slide 3.3 — Step 3 · Don the correct PPE
+**On-screen:** *You're ready to act. What do you put on BEFORE approaching the spill? (Select
+all that apply.)*
+- ✓ Chemical-resistant gloves · ✓ Safety goggles · ✓ Lab apron
+- Approach with bare hands · Just a dust mask
+
+**VO:** "Protect yourself before you get close. Choose your PPE."
+**Correct:** "Full PPE on — now you're protected."
+**Consequence:** "You reached in bare-handed and the reagent burned your skin. Don full PPE
+first. Try again."
+**Dev notes:** `critStep3_ok`. Multiple-response; correct only when all three PPE selected and
+no wrong item.
+
+### Slide 3.4 — Step 4 · Contain the spill
+**On-screen:** *PPE on. How do you stop the spill spreading?*
+- ✓ A) Ring the spill with absorbent, working from the outside in.
+- B) Wipe it toward the floor drain.
+- C) Pour water on it to dilute it.
+- D) Leave it and get a mop.
+
+**VO:** "Stop it spreading — and keep it away from drains."
+**Correct:** "Contained. Ringing it from the outside in keeps it controlled."
+**Consequence:** "You wiped toward the drain — the reagent entered the water system, a
+reportable release. Contain it, away from drains. Try again."
+**Dev notes:** `critStep4_ok`. Branching decision.
+
+### Slide 3.5 — Step 5 · Use the correct spill kit
+**On-screen:** *The SDS says the reagent is water-reactive. Which kit do you use?*
+- ✓ A) The dry / neutralizing kit for water-reactive chemicals.
+- B) The universal water-based kit.
+- C) Dilute it with plenty of water.
+- D) Whichever kit is closest.
+
+**VO:** "This one reacts with water. Choose the kit that's safe for it."
+**Correct:** "Exactly — the right kit for the reagent class. Safely absorbed."
+**Consequence:** "Water triggered a violent reaction; the spill spread and released fumes.
+Match the kit to the reagent class. Try again."
+**Dev notes:** `critStep5_ok`. Decision + strong consequence layer (highest-risk step).
+
+### Slide 3.6 — Step 6 · Dispose of the waste
+**On-screen:** *The spill is absorbed. Where does the waste go?*
+- ✓ A) The labelled hazardous-waste container.
+- B) The general waste bin.
+- C) The sink.
+- D) Back on the shelf for now.
+
+**VO:** "The residue is still hazardous. Where does it belong?"
+**Correct:** "Correct — labelled hazardous-waste container, every time."
+**Consequence:** "General waste can't take hazardous residue — that's a reportable violation.
+Use the hazardous-waste container. Try again."
+**Dev notes:** `critStep6_ok`. Drag-and-drop (drag the waste bag to the correct bin).
+
+### Slide 3.7 — Step 7 · Document & report *(important, not a hard-fail)*
+**On-screen:** *The area is safe. What is the final step?*
+- ✓ A) Complete the incident log and notify your supervisor.
+- B) Skip the paperwork — it's handled.
+- C) Tell a colleague verbally and move on.
+
+**VO:** "One step left — and it's the one people forget."
+**Correct:** "Done properly. The incident log closes the loop and improves the SOP."
+**Feedback (wrong):** "Without the report, the organisation can't learn or comply. Always
+document."
+**Dev notes:** scored question, **not** part of the zero-error gate (no `errorCount`).
+
+---
+
+## PART 5b · "Spot the errors" labeled graphic (Rise, ungraded) + Storyline scored version
+
+Use a photo of a mishandled spill (technician, spilled bottle, spreading liquid). Learners
+identify what's wrong. Rise = exploratory (no score). Storyline = scored, feeds the zero-error
+standard.
+
+**Caption / alt:** "Spot the errors: what did this technician skip?" (alt text in English.)
+
+### Rise — Labeled Graphic (＋ › Interactive › Labeled Graphic)
+Upload the image, drop a marker on each spot, add Title + Description:
+
+| # | Place marker on (this photo) | Title | Description |
+|---|---|---|---|
+| 1 | the tipped bottle with the white label (centre-left) | **Chemical not verified** | The bottle is labelled — but was the label and SDS checked before handling? Verify the chemical first. (Step 1 – Assess.) |
+| 2 | the spreading puddle on the bench (centre) | **Spill not contained** | The liquid is spreading toward the edge — no absorbent ring. (Step 4 – Contain, away from drains.) |
+| 3 | her blue gloved hand on the bench by the liquid (centre-right) | **Hand in the spill zone** | Keep hands out until the area is contained and the right kit is ready. Gloves protect you; they aren't a cleanup tool. |
+| 4 | the open bench area (no kit anywhere) | **No spill kit in use** | There's no spill kit here — hands or paper won't work. (Step 5 – use the correct kit.) |
+| 5 | the technician (reacting, not acting) | **No alarm raised** | She's startled but hasn't alerted anyone. (Step 2 – Alert and evacuate before cleanup.) |
+
+**Decoys — these are CORRECT; do NOT mark them as errors** (and use them as the wrong-to-click
+decoys in the Storyline scored version): her **safety goggles** and her **nitrile gloves**.
+Teaching point: she did *some* things right (PPE on) but still mishandled the spill — PPE alone
+is not spill response.
+
+### Storyline — scored "spot the errors" (counts toward zero-error)
+1. Insert the image on a slide.
+2. **Convert to Freeform → Pick Many.**
+3. Place a selectable marker/shape over each **error zone** (the 5 above) = **correct** answers;
+   add 1–2 markers over **safe/correct** areas (e.g. her goggles, her gloves) = **incorrect**
+   (decoys, so it's a real judgement).
+4. Scoring for the zero-error standard: **all error zones selected AND no safe zone selected**
+   → correct. Any miss → a **Consequence** layer naming what that error causes, then retry.
+5. Optional variable `errorsFound` (Number) if you want to show progress ("3 of 5 found").
+6. Feed the result into the course Results slide like the other critical steps.
+
+> Pedagogy: Rise version first (explore, low stakes) → Storyline version later (prove it, scored).
+> Same image, same five errors — recognition before performance.
+
+---
+
+## PART 6 · Avatar generation prompts
+
+### A · Synthesia (standalone video, then embed)
+1. New video › blank 16:9.
+2. Avatar: a professional stock presenter (neutral, business-casual). No custom clone of a real
+   person without written consent.
+3. Voice: a clear professional English voice.
+4. Script: paste the Part 3 spoken text. Add pauses with punctuation; use the pause control.
+5. Pronunciation: SDS (ess-dee-ess), reagent, PPE, water-reactive.
+6. On-screen disclosure: text element with the Part 3 caption, timed 0–4 s, high-contrast.
+7. Background: clean lab or neutral studio; name strip "AI Presenter".
+8. Captions: enable subtitles → download .vtt / .srt.
+9. Export 1080p `.mp4`. Keep the project to re-generate if the script changes.
+
+### B · Articulate avatars (AI Assistant, powered by Synthesia) — inside Rise/Storyline
+> Labels evolve — [VERIFY current UI in your 360 subscription].
+1. Rise: lesson › insert block › AI/Video › Generate avatar video. Storyline: AI Assistant.
+2. Choose avatar + English voice.
+3. Paste the Part 3 script. Generate, preview, insert.
+4. Captions auto-generated — keep them on.
+5. Below the video add a text block repeating the disclosure; also put it in the course credits.
+
+> Whichever tool, the Art. 50 disclosure must appear at first exposure. A clone of a real
+> person additionally requires that person's consent.
+
+---
+
+## PART 7 · Articulate 360 AI generator prompts (fast path)
+
+Use Articulate 360 AI to generate the English shell/draft fast, then refine. Keep the strict
+variable-based zero-error gate in Storyline. Attach this file (or the SOP) as source and use
+**Apply brand** for Ocean Ink.
+
+### Prompt A — "Course" type
+> Create a workplace health-and-safety compliance course titled "Chemical Spill Response SOP"
+> for adult laboratory technicians (new hires and refresher), experienced on the bench, taken
+> on desktop and tablet, about 15 minutes, mandatory with annual recertification.
+>
+> Goal / terminal objective: given a simulated lab chemical spill and the available kits, the
+> technician performs all seven SOP steps in the correct order with zero critical errors.
+>
+> Structure: (1) a short AI-presenter welcome; (2) a "based on a real incident" hook; (3) a
+> debrief of what went wrong; (4) a key-terms glossary (SDS, PPE, hazardous waste, containment);
+> (5) a practice scenario covering the seven steps — Assess (consult the SDS, never touch or
+> smell), Alert and evacuate, Don PPE, Contain away from drains, Use the correct kit for the
+> reagent class, Dispose in the hazardous-waste container, Document and report; (6) ungraded
+> knowledge checks; (7) a graded quiz where the critical steps must be answered correctly; (8) a
+> 3-item reaction survey; (9) a downloadable job aid.
+>
+> Tone: clear, professional, plain-language adult workplace learning — not marketing. Write to
+> WCAG 2.1 AA. Emphasise that a wrong critical choice shows its real-world consequence, then
+> lets the learner try again.
+>
+> LANGUAGE: Generate this as an ENGLISH course. (The Spanish version will be a translated copy.)
+
+### Prompt B — "Scenario" type
+> Build a branching decision scenario for lab technicians responding to a chemical spill. One
+> decision point per step: (1) identify the spill — correct = consult the SDS; wrong = smell or
+> touch it; (2) correct = alert and evacuate; wrong = clean it quietly; (3) correct = don full
+> PPE first; wrong = bare-handed; (4) correct = contain with absorbent away from drains; wrong =
+> wipe toward the drain; (5) the reagent is water-reactive — correct = the dry neutralizing kit;
+> wrong = the water-based kit; (6) correct = hazardous-waste container; wrong = general bin; (7)
+> correct = complete the incident log and notify the supervisor.
+>
+> For every wrong choice, show a realistic consequence (a colleague exposed, a chemical burn, a
+> violent reaction, a reportable release) and route the learner back to retry that decision —
+> passed only when all critical steps are correct with zero errors. Feedback supportive, never
+> punitive. LANGUAGE: English (Spanish is a translated copy).
+
+### Prompt C — "Interactive Video" type
+> Create a short interactive-video intro. Open with a 45–60s AI-presenter welcome, then a
+> dramatized "based on a real incident" scene (anonymized) showing a technician skipping the SOP
+> and getting hurt. Add 1–2 reflective pause-points. Display an on-screen disclosure for the
+> first 4 seconds: "AI-generated avatar and voices. Dramatization — names and details changed."
+> LANGUAGE: English (Spanish is a translated copy).
+
+### What the AI flow can and can't do
+- ✅ Fast English course shell, lessons, knowledge checks, a branching Scenario, auto-captions,
+  brand styling.
+- ⚠️ It does not enforce a true variable-based 100 % mastery gate (`errorCount = 0`). For a
+  strict, auditable zero-error record, build that one piece in Storyline and embed it.
+- Always review and edit AI output (accuracy, bias, SOP fidelity) — your editorial responsibility.
+
+---
+
+## PART 8 · Final quiz — directions (paste into Articulate 360 AI "Quiz instructions")
+
+**Kirkpatrick note:** a quiz measures **Level 2 (Learning)**. It cannot measure L3 (behaviour)
+or L4 (results) — so this builds a strong L2 zero-error quiz, adds one L1 reaction item, and
+frames questions at the L3 "what would you do on the job" level. The true 100 %-on-critical gate
+stays in Storyline.
+
+> Create a final assessment for the Chemical Spill Response SOP course.
+>
+> **Purpose (Kirkpatrick):** measures Learning (L2) — can the technician apply the SOP. Write at
+> the application level (what they would DO on the job), not recall, so results point toward
+> behaviour (L3). Include ONE unscored reaction item at the end (L1): "How confident are you that
+> you could respond to a real spill correctly?"
+>
+> **Content — one scenario question per critical step (7):** 1 Assess → consult the SDS
+> (distractors: smell/touch, wipe); 2 Alert & evacuate (distractors: clean quietly, keep
+> working); 3 Don PPE first (distractor: bare-handed); 4 Contain away from drains (distractor:
+> wipe to drain); 5 water-reactive → dry/neutralizing kit (distractor: water-based/water); 6
+> hazardous-waste container (distractor: general bin/sink); 7 Document & report. Use realistic
+> distractors from common real mistakes.
+>
+> **Difficulty & zero-error:** steps 1–6 are critical — zero-error (100 % mastery); passing
+> score = 100 %. For each critical question, feedback shows the real-world consequence of the
+> wrong answer, then restates the correct action. Mix MC, multiple-response (PPE), matching.
+> Plain professional adult tone.
+>
+> **Accessibility:** no colour-only cues; screen-reader-friendly; alt text for any image.
+> **LANGUAGE:** English (the Spanish quiz is a translated copy).
+
+- The AI quiz is percentage-based → "100 % to pass" = the zero-error rule at course level.
+- For an auditable per-step gate (`errorCount = 0`), keep it in the Storyline scenario.
+- If possible: passing score = 100 %, allow retries with feedback (learn from the consequence).
+
+---
+
+## PART 9 · Remaining course content (makes the course content-complete)
+
+### 9.1 Language launch page
+**Choose your language** — [English] [Español] *(the Spanish course is the translated copy)*
+
+### 9.2 Debrief lesson (after the reenactment, before practice)
+> **What went wrong — and what the SOP says.** The injury wasn't bad luck; it was five skipped
+> steps.
+> • She never checked the SDS → Step 1: Assess before you act.
+> • She didn't alert or evacuate → Step 2: People first.
+> • She reached in bare-handed → Step 3: PPE before approach.
+> • She wiped toward the spread → Step 4: Contain, away from drains.
+> • Water on a water-reactive reagent → Step 5: The right kit for the chemical.
+> The SOP is the difference between a near-miss and three weeks of recovery. Now you'll walk
+> every step.
+
+### 9.3 Results / feedback messages
+**PASS:**
+> **Certified: zero critical errors.** You followed the SOP exactly — the way it protects you
+> and everyone in the lab. Your first-attempt result has been recorded. Keep the job aid at
+> your bench.
+
+**NOT YET:**
+> **Not yet — and that's how we keep it safe here.** A critical step was missed. Review the
+> consequence, then repeat the scenario until every critical step is correct with zero errors.
+> On the job there are no retries — that's why we practise until it's automatic.
+
+### 9.4 Job aid — bench quick-reference (one page, downloadable, non-gated)
+> **Chemical Spill Response — 7 steps**
+> 1. ASSESS — consult the SDS; never touch or smell. 2. ALERT & EVACUATE — people first.
+> 3. PPE — gloves, goggles, apron before you approach. 4. CONTAIN — ring with absorbent, away
+> from drains. 5. CORRECT KIT — match the kit to the chemical (water-reactive = dry kit).
+> 6. DISPOSE — labelled hazardous-waste container only. 7. DOCUMENT — incident log + supervisor.
+> *If unsure what it is, STOP and check the SDS.*
+
+### 9.5 Summary / close
+> **You followed the SOP — now make it a habit.** Seven steps, in order, every time. The one
+> that saves you: when in doubt, check the SDS and never identify a spill by sight, smell or
+> touch. Download your job aid and keep it visible.
+
+---
+
+## Portfolio framing — how this proves candidate suitability
+This course is evidence for the Senior Instructional Designer role.
+
+| Job responsibility | Evidence in this build |
+|---|---|
+| Conduct job/task/performance analysis → objectives | DIF task analysis → Mager/Bloom objectives |
+| Design complex technical instruction across media | Storyline sim + Rise course + AI avatar + reenactment |
+| Develop criteria to evaluate effectiveness | Zero-error gate + Kirkpatrick L1–L4 + metrics |
+| Partner/consult; agree outcomes & success metrics | Training strategy + agreed success metrics |
+| Use evaluation to improve; share lessons | Closing-the-loop (L2↔L3 diagnosis) |
+| Oversee vendors / translate programs | English master + Spanish translated copy; vendor-ready storyboard |
+| EHS adherence | The SOP content itself + accessibility (WCAG AA) |
+
+**The thesis for the hiring manager:** *"I don't just make courses — I design training that
+provably changes on-the-job behaviour, measured against a zero-error compliance standard, built
+as an English master and localized to Spanish, to WCAG AA."*
+
+---
+
+## PART 10 · Coordinator "comply with SOP" scenario (Rise Scenario classic, FDA-aware)
+
+A coordinator coaches the team on the compliant response. Zero-error by design: **correct
+response → Next in Scene; every wrong response → Try Again** (the learner can't advance with an
+error). Practice (not scored) — the measured zero-error lives in the quiz (100 %) + Storyline gate.
+
+> **Scope note (accuracy):** the physical spill response is OSHA/EHS (HazCom 29 CFR 1910.1200 +
+> SDS; HAZWOPER 1910.120). **FDA 21 CFR Part 820 / QMSR** governs the quality system — trained
+> personnel & records (§820.25), document control, deviation/CAPA. Treat clause numbers as
+> **[VERIFY]** against current text.
+
+### 1.1 Scenario Title
+Title: **Spill Response: What the Team Must Do**
+Situation: *A reagent has just spilled. Your coordinator walks the team through the compliant
+response — the SOP that protects people and meets FDA quality requirements. You are the team
+member who finds the spill.*
+Character emotion: Neutral · Alt: *A lab safety coordinator in a chemistry lab, ready to explain
+the spill-response procedure.*
+Audio (optional AI): *[serious] If anyone finds a chemical spill, our SOP — and our FDA quality
+requirements — expect a precise, documented response. Skipping a step isn't just a safety risk;
+it's a compliance deviation. Let's walk through it.*
+
+### 1.2 Decision 1 — *A colleague knocks over a reagent bottle. What do you do FIRST?*
+Responses (the bold heading = the choice text):
+- ✓ **Check the SDS/label, alert the area, then follow the spill SOP.** — Happy · Next in Scene —
+  *Correct. Assess and alert before any cleanup; this keeps an uncontrolled spill from becoming a
+  quality deviation.*
+- **Grab paper towels and start cleaning immediately.** — Disappointed · Try Again — *Acting on an
+  unknown chemical without PPE or the right kit causes injury and can contaminate product. Assess
+  first. Try again.*
+- **Finish your current task, then deal with it.** — Disappointed · Try Again — *A delay lets the
+  spill spread and expose others. The SOP requires immediate action. Try again.*
+
+### 1.3 Decision 2 — *The spill is contained and cleaned. Under FDA quality requirements, what next?*
+- ✓ **Log the incident, open a deviation/CAPA if product or process may be affected, and update the
+  training record.** — Happy · Next in Scene — *Correct. FDA expects documented handling and
+  trained personnel.*
+- **Nothing — it's handled.** — Disappointed · Try Again — *No record = a documentation gap under
+  21 CFR 820. [VERIFY] Try again.*
+- **Tell a colleague on the way out.** — Disappointed · Try Again — *Verbal isn't a record. Quality
+  compliance needs written documentation. Try again.*
+
+### 1.4 Scenario End
+*Well done. The compliant response, every time: Assess → Alert & evacuate → PPE → Contain →
+Correct kit → Dispose → Document (+ deviation/CAPA + training record). Following the SOP protects
+your team (OSHA) and the product and records (FDA).*
+
+### 1.5 Note to remember
+*People first, assess before you act, and document everything. Skipping a step is both a safety
+risk and a compliance deviation.*
+
+> **Zero-error setting:** on every decision, exactly one response = Next; all others = Try Again.
+> Keep consequence-style feedback (what the mistake would cause). This trains to zero errors; the
+> **Quiz at 100 %** and the **Storyline block (`errorCount = 0`)** record it (Kirkpatrick L2).
+
+---
+
+## PART 11 · Audio narration scripts (per step & scene) — UDL / accessibility
+
+**WCAG note:** captions/transcripts on included audio are required; narration itself is optional
+UDL (multiple means of representation). Scripts are English (master). If generated with AI audio,
+add on screen: "AI-generated voice. EU AI Act, Art. 50." Keep captions ON for each.
+
+### The 7 SOP steps (for the Process block / step screens)
+1. **Assess —** "First, assess. Consult the SDS or the label — never identify a chemical by sight, smell or touch."
+2. **Alert & evacuate —** "Alert the people nearby and clear the area. People come first."
+3. **PPE —** "Put on your PPE — gloves, goggles, apron — before you approach the spill."
+4. **Contain —** "Contain it. Ring the spill with absorbent, working from the outside in, away from drains."
+5. **Correct kit —** "Use the correct spill kit for the chemical. Water-reactive means a dry kit, never water."
+6. **Dispose —** "Dispose of the waste in the labelled hazardous-waste container — never the general bin."
+7. **Document —** "Finally, document. Complete the incident log and notify your supervisor."
+
+### Coordinator scenario (per scene)
+- **1.1 Intro —** "[serious] If anyone finds a chemical spill, our SOP — and our FDA quality requirements — expect a precise, documented response. Skipping a step isn't just a safety risk; it's a compliance deviation. Let's walk through it."
+- **1.2 Decision 1 —** "A colleague just knocked over a reagent bottle, and it's spreading. What do you do first? Choose carefully."
+- **1.3 Decision 2 —** "Good — the spill is contained and cleaned. But we're not done. Under our FDA quality requirements, what has to happen next?"
+- **1.4 End —** "Well done. Assess, alert, protect, contain, use the right kit, dispose, and document. That sequence protects your team and our compliance — every time."
+
+### Incident (first person) + labeled graphic
+Incident audio = Part 4 / the first-person script (with spill SFX). Labeled graphic "spot the
+errors" needs no narration (each marker's text is read by screen readers); add alt text only.
+
+### Recommended AI-voice settings (ElevenLabs Multilingual v2)
+Use **Multilingual v2** — same voice stays consistent across EN and ES (generate both versions
+with the same voice + settings).
+
+**Profile A — instructional narration** (coordinator, 7 steps, glossary): calm, authoritative.
+- Stability **55–65** · Similarity **~80** · Speed **normal / slightly slower** for critical steps
+  · Style exaggeration **0** · Speaker boost **ON**.
+
+**Profile B — first-person incident** ([nervous]): allow emotion.
+- Stability **30–40** · Similarity **~75** · Speed normal (let `[pause]` breathe) · Style
+  exaggeration **15–25** · Speaker boost **ON**.
+
+Notes: Stability and Style exaggeration trade off (more style = less stable) — prioritise
+stability for safety content. Use punctuation for pacing. Check pronunciation of SDS/PPE/reagent
+(EN) and FDS/EPI/reactivo (ES); spell phonetically if needed. Export MP3 → Upload to Rise →
+captions/transcript ON.
+
+---
+
+## PART 12 · Interactive Video outline (checkpoints that gate on a correct answer)
+
+**Reusable template.** An Interactive Video = a *Start* (lesson preview) + N chapters, each
+ending in a **checkpoint** (a question that pauses the video). Set checkpoints to **require the
+correct answer to continue** (retry on wrong) so learners can't advance until they get it right.
+Use as many chapters as the content needs — this template shows **5 as an example; add more** with
+"＋ Add checkpoint/chapter."
+
+| # | Chapter (what it teaches) | Checkpoint question (one per chapter) |
+|---|---|---|
+| Start | Lesson preview — what the video covers + "answer each check to continue" | — |
+| 1 | [Topic segment 1] | [Concept-check Q1 — correct answer required] |
+| 2 | [Topic segment 2] | [Q2] |
+| 3 | [Topic segment 3] | [Q3] |
+| 4 | [Topic segment 4] | [Q4] |
+| 5 | [Topic segment 5] | [Q5] |
+| … | add more chapters as needed | add more checkpoints |
+
+Accessibility: transcript ON, captions (.vtt), checkpoints readable by screen readers, no
+colour-only cues. If AI-generated: on-screen "AI-generated video. EU AI Act, Art. 50."
+
+### Applied — "The 7 Steps" video (7 chapters + 7 checkpoints)
+Start: *In this video you'll learn the 7 steps of chemical spill response. After each step,
+answer a quick check to continue.* Narration per chapter = Part 11. Checkpoints (✓ = correct):
+
+1. **Assess** — *Before touching anything, what must you do?* ✓ Check the SDS/label · smell it · wipe it · ignore it.
+2. **Alert & evacuate** — *The chemical is hazardous. What next?* ✓ Alert others and evacuate · clean quietly · keep working.
+3. **PPE** — *Before approaching, you must…* ✓ Put on gloves, goggles, apron · approach bare-handed · only a mask.
+4. **Contain** — *How do you stop it spreading?* ✓ Ring with absorbent, away from drains · wipe toward the drain · pour water.
+5. **Correct kit** — *The reagent is water-reactive. Which kit?* ✓ Dry/neutralizing kit · water-based kit · add water.
+6. **Dispose** — *Where does the waste go?* ✓ Labelled hazardous-waste container · general bin · sink.
+7. **Document** — *The area is safe. Final step?* ✓ Complete the incident log and notify supervisor · skip paperwork · tell a colleague verbally.
+
+Each checkpoint: correct → continue; wrong → feedback + retry (can't advance until correct).
+
+### Synthesia prompt (paste into the import chat) — builds the 7-step video from the PPTX
+> Create a professional, calm lab-safety training video titled "Chemical Spill Response — The 7
+> Steps," for adult laboratory technicians in a regulated MedTech/pharma facility. Language:
+> English. 16:9.
+>
+> Build it from this PowerPoint: use EACH slide as its own scene, and use EACH slide's SPEAKER
+> NOTES as the exact voiceover for that scene — do not rewrite them. Keep all 9 scenes, in order:
+> (1) Intro; (2) Assess — SDS/label first, never by sight/smell/touch; (3) Alert & evacuate —
+> people first; (4) PPE — gloves, goggles, apron before approaching; (5) Contain — absorbent,
+> outside in, away from drains; (6) Correct kit — water-reactive = dry kit, never water; (7)
+> Dispose — hazardous-waste container only; (8) Document — incident log + notify supervisor; (9)
+> Close — follow the SOP, every time.
+>
+> Style: professional, plain-language safety tone. Keep the 7 steps as SEPARATE scenes so a
+> knowledge-check can follow each later. Clear professional English voice, calm pace. Avatar
+> small in a bottom corner so it doesn't cover the slide illustrations — or voiceover only. Turn
+> on captions. Pronounce "SDS" as "ess-dee-ess" and "PPE" as "pee-pee-ee."
+
+The source deck is `Spill-7-Steps.pptx` (9 slides, Ocean Ink, script in each slide's speaker
+notes). Export 1080p MP4 + .vtt, then import to Rise Interactive Video and add the 7 checkpoints.
+
+---
+
+## PART 13 · Kirkpatrick Level 3 & 4 package (making it real)
+
+**Honest framing:** the course itself measures **L1 (reaction)** and **L2 (learning)**. L3 and L4
+are measured **on the job, after** the course. This package is what turns a course into a
+behaviour-and-results program — the senior-ID differentiator. Keep it employer-neutral.
+
+### A · Level 3 — Behaviour (on the job)
+
+**1. Supervisor Observation Checklist** (score real performance in a drill/audit at 30 / 60 / 90 days)
+A technician responding to a (planned) spill scenario is observed on the 7 SOP steps. Score each
+Yes / No; any critical step "No" = not yet competent → re-coach.
+
+| # | Observable behaviour | Critical? | Yes/No |
+|---|---|---|---|
+| 1 | Consulted the SDS/label before acting (did not touch/smell) | ✅ | ☐ |
+| 2 | Alerted others and cleared the area before cleanup | ✅ | ☐ |
+| 3 | Donned correct PPE before approaching | ✅ | ☐ |
+| 4 | Contained the spill with absorbent, away from drains | ✅ | ☐ |
+| 5 | Selected the correct kit for the chemical | ✅ | ☐ |
+| 6 | Disposed of waste in the hazardous-waste container | ✅ | ☐ |
+| 7 | Completed the incident log and notified supervisor | ⚠️ | ☐ |
+
+Observer: __________ · Date: ______ · Result: all critical = Yes → competent / else → re-coach by: ______
+
+**2. xAPI → LRS (the data hook).** Publish the course (or a follow-up performance activity) as
+**xAPI/cmi5** pointing to the LRS (e.g. LRS.io). Statements: `performed` / `passed` per critical
+step, with context (SOP id + version, site, recert cycle). This lets you correlate course data
+with the observation scores = evidence of behaviour change.
+
+**3. Learner commitment + spaced follow-up.** At course end, the learner commits ("I'll keep the
+job aid at my bench; I'll complete the quarterly drill"). Schedule a **30-day micro-check**
+(short scenario) + a **manager-led drill**. Behaviour that isn't reinforced decays.
+
+**L3 success metric:** ≥ 95% of technicians observed following all critical SOP steps in a bench
+audit within 90 days.
+
+### B · Level 4 — Results (business impact)
+
+Define the operational metric(s) the training should move, with baseline → target → owner → cadence:
+
+| Metric | Baseline | Target | Data source | Owner | Review |
+|---|---|---|---|---|---|
+| Reportable spill incidents | `[VERIFY]` | ↓ 30% in 2 quarters | EHS incident system | EHS lead | Quarterly |
+| Spill-related deviations / CAPAs | `[VERIFY]` | ↓ | QMS | QA | Quarterly |
+| Time-to-competency (new hires) | `[VERIFY]` | ↓ | Training records (LMS) | L&D | Quarterly |
+| Audit findings on spill response | `[VERIFY]` | 0 repeat findings | Internal audit | QA | Per audit |
+
+Tie it back to the terminal objective: *fewer incidents and faster competency because technicians
+follow the SOP with zero critical errors.*
+
+### C · Closing the loop (L3↔L4 → design)
+- Low first-attempt L2 on a step → fix the course/practice for that step.
+- Good L2 but poor L3 audits → transfer/environment issue → job aids, drills, manager coaching
+  (not more slides).
+- Rising incidents despite good L3 → process/equipment problem, not training → escalate.
+- Share lessons with SOP owners each quarter.
+
+> **Portfolio value:** most courses stop at L2. Shipping this L3/L4 package — observation
+> checklist, xAPI hooks, and a results measurement plan — is direct evidence you design for
+> **behaviour change and business impact**, exactly what a senior ID role asks for.
+
+---
+
+## PART 14 · xAPI specification — exporting the checkpoints to an LRS
+
+**Goal:** every checkpoint/decision emits an xAPI statement to the LRS (e.g. LRS.io) so you can
+see, per learner, *which step they got right/wrong* and *first-attempt accuracy* — the data that
+feeds Kirkpatrick L3. Publish from Rise/Storyline as **xAPI (Tin Can)** or **cmi5**, not SCORM.
+
+### Identifiers (keep consistent — don't mint ad hoc)
+Base activity IRI: `https://profeanaeslava.com/xapi/spill-sop` (use your own domain/registry).
+- Course: `…/spill-sop`
+- Step activity: `…/spill-sop/step/1` … `/step/7`
+- Assessment: `…/spill-sop/quiz`
+
+### Verbs
+- `http://adlnet.gov/expapi/verbs/answered` — a checkpoint answered
+- `http://adlnet.gov/expapi/verbs/passed` / `failed` — the zero-error gate / quiz result
+- `http://adlnet.gov/expapi/verbs/completed` — course completed
+- `http://adlnet.gov/expapi/verbs/experienced` — video/step viewed (optional)
+
+### Per-step statement (one per checkpoint)
+```json
+{
+  "actor": { "name": "<learner>", "mbox": "mailto:<learner-email>" },
+  "verb": { "id": "http://adlnet.gov/expapi/verbs/answered",
+            "display": { "en-US": "answered" } },
+  "object": {
+    "id": "https://profeanaeslava.com/xapi/spill-sop/step/1",
+    "definition": {
+      "name": { "en-US": "SOP Step 1 - Assess the spill" },
+      "description": { "en-US": "Consult the SDS/label before acting" },
+      "type": "http://adlnet.gov/expapi/activities/cmi.interaction",
+      "interactionType": "choice",
+      "correctResponsesPattern": ["consult-sds"]
+    }
+  },
+  "result": {
+    "success": true,
+    "response": "consult-sds",
+    "extensions": {
+      "https://profeanaeslava.com/xapi/ext/first-attempt": true,
+      "https://profeanaeslava.com/xapi/ext/critical-step": true
+    }
+  },
+  "context": {
+    "extensions": {
+      "https://profeanaeslava.com/xapi/ext/sop-id": "SOP-114",
+      "https://profeanaeslava.com/xapi/ext/sop-version": "Rev 3",
+      "https://profeanaeslava.com/xapi/ext/site": "<site>",
+      "https://profeanaeslava.com/xapi/ext/recert-cycle": "annual",
+      "https://profeanaeslava.com/xapi/ext/language": "en"
+    }
+  }
+}
+```
+
+### Final gate statement (zero-error pass/fail)
+```json
+{
+  "actor": { "name": "<learner>", "mbox": "mailto:<learner-email>" },
+  "verb": { "id": "http://adlnet.gov/expapi/verbs/passed", "display": { "en-US": "passed" } },
+  "object": { "id": "https://profeanaeslava.com/xapi/spill-sop/quiz",
+    "definition": { "name": { "en-US": "Chemical Spill Response - zero-error gate" },
+      "type": "http://adlnet.gov/expapi/activities/assessment" } },
+  "result": {
+    "success": true,
+    "score": { "scaled": 1.0, "raw": 100, "min": 0, "max": 100 },
+    "completion": true,
+    "extensions": {
+      "https://profeanaeslava.com/xapi/ext/error-count": 0,
+      "https://profeanaeslava.com/xapi/ext/first-attempt-accuracy": 0.86
+    }
+  }
+}
+```
+
+### The 7 step objects & correct responses
+| Step | object id …/step/N | correctResponsesPattern | critical |
+|---|---|---|---|
+| 1 Assess | /step/1 | `consult-sds` | yes |
+| 2 Alert & evacuate | /step/2 | `alert-evacuate` | yes |
+| 3 PPE | /step/3 | `don-ppe` | yes |
+| 4 Contain | /step/4 | `contain-absorbent` | yes |
+| 5 Correct kit | /step/5 | `dry-kit` | yes |
+| 6 Dispose | /step/6 | `hazardous-waste` | yes |
+| 7 Document | /step/7 | `log-and-notify` | important |
+
+### How to emit them
+- **Storyline (richest):** on each decision, add a trigger **"Send xAPI statement"** (or
+  `Tincan.SendStatement` via a JavaScript trigger / an xAPI template) with the object + result
+  above; publish **xAPI**, set the **LRS endpoint + key/secret** (LRS.io) at publish or in the LMS.
+- **Rise:** publish **xAPI/cmi5**; Knowledge Check / quiz interactions auto-emit `answered` and the
+  result emits `passed/failed`. Less granular than Storyline but needs no scripting.
+- **LRS.io:** create the activity/credential, copy **endpoint + key + secret**, and point the
+  package (or the LMS forwarding to the LRS) at them. Verify statements arrive in the LRS viewer.
+
+### What you'll see in the LRS (the L3 payoff)
+Per learner and cohort: which **critical step** fails most, **first-attempt accuracy**, pass rate,
+time, language — correlate with the supervisor observation checklist for real behaviour evidence.
+
+> Keep IRIs/verbs consistent across EN and ES versions (same object ids; only `language` and the
+> display strings change) so both report into one dataset.
+
+### Publishing for Cornerstone (CSOD) — the target pharmacy LMS
+Cornerstone reads **SCORM** natively, so publish for it, not plain xAPI.
+
+| Setting | Value | Why |
+|---|---|---|
+| **LMS format** | **SCORM 2004 – 4th Edition** | Cornerstone reads it natively (completion, score, pass/fail) |
+| **LMS package type** | **Standard package** | Download `.zip`, upload a **new version** to change → version control & audit trail (GxP needs a controlled record). *Connected* edits live from Rise with no version trail → not compliant. |
+| **Reset progress after updates** | **Off** now; **On** when the SOP changes | Turning it On on re-issue forces everyone to **re-certify** — part of change control. |
+| **Reporting** | **Passed/Incomplete** | Marks passed when all checkpoints/quiz are completed correctly. |
+| **Exit link / return to LMS** | On | Lets learners return to Cornerstone cleanly. |
+
+Do the same for **both** objects (the Rise course and the Interactive Video): publish each as
+**SCORM 2004 – 4th Edition / Standard package**, upload both to Cornerstone, and group them as a
+**curriculum / learning path**. Test pass/fail/resume in a Cornerstone sandbox (or SCORM Cloud)
+before release, and record the package version against the SOP version (`SOP vX → package vX`).
+
+- **Plain xAPI** → only for a standalone LRS (LRS.io), as a separate portfolio demo — not the
+  Cornerstone delivery.
+- **cmi5** → use only if that Cornerstone instance has cmi5 enabled (xAPI richness + LMS-launchable).
+
+---
+
+© 2026 Ana Eslava-Graterol · profeanaeslava · All rights reserved.
+
+_Transparency note: developed with the assistance of generative AI; reviewed, edited and
+approved under the editorial responsibility of Ana Eslava-Graterol, instructional designer
+registered as a self-employed professional in Spain (in the spirit of the EU AI Act, Art. 50
+— Regulation (EU) 2024/1689)._
