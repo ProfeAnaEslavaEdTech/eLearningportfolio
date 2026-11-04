@@ -1,0 +1,6 @@
+# Code owners for this repository.
+# Every pull request requires review/approval from the owner.
+# (Enforced when branch protection on `main` has
+#  "Require review from Code Owners" enabled.)
+
+*       @ProfeAnaEslavaEdTech
