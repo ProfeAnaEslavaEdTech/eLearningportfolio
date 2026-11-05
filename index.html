@@ -76,16 +76,16 @@ main{padding:16px 0 10px;flex:1 0 auto}
 .step1{font:700 10px var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--primary);text-align:center;margin:20px 0 12px}
 
 /* ===== SECTORS ===== */
-.sectors{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
-@media(max-width:980px){.sectors{grid-template-columns:repeat(3,1fr)}}
+.sectors{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px}
 .sbtn{--c:var(--primary);background:var(--surface);border:1.5px solid var(--line);border-top:3px solid var(--c);border-radius:12px;padding:13px 12px;cursor:pointer;text-align:left;transition:border-color .18s,background .18s,box-shadow .18s,transform .18s;color:var(--ink);min-height:64px;box-shadow:var(--sbtn-sh)}
 /* each sector card samples a colour across the footer band: blue -> indigo -> violet -> amber -> gold */
 .sbtn:nth-child(1){--c:#3B5BD6}
 .sbtn:nth-child(2){--c:#5246C0}
 .sbtn:nth-child(3){--c:#6B47B0}
 .sbtn:nth-child(4){--c:#7E4FA6}
-.sbtn:nth-child(5){--c:#D08A3A}
-.sbtn:nth-child(6){--c:#E8A33D}
+.sbtn:nth-child(5){--c:#C77A3A}
+.sbtn:nth-child(6){--c:#DC9A3B}
+.sbtn:nth-child(7){--c:#E8A33D}
 .sbtn:hover{border-color:var(--c);background:color-mix(in srgb,var(--c) 5%,var(--surface));box-shadow:var(--sbtn-sh-hi);transform:translateY(-1px)}
 .sbtn:hover .n{color:var(--c)}
 .sbtn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
@@ -104,23 +104,26 @@ main{padding:16px 0 10px;flex:1 0 auto}
 /* ===== CASES ===== */
 .cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;--c:var(--primary);--cfill:var(--primary);--cline:var(--primary)}
 /* per-sector palette, sampled across the footer band. --c=top accent, --cfill=solid (white text), --cline=outline/text (theme-aware) */
-.cases[data-sector="courses"]{--c:#3B5BD6;--cfill:#3B5BD6;--cline:#3B5BD6}
-.cases[data-sector="game"]{--c:#5246C0;--cfill:#4A3EB4;--cline:#4A3EB4}
-.cases[data-sector="video"]{--c:#6B47B0;--cfill:#5A3C96;--cline:#5A3C96}
-.cases[data-sector="webapps"]{--c:#7E4FA6;--cfill:#6E4291;--cline:#6E4291}
-.cases[data-sector="demo"]{--c:#D08A3A;--cfill:#9A5B00;--cline:#9A5B00}
+.cases[data-sector="method"]{--c:#3B5BD6;--cfill:#3B5BD6;--cline:#3B5BD6}
+.cases[data-sector="courses"]{--c:#5246C0;--cfill:#4A3EB4;--cline:#4A3EB4}
+.cases[data-sector="game"]{--c:#6B47B0;--cfill:#5A3C96;--cline:#5A3C96}
+.cases[data-sector="video"]{--c:#7E4FA6;--cfill:#6E4291;--cline:#6E4291}
+.cases[data-sector="webapps"]{--c:#C77A3A;--cfill:#9A5B00;--cline:#9A5B00}
+.cases[data-sector="demo"]{--c:#DC9A3B;--cfill:#946100;--cline:#946100}
 .cases[data-sector="research"]{--c:#E8A33D;--cfill:#946100;--cline:#946100}
-:root[data-theme="dark"] .cases[data-sector="courses"]{--cline:#8EA2F5}
-:root[data-theme="dark"] .cases[data-sector="game"]{--cline:#9A8CF0}
-:root[data-theme="dark"] .cases[data-sector="video"]{--cline:#B49AE8}
-:root[data-theme="dark"] .cases[data-sector="webapps"]{--cline:#C79BE0}
-:root[data-theme="dark"] .cases[data-sector="demo"]{--cline:#EBB46A}
+:root[data-theme="dark"] .cases[data-sector="method"]{--cline:#8EA2F5}
+:root[data-theme="dark"] .cases[data-sector="courses"]{--cline:#9A8CF0}
+:root[data-theme="dark"] .cases[data-sector="game"]{--cline:#B49AE8}
+:root[data-theme="dark"] .cases[data-sector="video"]{--cline:#C79BE0}
+:root[data-theme="dark"] .cases[data-sector="webapps"]{--cline:#EBB46A}
+:root[data-theme="dark"] .cases[data-sector="demo"]{--cline:#EDB862}
 :root[data-theme="dark"] .cases[data-sector="research"]{--cline:#F0B45C}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cases[data-sector="courses"]{--cline:#8EA2F5}
-:root:not([data-theme="light"]) .cases[data-sector="game"]{--cline:#9A8CF0}
-:root:not([data-theme="light"]) .cases[data-sector="video"]{--cline:#B49AE8}
-:root:not([data-theme="light"]) .cases[data-sector="webapps"]{--cline:#C79BE0}
-:root:not([data-theme="light"]) .cases[data-sector="demo"]{--cline:#EBB46A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cases[data-sector="method"]{--cline:#8EA2F5}
+:root:not([data-theme="light"]) .cases[data-sector="courses"]{--cline:#9A8CF0}
+:root:not([data-theme="light"]) .cases[data-sector="game"]{--cline:#B49AE8}
+:root:not([data-theme="light"]) .cases[data-sector="video"]{--cline:#C79BE0}
+:root:not([data-theme="light"]) .cases[data-sector="webapps"]{--cline:#EBB46A}
+:root:not([data-theme="light"]) .cases[data-sector="demo"]{--cline:#EDB862}
 :root:not([data-theme="light"]) .cases[data-sector="research"]{--cline:#F0B45C}}
 .case{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:14px;padding:16px 17px;box-shadow:var(--shadow);transition:border-color .18s,background .18s,box-shadow .18s,transform .18s}
 .case:hover{border-color:var(--c);background:color-mix(in srgb,var(--c) 5%,var(--surface));box-shadow:var(--sbtn-sh-hi);transform:translateY(-1px)}
@@ -182,33 +185,6 @@ footer.band p.ai b{font-weight:700}
   <h2 class="name">Ana Eslava-Graterol</h2>
   <h3 class="tagline"><span class="lang-en">From script to screen — academic English, language learning, measurable.</span><span class="lang-es">Del guion a la pantalla — inglés académico, aprendizaje de idiomas, medible.</span></h3>
   <p class="role"><span class="lang-en">eLearning &amp; Language-Learning Design · PhD Candidate · DELE Examiner</span><span class="lang-es">Diseño eLearning y de idiomas · Doctoranda · Examinadora DELE</span></p>
-  <div class="about">
-    <button class="about-toggle" id="aboutBtn" type="button" aria-expanded="false" aria-controls="about-panel"><span class="lang-en">About me</span><span class="lang-es">Sobre mí</span><span class="caret" aria-hidden="true"></span></button>
-    <div class="about-panel" id="about-panel" hidden>
-      <div class="lang-en">
-        <p>I design learning experiences that people actually finish — engaging and easy to measure. For 20+ years I've turned complex, highly technical topics into clear, structured courses for universities, large companies and product teams alike. Native Spanish with C1 English, I design and deliver full corporate eLearning in English, aligned to the client's style guide and official accessibility guidelines.</p>
-        <h3>What I bring to a team</h3>
-        <ul>
-          <li><b>Solid learning structures.</b> ADDIE, SAM and Agile, with gamification, microlearning and realistic problem-solving that keep learners engaged start to finish.</li>
-          <li><b>Decisions based on data.</b> SCORM and xAPI embedded in the lessons, connecting LMS data with learning analytics to improve from real results.</li>
-          <li><b>Accessible to everyone.</b> Web accessibility and Universal Design for Learning from the first sketch, not a late compliance fix.</li>
-          <li><b>Human + AI teamwork.</b> Humans make every teaching decision; AI only speeds up production, without sacrificing quality.</li>
-        </ul>
-        <p class="contact">Contact: <a href="mailto:profeanaeslava@gmail.com">profeanaeslava@gmail.com</a> · <a href="https://www.linkedin.com/in/anaeslava" target="_blank" rel="noopener">LinkedIn</a> · <a href="cv/Ana-Eslava-Graterol-CV.pdf" download>Download CV (PDF)</a></p>
-      </div>
-      <div class="lang-es">
-        <p>Diseño experiencias de aprendizaje que la gente realmente termina: interesantes y fáciles de medir. Durante más de 20 años he transformado temas complejos y altamente técnicos en cursos claros y estructurados, para universidades, grandes empresas y equipos de producto. Hablante nativa de español con inglés C1, diseño y entrego proyectos corporativos completos de eLearning en inglés, alineados con la guía de estilo del cliente y las directrices oficiales de accesibilidad.</p>
-        <h3>Lo que aporto a un equipo</h3>
-        <ul>
-          <li><b>Buenas estructuras de aprendizaje.</b> ADDIE, SAM y Agile, con gamificación, microlearning y resolución realista de problemas que mantienen la motivación de principio a fin.</li>
-          <li><b>Decisiones basadas en datos.</b> SCORM y xAPI integrados en las lecciones, conectando los datos del LMS con la analítica de aprendizaje para mejorar con resultados reales.</li>
-          <li><b>Accesible para todos.</b> Accesibilidad web y Diseño Universal para el Aprendizaje desde el primer boceto, no como un parche de cumplimiento al final.</li>
-          <li><b>Equipo humano + IA.</b> Las personas toman cada decisión pedagógica; la IA solo acelera la producción, sin sacrificar la calidad.</li>
-        </ul>
-        <p class="contact">Contacto: <a href="mailto:profeanaeslava@gmail.com">profeanaeslava@gmail.com</a> · <a href="https://www.linkedin.com/in/anaeslava" target="_blank" rel="noopener">LinkedIn</a> · <a href="cv/Ana-Eslava-Graterol-CV.pdf" download>Descargar CV (PDF)</a></p>
-      </div>
-    </div>
-  </div>
 </div></header>
 
 <main class="wrap">
@@ -223,6 +199,7 @@ footer.band p.ai b{font-weight:700}
     <h2 id="work-h" class="work-title"><span class="lang-en">Working together</span><span class="lang-es">Trabajar juntos</span></h2>
     <div class="work-actions">
       <a class="btn-primary" href="https://profeanaeslavaedtech.github.io/portofolio/"><span class="lang-en">Main portfolio</span><span class="lang-es">Portafolio principal</span></a>
+      <a class="btn-ghost" href="cv/Ana-Eslava-Graterol-CV.pdf" download><span class="lang-en">Download CV (PDF)</span><span class="lang-es">Descargar CV (PDF)</span></a>
       <a class="btn-primary" href="mailto:profeanaeslava@gmail.com"><span class="lang-en">Let's talk &rarr;</span><span class="lang-es">Hablemos &rarr;</span></a>
     </div>
   </section>
@@ -234,6 +211,13 @@ footer.band p.ai b{font-weight:700}
 
 <script>
 var DATA={
+ method:{name:"Approach & method",name_es:"Enfoque y método", pain:"The frameworks and theory behind every build.",pain_es:"Los marcos y la teoría detrás de cada desarrollo.", cases:[
+   {t:"Design frameworks",t_es:"Marcos de diseño", tag:"Method",tag_es:"Método", sum:"ADDIE and SAM iterative cycles; Casañ-Pitarch's IPO (Input→Processing→Output); ESA and CLIL 4Cs.",sum_es:"Ciclos iterativos ADDIE y SAM; IPO de Casañ-Pitarch (Input→Processing→Output); ESA y CLIL 4Cs.", link:""},
+   {t:"Second language acquisition",t_es:"Adquisición de segundas lenguas", tag:"SLA",tag_es:"ASL", sum:"Krashen's comprehensible input (i+1), Schmidt's noticing and Swain's output; Swales' moves and Hyland's metadiscourse.",sum_es:"Input comprensible de Krashen (i+1), noticing de Schmidt y output de Swain; movimientos de Swales y metadiscurso de Hyland.", link:""},
+   {t:"eLearning & UX",t_es:"eLearning y UX", tag:"UX",tag_es:"UX", sum:"Cognitive Load Theory (Sweller), Universal Design for Learning (CAST) and multimodal learning.",sum_es:"Teoría de la carga cognitiva (Sweller), Diseño Universal para el Aprendizaje (CAST) y aprendizaje multimodal.", link:""},
+   {t:"Responsible human + AI",t_es:"Humano + IA responsable", tag:"Governance",tag_es:"Gobernanza", sum:"Humans make every pedagogical decision; AI only accelerates production. EU AI Act Art. 50 transparency.",sum_es:"Las personas toman cada decisión pedagógica; la IA solo acelera la producción. Transparencia Ley de IA (UE) Art. 50.", link:""},
+   {t:"Technology stack",t_es:"Stack tecnológico", tag:"Tools",tag_es:"Herramientas", sum:"Articulate 360, Canva, Synthesia, Web Speech API, GitHub Pages; LMS: Moodle, Canvas, Chamilo.",sum_es:"Articulate 360, Canva, Synthesia, Web Speech API, GitHub Pages; LMS: Moodle, Canvas, Chamilo.", link:""}
+ ]},
  courses:{name:"Courses & eLearning",name_es:"Cursos y eLearning", pain:"Full courses and microlearning — language learning that people finish.",pain_es:"Cursos completos y microlearning — aprendizaje de idiomas que la gente termina.", cases:[
    {t:"Academic Writing Journey",t_es:"Academic Writing Journey", tag:"Flagship course",tag_es:"Curso estrella", sum:"Six-level gamified academic-English course (B2→C1); 10/10 inclusive design (UPV).",sum_es:"Curso gamificado de inglés académico de 6 niveles (B2→C1); 10/10 diseño inclusivo (UPV).", link:"https://profeanaeslavaedtech.github.io/Gamification/", cta:"Launch demo",cta_es:"Ver demo"},
    {t:"EdTech Mobile Lessons App",t_es:"App de microlecciones EdTech", tag:"Microlearning",tag_es:"Microlearning", sum:"JSON-driven mobile microlessons, deployed as a web app.",sum_es:"Microlecciones móviles basadas en JSON, como app web.", link:"https://profeanaeslavaedtech.github.io/edtech-mobile-json-lessons/app/index.html", cta:"Launch app",cta_es:"Abrir app"},
@@ -265,7 +249,7 @@ var DATA={
    {t:"MLLDE measurement (xAPI)",t_es:"Medición MLLDE (xAPI)", tag:"Open standard",tag_es:"Estándar abierto", sum:"CEFR-anchored xAPI profile and descriptor registry (CC BY 4.0).",sum_es:"Perfil xAPI anclado al MCER y registro de descriptores (CC BY 4.0).", link:"https://profeanaeslavaedtech.github.io/mllde-xapi/", cta:"Open",cta_es:"Abrir"}
  ]}
 };
-var ORDER=[["courses","Courses & eLearning","Cursos y eLearning"],["game","Gamification","Gamificación"],["video","Video production","Producción de vídeo"],["webapps","Web apps","Web apps"],["demo","Demo classes","Clases demo"],["research","Data & research","Datos e investigación"]];
+var ORDER=[["method","Approach & method","Enfoque y método"],["courses","Courses & eLearning","Cursos y eLearning"],["game","Gamification","Gamificación"],["video","Video production","Producción de vídeo"],["webapps","Web apps","Web apps"],["demo","Demo classes","Clases demo"],["research","Data & research","Datos e investigación"]];
 var T={en:{branch:"Facet",suffix:" — selected work",open:"Open"},
         es:{branch:"Faceta",suffix:" — trabajo seleccionado",open:"Abrir"}};
 var root=document.documentElement;
@@ -302,8 +286,9 @@ function select(k){
   d.cases.forEach(function(c){
     var el=document.createElement('article');el.className='case';
     var title=LC(c,'t');
-    var label=(LC(c,'cta')||T[lang].open)+' →';
-    var cta='<a class="open" data-kind="open" data-case="'+esc(title)+'" href="'+c.link+'" target="_blank" rel="noopener">'+esc(label)+'</a>';
+    var cta='';
+    if(c.link){ var label=(LC(c,'cta')||T[lang].open)+' →';
+      cta='<a class="open" data-kind="open" data-case="'+esc(title)+'" href="'+c.link+'" target="_blank" rel="noopener">'+esc(label)+'</a>'; }
     el.innerHTML='<div class="status">'+esc(LC(c,'tag'))+'</div><h4>'+esc(title)+'</h4><p class="sum">'+esc(LC(c,'sum'))+'</p>'+cta;
     cases.appendChild(el);
   });
@@ -323,7 +308,7 @@ paintLang();})();
 
 /* about toggle */
 (function(){var ab=document.getElementById('aboutBtn'),ap=document.getElementById('about-panel');
-ab.addEventListener('click',function(){var open=ab.getAttribute('aria-expanded')==='true';ab.setAttribute('aria-expanded',open?'false':'true');ap.hidden=open;});})();
+if(ab&&ap){ab.addEventListener('click',function(){var open=ab.getAttribute('aria-expanded')==='true';ab.setAttribute('aria-expanded',open?'false':'true');ap.hidden=open;});}})();
 
 /* theme toggle (OS default) */
 var tb=document.getElementById('themeBtn');
