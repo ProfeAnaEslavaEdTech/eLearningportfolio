@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +37,11 @@
   a{color:var(--primary)}
   :focus-visible{outline:3px solid var(--focus-ring);outline-offset:2px}
 
+  /* bilingual */
+  .lang-es{display:none}
+  :root[data-lang="es"] .lang-en{display:none}
+  :root[data-lang="es"] .lang-es{display:inline}
+
   /* top bar */
   .topbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--canvas) 88%,transparent);
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
@@ -44,9 +49,10 @@
     align-items:center;justify-content:space-between;gap:16px}
   .back{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none}
   .back:hover{color:var(--primary)}
-  .theme-btn{border:1px solid var(--line);background:transparent;color:var(--muted);
+  .controls{display:flex;align-items:center;gap:10px}
+  .pill{border:1px solid var(--line);background:transparent;color:var(--muted);
     border-radius:999px;padding:7px 16px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
-  .theme-btn:hover{color:var(--primary);border-color:var(--primary)}
+  .pill:hover{color:var(--primary);border-color:var(--primary)}
 
   /* hero */
   .hero{background:var(--primary-deep);color:#FFFFFF;padding:72px 0 64px}
@@ -115,6 +121,23 @@
     font-size:14px;color:var(--muted);max-width:72ch}
   .note b{color:var(--ink);font-weight:600}
 
+  /* accordion — keeps long prose folded away for a minimal first read */
+  details.acc{border:1px solid var(--line);border-radius:10px;background:var(--surface);
+    margin-top:14px;overflow:hidden}
+  details.acc + details.acc{margin-top:10px}
+  details.acc > summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:600;
+    font-size:14.5px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:14px}
+  details.acc > summary::-webkit-details-marker{display:none}
+  details.acc > summary::after{content:"+";color:var(--primary);font-size:20px;font-weight:400;line-height:1;flex:none}
+  details.acc[open] > summary::after{content:"\2013"}
+  details.acc > summary:hover{color:var(--primary)}
+  details.acc .acc-body{padding:0 20px 20px;color:var(--muted);font-size:14px;line-height:1.65;max-width:76ch}
+  details.acc .acc-body :first-child{margin-top:0}
+  /* accordions that wrap a bordered inner block drop their own padding */
+  details.acc .acc-body.flush{padding:2px 14px 16px}
+  details.acc .acc-body.flush .steps,
+  details.acc .acc-body.flush ol.flow{border:none;border-radius:0}
+
   /* cmi5 compare */
   .compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
     background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
@@ -142,217 +165,308 @@
 
 <div class="topbar">
   <div class="topbar-inner">
-    <a href="./index.html" class="back">Back to portfolio</a>
-    <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">Dark mode</button>
+    <a href="./index.html" class="back"><span class="lang-en">Back to portfolio</span><span class="lang-es">Volver al portafolio</span></a>
+    <div class="controls">
+      <button class="pill" id="langBtn" aria-label="Cambiar idioma / Switch language"><span class="lang-en">ES</span><span class="lang-es">EN</span></button>
+      <button class="pill" id="themeBtn" aria-label="Toggle colour theme"></button>
+    </div>
   </div>
 </div>
 
 <header class="hero">
   <div class="wrap">
-    <p class="kicker">Regulated-industry compliance training — Case study</p>
-    <h1 class="serif">Chemical Spill Response SOP</h1>
-    <p>A zero-error compliance microlearning course that turns a seven-step laboratory
-    safety procedure into an accessible, measurable, LMS-ready training — built the way
-    regulated pharma, MedTech and manufacturing teams need it: SCORM 2004, cmi5 and xAPI,
-    ready for Cornerstone and any LRS.</p>
+    <p class="kicker"><span class="lang-en">Regulated-industry compliance training — Case study</span><span class="lang-es">Formación en cumplimiento para industrias reguladas — Caso de estudio</span></p>
+    <h1 class="serif"><span class="lang-en">Chemical Spill Response SOP</span><span class="lang-es">PNT de respuesta ante derrames químicos</span></h1>
+    <p>
+      <span class="lang-en">A zero-error compliance microlearning course that turns a seven-step laboratory
+      safety procedure into an accessible, measurable, LMS-ready training — built the way
+      regulated pharma, MedTech and manufacturing teams need it: SCORM 2004, cmi5 and xAPI,
+      ready for Cornerstone and any LRS.</span>
+      <span class="lang-es">Un microcurso de cumplimiento de cero errores que convierte un procedimiento de
+      seguridad de laboratorio de siete pasos en una formación accesible, medible y lista
+      para el LMS, creada como la necesitan los equipos regulados de farma, MedTech y
+      fabricación: SCORM 2004, cmi5 y xAPI, listos para Cornerstone y cualquier LRS.</span>
+    </p>
     <div class="hero-cta">
-      <a class="btn btn-accent" href="https://share.eu.articulate.com/NVIlf9iYMckE0bdmTsPkz" target="_blank" rel="noopener">Launch the course <span class="cue">(opens in a new tab)</span></a>
-      <a class="btn btn-line" href="#downloads">Download LMS packages</a>
+      <a class="btn btn-accent" href="https://share.eu.articulate.com/NVIlf9iYMckE0bdmTsPkz" target="_blank" rel="noopener"><span class="lang-en">Launch the course <span class="cue">(opens in a new tab)</span></span><span class="lang-es">Abrir el curso <span class="cue">(se abre en una pestaña nueva)</span></span></a>
+      <a class="btn btn-line" href="#downloads"><span class="lang-en">Download LMS packages</span><span class="lang-es">Descargar paquetes LMS</span></a>
     </div>
   </div>
 </header>
 
 <section>
   <div class="wrap">
-    <p class="over">Overview</p>
-    <h2 class="serif">Designed for people whose mistakes have consequences.</h2>
-    <p class="lead">In a regulated laboratory, a spill handled the wrong way is a safety
-    incident and a compliance deviation at once. This course trains technicians to follow
-    the Standard Operating Procedure exactly — every step, every time — and gives
-    supervisors the evidence that they do.</p>
+    <p class="over"><span class="lang-en">Overview</span><span class="lang-es">Resumen</span></p>
+    <h2 class="serif"><span class="lang-en">Designed for people whose mistakes have consequences.</span><span class="lang-es">Diseñado para personas cuyos errores tienen consecuencias.</span></h2>
+    <p class="lead">
+      <span class="lang-en">In a regulated laboratory, a spill handled the wrong way is a safety
+      incident and a compliance deviation at once. This course trains technicians to follow
+      the Standard Operating Procedure exactly — every step, every time — and gives
+      supervisors the evidence that they do.</span>
+      <span class="lang-es">En un laboratorio regulado, un derrame mal gestionado es a la vez un incidente
+      de seguridad y una desviación de cumplimiento. Este curso entrena a los técnicos para
+      seguir el Procedimiento Normalizado de Trabajo con exactitud —cada paso, siempre— y da
+      a los supervisores la evidencia de que así lo hacen.</span>
+    </p>
 
     <dl class="spec">
-      <div><dt>Format</dt><dd>Interactive video and microlearning (Articulate Rise)</dd></div>
-      <div><dt>Audience</dt><dd>Laboratory technicians (adult learners)</dd></div>
-      <div><dt>Target LMS</dt><dd>Cornerstone; any SCORM / cmi5 / xAPI LMS or LRS</dd></div>
-      <div><dt>Languages</dt><dd>English master; Spanish (learner-selectable)</dd></div>
-      <div><dt>Duration</dt><dd>~8–10 min plus scenario practice</dd></div>
-      <div><dt>Standards</dt><dd>WCAG 2.1 AA; EU AI Act Art. 50</dd></div>
+      <div><dt><span class="lang-en">Format</span><span class="lang-es">Formato</span></dt><dd><span class="lang-en">Interactive video and microlearning (Articulate Rise)</span><span class="lang-es">Vídeo interactivo y microlearning (Articulate Rise)</span></dd></div>
+      <div><dt><span class="lang-en">Audience</span><span class="lang-es">Público</span></dt><dd><span class="lang-en">Laboratory technicians (adult learners)</span><span class="lang-es">Técnicos de laboratorio (personas adultas)</span></dd></div>
+      <div><dt><span class="lang-en">Target LMS</span><span class="lang-es">LMS de destino</span></dt><dd><span class="lang-en">Cornerstone; any SCORM / cmi5 / xAPI LMS or LRS</span><span class="lang-es">Cornerstone; cualquier LMS o LRS con SCORM / cmi5 / xAPI</span></dd></div>
+      <div><dt><span class="lang-en">Languages</span><span class="lang-es">Idiomas</span></dt><dd><span class="lang-en">English master; Spanish (learner-selectable)</span><span class="lang-es">Inglés (máster); español (seleccionable por el alumno)</span></dd></div>
+      <div><dt><span class="lang-en">Duration</span><span class="lang-es">Duración</span></dt><dd><span class="lang-en">~8–10 min plus scenario practice</span><span class="lang-es">~8–10 min más práctica con escenarios</span></dd></div>
+      <div><dt><span class="lang-en">Standards</span><span class="lang-es">Estándares</span></dt><dd><span class="lang-en">WCAG 2.1 AA; EU AI Act Art. 50</span><span class="lang-es">WCAG 2.1 AA; Reglamento de IA de la UE, art. 50</span></dd></div>
     </dl>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <p class="over">Instructional design</p>
-    <h2 class="serif">The method behind it.</h2>
-    <p class="lead">Engineered with ADDIE, assessed to a zero-error mastery standard, and
-    evaluated across all four Kirkpatrick levels — not a "did they click through it"
-    completion.</p>
+    <p class="over"><span class="lang-en">Instructional design</span><span class="lang-es">Diseño instruccional</span></p>
+    <h2 class="serif"><span class="lang-en">The method behind it.</span><span class="lang-es">El método que lo sostiene.</span></h2>
+    <p class="lead">
+      <span class="lang-en">Engineered with ADDIE, assessed to a zero-error mastery standard, and
+      evaluated across all four Kirkpatrick levels — not a "did they click through it"
+      completion.</span>
+      <span class="lang-es">Diseñado con ADDIE, evaluado con un estándar de dominio de cero errores y
+      medido en los cuatro niveles de Kirkpatrick, no con un «¿hicieron clic hasta el
+      final?».</span>
+    </p>
 
     <div class="method">
-      <div class="m"><span class="tag">ADDIE</span><h4>Outcomes first</h4><p>Mager-style objectives (condition, behaviour, criterion) written before any screen was built, tied to real on-the-job performance.</p></div>
-      <div class="m"><span class="tag">Assessment</span><h4>Zero-error mastery gate</h4><p>Critical SOP steps require 100%. A wrong choice does not advance — it returns the learner to the decision until it is right.</p></div>
-      <div class="m"><span class="tag">Evaluation</span><h4>Kirkpatrick L1–L4</h4><p>L1 reaction survey; L2 in-course checkpoints; L3 supervisor observation at 30/60/90 days; L4 incident-rate results.</p></div>
-      <div class="m"><span class="tag">Accessibility</span><h4>WCAG 2.1 AA</h4><p>Captions, audio scripts, keyboard-navigable interactions, AA contrast, and clear new-tab cues throughout.</p></div>
-      <div class="m"><span class="tag">Bilingual</span><h4>English master to Spanish</h4><p>Authored in English, then translated to a learner-selectable Spanish version — one language per screen, never mixed.</p></div>
-      <div class="m"><span class="tag">Transparency</span><h4>EU AI Act Art. 50</h4><p>AI-assisted production is disclosed; every pedagogical and compliance decision stays human-directed and accountable.</p></div>
+      <div class="m"><span class="tag">ADDIE</span><h4><span class="lang-en">Outcomes first</span><span class="lang-es">Resultados primero</span></h4><p><span class="lang-en">Mager-style objectives (condition, behaviour, criterion) written before any screen was built, tied to real on-the-job performance.</span><span class="lang-es">Objetivos tipo Mager (condición, conducta, criterio) escritos antes de construir ninguna pantalla y ligados al desempeño real en el puesto.</span></p></div>
+      <div class="m"><span class="tag"><span class="lang-en">Assessment</span><span class="lang-es">Evaluación</span></span><h4><span class="lang-en">Zero-error mastery gate</span><span class="lang-es">Umbral de dominio de cero errores</span></h4><p><span class="lang-en">Critical SOP steps require 100%. A wrong choice does not advance — it returns the learner to the decision until it is right.</span><span class="lang-es">Los pasos críticos del PNT exigen el 100 %. Una elección incorrecta no avanza: devuelve al alumno a la decisión hasta acertar.</span></p></div>
+      <div class="m"><span class="tag"><span class="lang-en">Evaluation</span><span class="lang-es">Medición</span></span><h4>Kirkpatrick L1–L4</h4><p><span class="lang-en">L1 reaction survey; L2 in-course checkpoints; L3 supervisor observation at 30/60/90 days; L4 incident-rate results.</span><span class="lang-es">N1 encuesta de reacción; N2 puntos de control en el curso; N3 observación del supervisor a los 30/60/90 días; N4 resultados en la tasa de incidentes.</span></p></div>
+      <div class="m"><span class="tag"><span class="lang-en">Accessibility</span><span class="lang-es">Accesibilidad</span></span><h4>WCAG 2.1 AA</h4><p><span class="lang-en">Captions, audio scripts, keyboard-navigable interactions, AA contrast, and clear new-tab cues throughout.</span><span class="lang-es">Subtítulos, guiones de audio, interacciones navegables por teclado, contraste AA y avisos claros de pestaña nueva en todo momento.</span></p></div>
+      <div class="m"><span class="tag"><span class="lang-en">Bilingual</span><span class="lang-es">Bilingüe</span></span><h4><span class="lang-en">English master to Spanish</span><span class="lang-es">De inglés máster a español</span></h4><p><span class="lang-en">Authored in English, then translated to a learner-selectable Spanish version — one language per screen, never mixed.</span><span class="lang-es">Creado en inglés y traducido a una versión en español seleccionable por el alumno: un idioma por pantalla, nunca mezclados.</span></p></div>
+      <div class="m"><span class="tag"><span class="lang-en">Transparency</span><span class="lang-es">Transparencia</span></span><h4><span class="lang-en">EU AI Act Art. 50</span><span class="lang-es">Reglamento de IA de la UE, art. 50</span></h4><p><span class="lang-en">AI-assisted production is disclosed; every pedagogical and compliance decision stays human-directed and accountable.</span><span class="lang-es">Se declara la producción asistida por IA; cada decisión pedagógica y de cumplimiento sigue siendo dirigida por personas y responsable.</span></p></div>
     </div>
 
-    <h3 class="sub">The seven steps the course trains</h3>
+    <details class="acc">
+    <summary><span class="lang-en">The seven steps the course trains</span><span class="lang-es">Los siete pasos que entrena el curso</span></summary>
+    <div class="acc-body flush">
     <div class="steps">
-      <div class="step"><span class="n">1</span><h4>Assess</h4><p>Consult the SDS or label first — never by sight, smell or touch.</p></div>
-      <div class="step"><span class="n">2</span><h4>Alert &amp; evacuate</h4><p>Warn people nearby and clear the area. People first.</p></div>
-      <div class="step"><span class="n">3</span><h4>PPE</h4><p>Gloves, goggles and apron before approaching.</p></div>
-      <div class="step"><span class="n">4</span><h4>Contain</h4><p>Ring with absorbent, outside-in, away from drains.</p></div>
-      <div class="step"><span class="n">5</span><h4>Correct kit</h4><p>Match the kit to the chemical — dry kit for water-reactive.</p></div>
-      <div class="step"><span class="n">6</span><h4>Dispose</h4><p>Labelled hazardous-waste container only.</p></div>
-      <div class="step"><span class="n">7</span><h4>Document</h4><p>Complete the incident log and notify the supervisor.</p></div>
+      <div class="step"><span class="n">1</span><h4><span class="lang-en">Assess</span><span class="lang-es">Evaluar</span></h4><p><span class="lang-en">Consult the SDS or label first — never by sight, smell or touch.</span><span class="lang-es">Consulta primero la FDS o la etiqueta, nunca por vista, olfato o tacto.</span></p></div>
+      <div class="step"><span class="n">2</span><h4><span class="lang-en">Alert &amp; evacuate</span><span class="lang-es">Avisar y evacuar</span></h4><p><span class="lang-en">Warn people nearby and clear the area. People first.</span><span class="lang-es">Avisa a quienes estén cerca y despeja la zona. Las personas primero.</span></p></div>
+      <div class="step"><span class="n">3</span><h4><span class="lang-en">PPE</span><span class="lang-es">EPI</span></h4><p><span class="lang-en">Gloves, goggles and apron before approaching.</span><span class="lang-es">Guantes, gafas y delantal antes de acercarte.</span></p></div>
+      <div class="step"><span class="n">4</span><h4><span class="lang-en">Contain</span><span class="lang-es">Contener</span></h4><p><span class="lang-en">Ring with absorbent, outside-in, away from drains.</span><span class="lang-es">Rodea con absorbente, de fuera hacia dentro y lejos de los desagües.</span></p></div>
+      <div class="step"><span class="n">5</span><h4><span class="lang-en">Correct kit</span><span class="lang-es">Kit correcto</span></h4><p><span class="lang-en">Match the kit to the chemical — dry kit for water-reactive.</span><span class="lang-es">Ajusta el kit al producto químico: kit seco para los reactivos al agua.</span></p></div>
+      <div class="step"><span class="n">6</span><h4><span class="lang-en">Dispose</span><span class="lang-es">Eliminar</span></h4><p><span class="lang-en">Labelled hazardous-waste container only.</span><span class="lang-es">Solo en contenedor de residuos peligrosos etiquetado.</span></p></div>
+      <div class="step"><span class="n">7</span><h4><span class="lang-en">Document</span><span class="lang-es">Documentar</span></h4><p><span class="lang-en">Complete the incident log and notify the supervisor.</span><span class="lang-es">Completa el registro del incidente y avisa al supervisor.</span></p></div>
     </div>
+    </div>
+    </details>
   </div>
 </section>
 
 <section id="downloads">
   <div class="wrap">
-    <p class="over">LMS-ready packages</p>
-    <h2 class="serif">Download and deploy.</h2>
-    <p class="lead">The same course, published in three e-learning standards so it drops into
-    any system — from a classic SCORM LMS to a modern LRS. Each file below is the real
-    published output.</p>
+    <p class="over"><span class="lang-en">LMS-ready packages</span><span class="lang-es">Paquetes listos para el LMS</span></p>
+    <h2 class="serif"><span class="lang-en">Download and deploy.</span><span class="lang-es">Descarga e implementa.</span></h2>
+    <p class="lead">
+      <span class="lang-en">The same course, published in three e-learning standards so it drops into
+      any system — from a classic SCORM LMS to a modern LRS. Each file below is the real
+      published output.</span>
+      <span class="lang-es">El mismo curso, publicado en tres estándares de e-learning para que encaje en
+      cualquier sistema, desde un LMS SCORM clásico hasta un LRS moderno. Cada archivo de
+      abajo es la salida publicada real.</span>
+    </p>
 
     <div class="tablewrap">
       <table>
         <thead>
-          <tr><th>Standard</th><th>Best for</th><th>Package</th><th>Type / size</th><th></th></tr>
+          <tr>
+            <th><span class="lang-en">Standard</span><span class="lang-es">Estándar</span></th>
+            <th><span class="lang-en">Best for</span><span class="lang-es">Ideal para</span></th>
+            <th><span class="lang-en">Package</span><span class="lang-es">Paquete</span></th>
+            <th><span class="lang-en">Type / size</span><span class="lang-es">Tipo / tamaño</span></th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="fmt">SCORM 2004 4th Ed.</span><span class="sub2">Recommended for Cornerstone</span></td>
-            <td>Cornerstone and any SCORM LMS — the full course, video included, in one file. Validated / GxP-ready.</td>
+            <td><span class="fmt">SCORM 2004 4th Ed.</span><span class="sub2"><span class="lang-en">Recommended for Cornerstone</span><span class="lang-es">Recomendado para Cornerstone</span></span></td>
+            <td><span class="lang-en">Cornerstone and any SCORM LMS — the full course, video included, in one file. Validated / GxP-ready.</span><span class="lang-es">Cornerstone y cualquier LMS SCORM: el curso completo, vídeo incluido, en un solo archivo. Validable / listo para GxP.</span></td>
             <td>chemical-spill-response-sop-SCORM2004-4th.zip</td>
-            <td><span class="mark">Self-contained</span><span class="sub2">~41 MB</span></td>
-            <td><a class="dl" href="./assets/published/chemical-spill-response-sop-SCORM2004-4th.zip" download>Download</a></td>
+            <td><span class="mark"><span class="lang-en">Self-contained</span><span class="lang-es">Autónomo</span></span><span class="sub2">~41 MB</span></td>
+            <td><a class="dl" href="./assets/published/chemical-spill-response-sop-SCORM2004-4th.zip" download><span class="lang-en">Download</span><span class="lang-es">Descargar</span></a></td>
           </tr>
           <tr>
-            <td><span class="fmt">cmi5</span><span class="sub2">xAPI profile</span></td>
-            <td>Modern LMS/LRS that speak cmi5 — rich tracking and reliable completion.</td>
+            <td><span class="fmt">cmi5</span><span class="sub2"><span class="lang-en">xAPI profile</span><span class="lang-es">perfil xAPI</span></span></td>
+            <td><span class="lang-en">Modern LMS/LRS that speak cmi5 — rich tracking and reliable completion.</span><span class="lang-es">LMS/LRS modernos que hablan cmi5: seguimiento rico y finalización fiable.</span></td>
             <td>spill-sop-cmi5.zip</td>
-            <td><span class="mark">Self-contained</span><span class="sub2">~30 MB</span></td>
-            <td><a class="dl" href="./assets/published/spill-sop-cmi5.zip" download>Download</a></td>
+            <td><span class="mark"><span class="lang-en">Self-contained</span><span class="lang-es">Autónomo</span></span><span class="sub2">~30 MB</span></td>
+            <td><a class="dl" href="./assets/published/spill-sop-cmi5.zip" download><span class="lang-en">Download</span><span class="lang-es">Descargar</span></a></td>
           </tr>
           <tr>
             <td><span class="fmt">xAPI</span><span class="sub2">Tin Can</span></td>
-            <td>Learning Record Stores — granular statement-level data.</td>
+            <td><span class="lang-en">Learning Record Stores — granular statement-level data.</span><span class="lang-es">Learning Record Stores: datos granulares a nivel de sentencia.</span></td>
             <td>spill-sop-xAPI.zip</td>
-            <td><span class="mark">Self-contained</span><span class="sub2">~30 MB</span></td>
-            <td><a class="dl" href="./assets/published/spill-sop-xAPI.zip" download>Download</a></td>
+            <td><span class="mark"><span class="lang-en">Self-contained</span><span class="lang-es">Autónomo</span></span><span class="sub2">~30 MB</span></td>
+            <td><a class="dl" href="./assets/published/spill-sop-xAPI.zip" download><span class="lang-en">Download</span><span class="lang-es">Descargar</span></a></td>
           </tr>
           <tr>
-            <td><span class="fmt">SCORM 2004 4th Ed.</span><span class="sub2">Launcher variant</span></td>
-            <td>Lightweight connected package — streams from Articulate hosting.</td>
+            <td><span class="fmt">SCORM 2004 4th Ed.</span><span class="sub2"><span class="lang-en">Launcher variant</span><span class="lang-es">variante lanzador</span></span></td>
+            <td><span class="lang-en">Lightweight connected package — streams from Articulate hosting.</span><span class="lang-es">Paquete conectado y ligero: transmite desde el alojamiento de Articulate.</span></td>
             <td>spill-sop-SCORM2004.zip</td>
-            <td><span class="mark-muted">Launcher</span><span class="sub2">~24 KB</span></td>
-            <td><a class="dl" href="./assets/published/spill-sop-SCORM2004.zip" download>Download</a></td>
+            <td><span class="mark-muted"><span class="lang-en">Launcher</span><span class="lang-es">Lanzador</span></span><span class="sub2">~24 KB</span></td>
+            <td><a class="dl" href="./assets/published/spill-sop-SCORM2004.zip" download><span class="lang-en">Download</span><span class="lang-es">Descargar</span></a></td>
           </tr>
           <tr>
-            <td><span class="fmt">SCORM 2004 4th Ed.</span><span class="sub2">Launcher variant</span></td>
-            <td>Alternate build — "The 7 Steps" title.</td>
+            <td><span class="fmt">SCORM 2004 4th Ed.</span><span class="sub2"><span class="lang-en">Launcher variant</span><span class="lang-es">variante lanzador</span></span></td>
+            <td><span class="lang-en">Alternate build — "The 7 Steps" title.</span><span class="lang-es">Versión alternativa: título «The 7 Steps».</span></td>
             <td>the-7-steps-SCORM2004.zip</td>
-            <td><span class="mark-muted">Launcher</span><span class="sub2">~24 KB</span></td>
-            <td><a class="dl" href="./assets/published/the-7-steps-SCORM2004.zip" download>Download</a></td>
+            <td><span class="mark-muted"><span class="lang-en">Launcher</span><span class="lang-es">Lanzador</span></span><span class="sub2">~24 KB</span></td>
+            <td><a class="dl" href="./assets/published/the-7-steps-SCORM2004.zip" download><span class="lang-en">Download</span><span class="lang-es">Descargar</span></a></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <p class="note"><b>Self-contained vs. launcher.</b> The SCORM 2004 4th Ed. (recommended),
-    cmi5 and xAPI packages hold the entire course — video and all — inside the zip, so they
-    run from the LMS/LRS with a complete, auditable copy: the right choice for a validated,
-    21 CFR Part 11 / GxP environment. The small launcher variants are connected packages that
-    stream the content from Articulate's hosting — lighter to distribute, but not
-    self-contained.</p>
+    <details class="acc">
+      <summary><span class="lang-en">Self-contained vs. launcher — which file to pick</span><span class="lang-es">Autónomo frente a lanzador — qué archivo elegir</span></summary>
+      <div class="acc-body">
+        <span class="lang-en">The SCORM 2004 4th Ed. (recommended),
+        cmi5 and xAPI packages hold the entire course — video and all — inside the zip, so they
+        run from the LMS/LRS with a complete, auditable copy: the right choice for a validated,
+        21 CFR Part 11 / GxP environment. The small launcher variants are connected packages that
+        stream the content from Articulate's hosting — lighter to distribute, but not
+        self-contained.</span>
+        <span class="lang-es">Los paquetes SCORM 2004 4.ª ed. (recomendado), cmi5 y xAPI contienen el curso
+        entero —vídeo incluido— dentro del zip, así que se ejecutan desde el LMS/LRS con una
+        copia completa y auditable: la opción correcta para un entorno validado 21 CFR Part 11 /
+        GxP. Las pequeñas variantes de lanzador son paquetes conectados que transmiten el
+        contenido desde el alojamiento de Articulate: más ligeros de distribuir, pero no
+        autónomos.</span>
+      </div>
+    </details>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <p class="over">Explainer</p>
-    <h2 class="serif">What is cmi5 — and how would you use it?</h2>
-    <p class="lead"><b>cmi5</b> is a modern e-learning standard: an xAPI profile that defines
-    how an LMS launches a course and how that course reports back. It is the reliable
-    completion and launch rules of SCORM, carried on the rich data pipe of xAPI. ADL released
-    it in 2016 to replace SCORM for new content.</p>
+    <p class="over"><span class="lang-en">Explainer</span><span class="lang-es">Explicación</span></p>
+    <h2 class="serif"><span class="lang-en">What is cmi5 — and how would you use it?</span><span class="lang-es">¿Qué es cmi5 y cómo se usa?</span></h2>
+    <p class="lead">
+      <b>cmi5</b>
+      <span class="lang-en">is a modern e-learning standard: an xAPI profile that defines
+      how an LMS launches a course and how that course reports back. It is the reliable
+      completion and launch rules of SCORM, carried on the rich data pipe of xAPI. ADL released
+      it in 2016 to replace SCORM for new content.</span>
+      <span class="lang-es">es un estándar de e-learning moderno: un perfil de xAPI que define cómo un LMS
+      lanza un curso y cómo ese curso informa de vuelta. Son las reglas fiables de lanzamiento
+      y finalización de SCORM sobre el rico canal de datos de xAPI. ADL lo publicó en 2016 para
+      sustituir a SCORM en los contenidos nuevos.</span>
+    </p>
 
     <div class="compare">
       <div class="cc">
         <h4>SCORM 2004</h4>
-        <div class="yr">2004 — the classic</div>
+        <div class="yr"><span class="lang-en">2004 — the classic</span><span class="lang-es">2004 — el clásico</span></div>
         <ul>
-          <li>Runs only inside a browser, inside the LMS window</li>
-          <li>Tracks score, status and completion — but little about how learners performed</li>
-          <li>Universally supported, including Cornerstone</li>
-          <li>No native support for mobile, VR or offline</li>
+          <li><span class="lang-en">Runs only inside a browser, inside the LMS window</span><span class="lang-es">Solo se ejecuta en un navegador, dentro de la ventana del LMS</span></li>
+          <li><span class="lang-en">Tracks score, status and completion — but little about how learners performed</span><span class="lang-es">Registra puntuación, estado y finalización, pero poco sobre cómo se desempeñaron los alumnos</span></li>
+          <li><span class="lang-en">Universally supported, including Cornerstone</span><span class="lang-es">Compatibilidad universal, incluido Cornerstone</span></li>
+          <li><span class="lang-en">No native support for mobile, VR or offline</span><span class="lang-es">Sin soporte nativo para móvil, RV o sin conexión</span></li>
         </ul>
       </div>
       <div class="cc">
         <h4>xAPI (Tin Can)</h4>
-        <div class="yr">2013 — the data layer</div>
+        <div class="yr"><span class="lang-en">2013 — the data layer</span><span class="lang-es">2013 — la capa de datos</span></div>
         <ul>
-          <li>Records any experience as actor–verb–object statements</li>
-          <li>Sends data to a Learning Record Store, not just an LMS</li>
-          <li>Tracks simulations, video, on-the-job tasks, offline, mobile</li>
-          <li>On its own it does not define launch or completion</li>
+          <li><span class="lang-en">Records any experience as actor–verb–object statements</span><span class="lang-es">Registra cualquier experiencia como sentencias actor–verbo–objeto</span></li>
+          <li><span class="lang-en">Sends data to a Learning Record Store, not just an LMS</span><span class="lang-es">Envía datos a un Learning Record Store, no solo a un LMS</span></li>
+          <li><span class="lang-en">Tracks simulations, video, on-the-job tasks, offline, mobile</span><span class="lang-es">Registra simulaciones, vídeo, tareas en el puesto, sin conexión y móvil</span></li>
+          <li><span class="lang-en">On its own it does not define launch or completion</span><span class="lang-es">Por sí solo no define el lanzamiento ni la finalización</span></li>
         </ul>
       </div>
       <div class="cc">
         <h4>cmi5</h4>
-        <div class="yr">2016 — best of both</div>
+        <div class="yr"><span class="lang-en">2016 — best of both</span><span class="lang-es">2016 — lo mejor de ambos</span></div>
         <ul>
-          <li>xAPI's rich tracking with SCORM's launch and completion rules</li>
-          <li>The LMS launches it and knows, reliably, when it is passed</li>
-          <li>Granular xAPI statements still flow to the LRS for analytics</li>
-          <li>Mobile- and distributed-content friendly</li>
+          <li><span class="lang-en">xAPI's rich tracking with SCORM's launch and completion rules</span><span class="lang-es">El seguimiento rico de xAPI con las reglas de lanzamiento y finalización de SCORM</span></li>
+          <li><span class="lang-en">The LMS launches it and knows, reliably, when it is passed</span><span class="lang-es">El LMS lo lanza y sabe, de forma fiable, cuándo se ha aprobado</span></li>
+          <li><span class="lang-en">Granular xAPI statements still flow to the LRS for analytics</span><span class="lang-es">Las sentencias granulares de xAPI siguen fluyendo al LRS para la analítica</span></li>
+          <li><span class="lang-en">Mobile- and distributed-content friendly</span><span class="lang-es">Compatible con móvil y contenido distribuido</span></li>
         </ul>
       </div>
     </div>
 
-    <h3 class="sub">How this course uses cmi5 in practice</h3>
+    <details class="acc">
+    <summary><span class="lang-en">How this course uses cmi5 in practice</span><span class="lang-es">Cómo usa cmi5 este curso en la práctica</span></summary>
+    <div class="acc-body flush">
     <ol class="flow">
-      <li><b>Import.</b> Upload <code>spill-sop-cmi5.zip</code> to the LMS (Cornerstone, or any cmi5-capable LMS) and attach its Learning Record Store.</li>
-      <li><b>Launch.</b> The LMS launches the course with a secure cmi5 session — it knows exactly who the learner is and when the attempt starts.</li>
-      <li><b>Track.</b> As the learner moves through the seven steps and the decision scenario, the course sends xAPI statements — e.g. "learner answered Step 5 correctly" — to the LRS.</li>
-      <li><b>Gate.</b> The zero-error logic reports <i>passed</i> only when every critical step is correct — a trustworthy compliance record, not just "viewed".</li>
-      <li><b>Report.</b> L2 checkpoint data joins L3 supervisor observation and L4 incident metrics to prove the training changed behaviour on the bench.</li>
+      <li><b><span class="lang-en">Import.</span><span class="lang-es">Importar.</span></b> <span class="lang-en">Upload <code>spill-sop-cmi5.zip</code> to the LMS (Cornerstone, or any cmi5-capable LMS) and attach its Learning Record Store.</span><span class="lang-es">Sube <code>spill-sop-cmi5.zip</code> al LMS (Cornerstone o cualquier LMS compatible con cmi5) y conecta su Learning Record Store.</span></li>
+      <li><b><span class="lang-en">Launch.</span><span class="lang-es">Lanzar.</span></b> <span class="lang-en">The LMS launches the course with a secure cmi5 session — it knows exactly who the learner is and when the attempt starts.</span><span class="lang-es">El LMS lanza el curso con una sesión cmi5 segura: sabe con exactitud quién es el alumno y cuándo empieza el intento.</span></li>
+      <li><b><span class="lang-en">Track.</span><span class="lang-es">Seguir.</span></b> <span class="lang-en">As the learner moves through the seven steps and the decision scenario, the course sends xAPI statements — e.g. "learner answered Step 5 correctly" — to the LRS.</span><span class="lang-es">A medida que el alumno recorre los siete pasos y el escenario de decisión, el curso envía sentencias xAPI —p. ej. «el alumno respondió correctamente el paso 5»— al LRS.</span></li>
+      <li><b><span class="lang-en">Gate.</span><span class="lang-es">Filtrar.</span></b> <span class="lang-en">The zero-error logic reports <i>passed</i> only when every critical step is correct — a trustworthy compliance record, not just "viewed".</span><span class="lang-es">La lógica de cero errores informa <i>aprobado</i> solo cuando todos los pasos críticos son correctos: un registro de cumplimiento fiable, no un simple «visto».</span></li>
+      <li><b><span class="lang-en">Report.</span><span class="lang-es">Informar.</span></b> <span class="lang-en">L2 checkpoint data joins L3 supervisor observation and L4 incident metrics to prove the training changed behaviour on the bench.</span><span class="lang-es">Los datos de los puntos de control de N2 se unen a la observación del supervisor de N3 y a las métricas de incidentes de N4 para demostrar que la formación cambió la conducta en el puesto.</span></li>
     </ol>
+    </div>
+    </details>
 
-    <p class="note"><b>Which should you deploy?</b> On Cornerstone today, SCORM 2004 4th Ed. is
-    the safest universal choice. If your Cornerstone instance or LRS has cmi5 enabled, use the
-    cmi5 package for far richer, step-level compliance evidence. Use the xAPI package when you
-    want the data to live in a dedicated LRS for cross-course analytics.</p>
+    <details class="acc">
+      <summary><span class="lang-en">Which should you deploy?</span><span class="lang-es">¿Cuál deberías implementar?</span></summary>
+      <div class="acc-body">
+        <span class="lang-en">On Cornerstone today, SCORM 2004 4th Ed. is
+        the safest universal choice. If your Cornerstone instance or LRS has cmi5 enabled, use the
+        cmi5 package for far richer, step-level compliance evidence. Use the xAPI package when you
+        want the data to live in a dedicated LRS for cross-course analytics.</span>
+        <span class="lang-es">Hoy, en Cornerstone, SCORM 2004 4.ª ed. es la opción universal más segura. Si tu
+        instancia de Cornerstone o tu LRS tiene cmi5 habilitado, usa el paquete cmi5 para una
+        evidencia de cumplimiento mucho más rica, a nivel de paso. Usa el paquete xAPI cuando
+        quieras que los datos vivan en un LRS dedicado para analítica entre cursos.</span>
+      </div>
+    </details>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p><b>Chemical Spill Response SOP</b> — compliance training case study by Ana Eslava-Graterol.</p>
-    <p><b>Transparency note (EU AI Act, Art. 50):</b> developed with the assistance of generative
-    AI; reviewed, edited and approved under the editorial responsibility of Ana Eslava-Graterol,
-    instructional designer registered as a self-employed professional in Spain.</p>
-    <p>© 2026 Ana Eslava-Graterol. All rights reserved. · <a href="./index.html">Back to portfolio</a></p>
+    <p><b>Chemical Spill Response SOP</b> — <span class="lang-en">compliance training case study by Ana Eslava-Graterol.</span><span class="lang-es">caso de formación en cumplimiento de Ana Eslava-Graterol.</span></p>
+    <p><b><span class="lang-en">Transparency note (EU AI Act, Art. 50):</span><span class="lang-es">Nota de transparencia (Reglamento de IA de la UE, art. 50):</span></b>
+      <span class="lang-en">developed with the assistance of generative
+      AI; reviewed, edited and approved under the editorial responsibility of Ana Eslava-Graterol,
+      instructional designer registered as a self-employed professional in Spain.</span>
+      <span class="lang-es">desarrollado con la asistencia de IA generativa; revisado, editado y aprobado bajo
+      la responsabilidad editorial de Ana Eslava-Graterol, diseñadora instruccional dada de alta
+      como profesional autónoma en España.</span></p>
+    <p>© 2026 Ana Eslava-Graterol. <span class="lang-en">All rights reserved.</span><span class="lang-es">Todos los derechos reservados.</span> · <a href="./index.html"><span class="lang-en">Back to portfolio</span><span class="lang-es">Volver al portafolio</span></a></p>
   </div>
 </footer>
 
 <script>
   (function(){
-    var root=document.documentElement, btn=document.getElementById('themeBtn');
-    function apply(t){ if(t==='dark'){root.setAttribute('data-theme','dark');btn.textContent='Light mode';}
-      else{root.setAttribute('data-theme','light');btn.textContent='Dark mode';} }
-    var saved; try{saved=localStorage.getItem('oi-theme');}catch(e){}
-    if(saved){apply(saved);}
-    else{var dark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;apply(dark?'dark':'light');}
-    btn.addEventListener('click',function(){
-      var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
-      apply(next); try{localStorage.setItem('oi-theme',next);}catch(e){}
+    var root=document.documentElement,
+        themeBtn=document.getElementById('themeBtn'),
+        langBtn=document.getElementById('langBtn');
+    var themeLabels={en:{dark:'Dark mode',light:'Light mode'},es:{dark:'Modo oscuro',light:'Modo claro'}};
+
+    function curLang(){return root.getAttribute('data-lang')==='es'?'es':'en';}
+    function curTheme(){return root.getAttribute('data-theme')==='dark'?'dark':'light';}
+    function renderTheme(){
+      var t=curTheme(), l=curLang();
+      // button offers the *other* theme
+      themeBtn.textContent = t==='dark' ? themeLabels[l].light : themeLabels[l].dark;
+    }
+
+    // theme
+    function applyTheme(t){ root.setAttribute('data-theme',t); renderTheme(); }
+    var savedT; try{savedT=localStorage.getItem('oi-theme');}catch(e){}
+    if(savedT){applyTheme(savedT);}
+    else{var dark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;applyTheme(dark?'dark':'light');}
+    themeBtn.addEventListener('click',function(){
+      var next=curTheme()==='dark'?'light':'dark';
+      applyTheme(next); try{localStorage.setItem('oi-theme',next);}catch(e){}
+    });
+
+    // language
+    function applyLang(l){ root.setAttribute('data-lang',l); root.setAttribute('lang',l); renderTheme(); }
+    var savedL; try{savedL=localStorage.getItem('oi-lang');}catch(e){}
+    if(savedL==='es'||savedL==='en'){applyLang(savedL);}else{applyLang('en');}
+    langBtn.addEventListener('click',function(){
+      var next=curLang()==='es'?'en':'es';
+      applyLang(next); try{localStorage.setItem('oi-lang',next);}catch(e){}
     });
   })();
 </script>
