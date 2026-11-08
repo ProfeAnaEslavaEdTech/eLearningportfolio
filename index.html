@@ -143,6 +143,8 @@ main{padding:16px 0 10px;flex:1 0 auto}
 .case a.open:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .case a.open.ghost{background:transparent;color:var(--cline);border:1.5px solid var(--cline)}
 .case a.open.ghost:hover{filter:none;background:color-mix(in srgb,var(--cline) 10%,var(--surface))}
+.case a.open+a.open{margin-left:8px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 .legend{margin-top:22px;text-align:center;font-size:12px;color:var(--muted);line-height:1.5}
 .legend b{color:var(--accent-text)}
@@ -221,7 +223,7 @@ var DATA={
    {t:"Technology stack",t_es:"Stack tecnológico", tag:"Tools",tag_es:"Herramientas", sum:"Articulate 360, Canva, Synthesia, Web Speech API, GitHub Pages; LMS: Moodle, Canvas, Chamilo.",sum_es:"Articulate 360, Canva, Synthesia, Web Speech API, GitHub Pages; LMS: Moodle, Canvas, Chamilo.", link:""}
  ]},
  courses:{name:"Courses & eLearning",name_es:"Cursos y eLearning", pain:"Full courses and microlearning — language learning that people finish.",pain_es:"Cursos completos y microlearning — aprendizaje de idiomas que la gente termina.", cases:[
-   {t:"Academic Writing Journey",t_es:"Academic Writing Journey", tag:"Flagship course",tag_es:"Curso estrella", sum:"Six-level gamified academic-English course (B2→C1); 10/10 inclusive design (UPV).",sum_es:"Curso gamificado de inglés académico de 6 niveles (B2→C1); 10/10 diseño inclusivo (UPV).", tool:"Canva → Articulate 360; SAM + IPO cycle",tool_es:"Canva → Articulate 360; ciclo SAM + IPO", link:"https://profeanaeslavaedtech.github.io/Gamification/", cta:"Launch demo",cta_es:"Ver demo"},
+   {t:"Academic Writing Journey",t_es:"Academic Writing Journey", tag:"Flagship course",tag_es:"Curso estrella", sum:"Six-level gamified academic-English course (B2→C1); 10/10 inclusive design (UPV).",sum_es:"Curso gamificado de inglés académico de 6 niveles (B2→C1); 10/10 diseño inclusivo (UPV).", tool:"Canva → Articulate 360; SAM + IPO cycle",tool_es:"Canva → Articulate 360; ciclo SAM + IPO", link:"https://profeanaeslavaedtech.github.io/Gamification/", cta:"HTML prototype",cta_es:"Prototipo HTML", link2:"https://share.eu.articulate.com/j4RSSNY_EBEU45jOwyQbM", cta2:"Articulate 360 version",cta2_es:"Versión Articulate 360"},
    {t:"EdTech Mobile Lessons App",t_es:"App de microlecciones EdTech", tag:"Microlearning",tag_es:"Microlearning", sum:"JSON-driven mobile microlessons, deployed as a web app.",sum_es:"Microlecciones móviles basadas en JSON, como app web.", tool:"HTML/CSS/JS; JSON content model",tool_es:"HTML/CSS/JS; modelo de contenido JSON", link:"https://profeanaeslavaedtech.github.io/edtech-mobile-json-lessons/app/index.html", cta:"Launch app",cta_es:"Abrir app"},
    {t:"Level design documents & guides",t_es:"Documentos de diseño y guías por nivel", tag:"Design docs",tag_es:"Docs de diseño", sum:"Teacher and student guides plus design docs for each level.",sum_es:"Guías de docente y alumno y documentos de diseño por nivel.", tool:"Canva (design documents)",tool_es:"Canva (documentos de diseño)", link:"https://profeanaeslava.my.canva.site/level1design", cta:"Open sample",cta_es:"Ver muestra"}
  ]},
@@ -289,7 +291,9 @@ function select(k){
     var title=LC(c,'t');
     var cta='';
     if(c.link){ var label=(LC(c,'cta')||T[lang].open)+' →';
-      cta='<a class="open" data-kind="open" data-case="'+esc(title)+'" href="'+c.link+'" target="_blank" rel="noopener">'+esc(label)+'</a>'; }
+      cta='<a class="open" data-kind="open" data-case="'+esc(title)+'" href="'+c.link+'" target="_blank" rel="noopener">'+esc(label)+' <span class="sr-only">(opens in a new tab)</span></a>'; }
+    if(c.link2){ var label2=(LC(c,'cta2')||T[lang].open)+' →';
+      cta+='<a class="open ghost" data-kind="open" data-case="'+esc(title)+'" href="'+c.link2+'" target="_blank" rel="noopener">'+esc(label2)+' <span class="sr-only">(opens in a new tab)</span></a>'; }
     var tool=LC(c,'tool') ? '<p class="tool"><b>'+(lang==='es'?'Herramienta:':'Built with:')+'</b> '+esc(LC(c,'tool'))+'</p>' : '';
     el.innerHTML='<div class="status">'+esc(LC(c,'tag'))+'</div><h4>'+esc(title)+'</h4><p class="sum">'+esc(LC(c,'sum'))+'</p>'+tool+cta;
     cases.appendChild(el);
